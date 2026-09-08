@@ -57,9 +57,17 @@ Push to the default branch. Netlify builds from git and publishes automatically.
 
 ## Analytics
 
-Plausible, loaded on all three pages. Events: `affiliate_impression`,
-`affiliate_click` (with `variant` and `placement`), `calculator_used`,
-`calculator_share`, `30s_dwell`.
+Google Analytics 4 (`G-0KZHW8KQM0`), loaded on all three pages.
+
+Custom events: `affiliate_impression`, `affiliate_click` (with `variant` and
+`placement`), `calculator_used`, `calculator_share`, `30s_dwell`.
+
+Each page has a `track(name, props)` helper that fires to `gtag` if present and
+to `plausible` if present, so swapping analytics providers is a change to the
+`<head>` tag only — the event calls stay as they are.
+
+GA4 sets cookies, so a consent banner is required for UK visitors. There isn't
+one yet.
 
 ## Affiliate links
 
