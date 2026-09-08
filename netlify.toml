@@ -1,0 +1,21 @@
+# UK Debt Watch — Netlify configuration
+#
+# This is a zero-dependency static site: no build step, no framework.
+# Netlify publishes the repository root exactly as it is.
+
+[build]
+  publish = "."
+  command = ""
+
+# Long cache for the social image, which changes rarely.
+[[headers]]
+  for = "/og-image.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# HTML must always revalidate — the debt figures change every month.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"

@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UK Debt Clock — Live UK National Debt Counter &amp; Calculator | UK Debt Watch</title>
+  <meta name="description" content="Live UK national debt clock. Public sector net debt passed £3 trillion in 2026 and grows £7,010 every second. Debt per person, debt to GDP and borrowing, from ONS and OBR data." />
+  <meta name="author" content="UK Debt Watch" />
+  <link rel="canonical" href="https://ukdebtwatch.co.uk/" />
+
+  <!-- Favicon: inline, no extra file to deploy -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23f04550' text-anchor='middle'%3E£%3C/text%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="UK Debt Clock — Live National Debt Counter" />
+  <meta property="og:description" content="The UK national debt has passed £3 trillion and is rising at £7,010 every second. Watch it live." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ukdebtwatch.co.uk/" />
+  <meta property="og:site_name" content="UK Debt Watch" />
+  <meta property="og:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="UK Debt Clock — Live National Debt Counter" />
+  <meta name="twitter:description" content="The UK national debt has passed £3 trillion and is rising at £7,010 every second. Watch it live at ukdebtwatch.co.uk" />
+  <meta name="twitter:site" content="@ukdebtwatch" />
+  <meta name="twitter:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- ── ANALYTICS ─────────────────────────────────────────────
+       Plausible is live. Add ukdebtwatch.co.uk in your Plausible
+       dashboard and events start arriving immediately.
+       For GA4 instead, uncomment the block below and add your ID.
+  ───────────────────────────────────────────────────────────── -->
+  <script defer data-domain="ukdebtwatch.co.uk" src="https://plausible.io/js/script.tagged-events.js"></script>
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #f04550;
+      --amber:  #f4a261;
+      --teal:   #2ec4b6;
+      --gold:   #f0c040;
+      --slate:  #8a96a3;
+      --ice:    #a8dadc;
+      --bg:     #0a0a0a;
+      --bg2:    #0f0f0f;
+      --bg3:    #141414;
+      --border: #272727;
+      --text:   #f5f2ee;
+      --muted:  #909090;
+      --dim:    #606060;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', 'Courier New', monospace;
+      overflow-x: hidden;
+    }
+
+    /* Screen-reader-only headings — real structure, no visual change */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* ── LAYOUT ──────────────────────────────────────────────── */
+    .page { display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── HEADER ──────────────────────────────────────────────── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .live-dot {
+      width: 9px; height: 9px;
+      background: var(--red);
+      border-radius: 50%;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1) } 50%{ opacity:.4; transform:scale(.85) } }
+    .live-label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      color: #aaa;
+      text-transform: uppercase;
+    }
+    .header-right { font-size: 10px; color: #666; letter-spacing: .1em; }
+
+    /* ── TICKER ──────────────────────────────────────────────── */
+    .ticker-wrap {
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background: #0a0a0a;
+    }
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: scroll-left 30s linear infinite;
+      padding: 7px 0;
+      font-size: 11px;
+      color: var(--red);
+      letter-spacing: .06em;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-track span { padding-right: 72px; }
+    @keyframes scroll-left { from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(230,57,70,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 18px;
+    }
+    h1.main-label {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(13px, 2.2vw, 18px);
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 12px;
+    }
+    .main-counter {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(34px, 8.5vw, 104px);
+      font-weight: 500;
+      color: var(--red);
+      letter-spacing: -.03em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .sub-counter {
+      font-size: clamp(14px, 2vw, 20px);
+      color: #888;
+      margin-top: 10px;
+      letter-spacing: .08em;
+    }
+    .rate-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 10px 24px;
+      background: rgba(240,69,80,.09);
+      border: 1px solid rgba(240,69,80,.25);
+      border-radius: 2px;
+    }
+    .rate-badge .rate-val {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 500;
+      color: var(--red);
+    }
+    .rate-badge .rate-lbl { font-size: 11px; color: #999; letter-spacing: .12em; }
+
+    /* ── STATS GRID ──────────────────────────────────────────── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      border-top: 1px solid var(--border);
+    }
+    .stat-cell {
+      padding: 22px 24px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #0d0d0d;
+      position: relative;
+      transition: background .2s;
+    }
+    .stat-cell:hover { background: #161616; }
+    .stat-cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+    }
+    .stat-cell:nth-child(1)::before { background: var(--red); }
+    .stat-cell:nth-child(2)::before { background: var(--amber); }
+    .stat-cell:nth-child(3)::before { background: var(--gold); }
+    .stat-cell:nth-child(4)::before { background: var(--teal); }
+    .stat-cell:nth-child(5)::before { background: var(--ice); }
+    .stat-cell:nth-child(6)::before { background: var(--slate); }
+
+    .stat-lbl {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 8px;
+    }
+    .stat-val {
+      font-size: clamp(17px, 2.4vw, 22px);
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -.01em;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-note { font-size: 10px; color: #7d7d7d; margin-top: 5px; line-height: 1.4; }
+
+    /* ── CONTEXT BAR ─────────────────────────────────────────── */
+    .context-bar {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .context-bar::-webkit-scrollbar { display: none; }
+    .ctx-item {
+      flex: 0 0 auto;
+      padding: 14px 24px;
+      border-right: 1px solid var(--border);
+      font-size: 11px;
+      color: #999;
+      white-space: nowrap;
+    }
+    .ctx-item strong { color: #ddd; font-weight: 500; }
+
+    /* ── SITE NAV STRIP ──────────────────────────────────────── */
+    .nav-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border-top: 1px solid var(--border);
+    }
+    .nav-strip a {
+      background: #0d0d0d;
+      padding: 22px 26px;
+      text-decoration: none;
+      display: block;
+      transition: background .2s;
+      position: relative;
+    }
+    .nav-strip a::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+    }
+    .nav-strip a:nth-child(1)::before { background: var(--gold); }
+    .nav-strip a:nth-child(2)::before { background: var(--red); }
+    .nav-strip a:hover { background: #161616; }
+    .nav-strip .n-lbl {
+      font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      color: #999; margin-bottom: 8px;
+    }
+    .nav-strip .n-title {
+      font-size: 15px; color: #fff; font-weight: 500; margin-bottom: 6px;
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    .nav-strip .n-desc { font-size: 11.5px; color: #8d8d8d; line-height: 1.6; }
+
+    /* ── PROSE SECTIONS (FAQ + METHOD) ───────────────────────── */
+    .prose {
+      border-top: 1px solid var(--border);
+      padding: 48px 28px;
+      background: #080808;
+    }
+    .prose-inner { max-width: 760px; margin: 0 auto; }
+    .prose h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700;
+      letter-spacing: .02em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .prose .sec-sub {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 26px;
+    }
+    .qa { border-top: 1px solid var(--border); padding: 20px 0; }
+    .qa:last-of-type { border-bottom: 1px solid var(--border); }
+    .qa h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 9px;
+      line-height: 1.4;
+    }
+    .qa p {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: #a8a8a8;
+    }
+    .qa p + p { margin-top: 10px; }
+    .qa strong { color: #e4e4e4; font-weight: 500; }
+    .prose a { color: var(--ice); text-decoration: underline; text-underline-offset: 2px; }
+    .prose a:hover { color: #fff; }
+
+    .method-list { list-style: none; margin-top: 4px; }
+    .method-list li {
+      border-top: 1px solid var(--border);
+      padding: 13px 0;
+      font-size: 13px;
+      color: #a8a8a8;
+      line-height: 1.7;
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+    }
+    .method-list li:last-child { border-bottom: 1px solid var(--border); }
+    .method-list .m-key {
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #7d7d7d;
+      padding-top: 2px;
+    }
+    .method-list .m-val strong { color: #fff; font-weight: 500; }
+    @media (max-width: 560px) {
+      .method-list li { grid-template-columns: 1fr; gap: 5px; }
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 14px 28px;
+      border-top: 1px solid var(--border);
+      background: #050505;
+    }
+    .footer span { font-size: 10px; color: #777; letter-spacing: .08em; }
+    .footer a { color: #8a8a8a; text-decoration: none; }
+    .footer a:hover { color: #ccc; text-decoration: underline; }
+
+    /* ── AFFILIATE BAR ───────────────────────────────────────── */
+    .aff-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #0b0b0b;
+      position: relative;
+      overflow: hidden;
+    }
+    .aff-bar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--aff-accent, var(--gold));
+      opacity: .7;
+    }
+    .aff-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 22px 28px;
+    }
+    .aff-label {
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #6a6a6a;
+      margin-bottom: 6px;
+    }
+    .aff-headline {
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.35;
+      max-width: 560px;
+    }
+    .aff-headline em {
+      font-style: normal;
+      color: var(--aff-accent, var(--gold));
+    }
+    .aff-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 5px;
+      max-width: 520px;
+      line-height: 1.5;
+    }
+    .aff-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--aff-accent, var(--gold));
+      color: #080808;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-decoration: none;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity .15s, transform .15s;
+    }
+    .aff-cta:hover { opacity: .85; transform: translateY(-1px); }
+    .aff-cta:active { transform: translateY(0); }
+    .aff-provider {
+      font-size: 9px;
+      color: #6a6a6a;
+      margin-top: 8px;
+      letter-spacing: .1em;
+    }
+    .aff-dots { display: flex; gap: 5px; margin-top: 12px; }
+    .aff-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #333;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      transition: background .2s;
+    }
+    .aff-dot.active { background: var(--aff-accent, var(--gold)); }
+    .aff-dots:has(.aff-dot:only-child) { display: none; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .header-right { display: none; }
+      .hero { padding: 40px 16px 32px; }
+      .stat-cell { padding: 18px 16px; }
+      .aff-inner { padding: 18px 16px; }
+      .aff-cta { width: 100%; justify-content: center; }
+      .prose { padding: 36px 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="live-dot" aria-hidden="true"></div>
+      <span class="live-label">UK Debt Watch · Live</span>
+    </div>
+    <div class="header-right" id="header-right">ONS DATA · JULY 2026 · NEXT RELEASE 22 SEP</div>
+  </header>
+
+  <!-- Ticker -->
+  <div class="ticker-wrap" title="Hover to pause" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <!-- Hero -->
+  <main>
+  <div class="hero">
+    <p class="eyebrow">UKDebtWatch.co.uk · Public Sector Net Debt · Estimated Live</p>
+    <h1 class="main-label">UK National Debt Clock</h1>
+    <div class="main-counter" id="main-counter" aria-hidden="true">£—</div>
+    <p class="sub-counter" id="sub-trillions">calculating…</p>
+    <p class="sr-only" id="a11y-summary">Loading the current UK national debt estimate.</p>
+
+    <div class="rate-badge">
+      <span class="rate-val" id="rate-val">▲ £7,010</span>
+      <span class="rate-lbl">added every second</span>
+    </div>
+  </div>
+
+  <!-- Stats grid -->
+  <section class="stats" id="stats-grid">
+    <h2 class="sr-only">Key figures</h2>
+    <div class="stat-cell">
+      <div class="stat-lbl">Debt per Citizen</div>
+      <div class="stat-val" id="s-per-citizen">£—</div>
+      <div class="stat-note">Based on pop. 68,350,000</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-lbl">Debt as % of GDP</div>
+      <div class="stat-val" id="s-gdp-pct">—%</div>
+      <div class="stat-note">Nominal GDP est. £3.17 trillion</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-lbl">Borrowing, FY to Date</div>
+      <div class="stat-val">£56.7 billion</div>
+      <div class="stat-note">Apr–Jul 2026 · ONS</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-lbl">Debt in Billions</div>
+      <div class="stat-val" id="s-billions">£—bn</div>
+      <div class="stat-note">Updated continuously</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-lbl">Added This Session</div>
+      <div class="stat-val" id="s-session">£0</div>
+      <div class="stat-note" id="s-session-time">0s on page</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-lbl">Debt Interest, July 2026</div>
+      <div class="stat-val">£7.7 billion</div>
+      <div class="stat-note">In one month · incl. £1.3bn RPI uplift</div>
+    </div>
+  </section>
+
+  <!-- ── AFFILIATE BAR ─────────────────────────────────────────
+       Only live, approved partner links belong in AFF_VARIANTS.
+       Trading 212 and Coinbase are parked below the array until
+       their affiliate approvals land — paste the real ref into the
+       url, then move the object into AFF_VARIANTS.
+       A visitor is assigned ONE variant on first load and keeps it
+       (localStorage), so clicks can be attributed. No rotation.
+  ─────────────────────────────────────────────────────────── -->
+  <aside class="aff-bar" id="aff-bar" aria-label="Partner offer">
+    <div class="aff-inner">
+      <div class="aff-content">
+        <div class="aff-label">Partner</div>
+        <div class="aff-headline" id="aff-headline">Loading…</div>
+        <div class="aff-sub" id="aff-sub"></div>
+        <div class="aff-provider" id="aff-provider"></div>
+        <div class="aff-dots" id="aff-dots"></div>
+      </div>
+      <a class="aff-cta" id="aff-cta" href="#" target="_blank" rel="noopener sponsored">
+        <span id="aff-cta-text">—</span> →
+      </a>
+    </div>
+  </aside>
+
+  <!-- Context bar -->
+  <div class="context-bar" id="context-bar"></div>
+
+  <!-- Site nav -->
+  <nav class="nav-strip" aria-label="More from UK Debt Watch">
+    <a href="/your-share/">
+      <div class="n-lbl">Calculator</div>
+      <div class="n-title">What is your share? <span aria-hidden="true">→</span></div>
+      <div class="n-desc">Work out your personal share of the debt, your household's share, and how many years of your income tax it adds up to.</div>
+    </a>
+    <a href="/3-trillion/">
+      <div class="n-lbl">Milestone</div>
+      <div class="n-title">The UK passed £3 trillion <span aria-hidden="true">→</span></div>
+      <div class="n-desc">When it happened, why the third trillion took only six years, and what the forecasts show next.</div>
+    </a>
+  </nav>
+
+  <!-- ── FAQ (visible content backing the FAQPage schema) ────── -->
+  <section class="prose" id="faq">
+    <div class="prose-inner">
+      <h2>UK national debt: the questions people ask</h2>
+      <p class="sec-sub">Answered from the latest ONS release</p>
+
+      <div class="qa">
+        <h3>How much is the UK national debt right now?</h3>
+        <p>Public sector net debt excluding public sector banks was <strong>£2,984.9 billion</strong> at the end of July 2026 — <strong>94.1% of GDP</strong> — according to the ONS release published on 21 August 2026. The counter above estimates where that figure stands today by adding the observed rate of accrual since that date.</p>
+      </div>
+
+      <div class="qa">
+        <h3>Has the UK passed £3 trillion?</h3>
+        <p>On the rate this counter uses, public sector net debt crossed <strong>£3 trillion during the last week of August 2026</strong>. The ONS release on <strong>22 September 2026</strong> covers August and should be the first official confirmation. Until then the figure above is an estimate, not an official statistic.</p>
+      </div>
+
+      <div class="qa">
+        <h3>How fast is the debt growing?</h3>
+        <p>Roughly <strong>£7,010 every second</strong> — about £420,600 a minute, £25.2 million an hour and £605.7 million a day. That rate comes from the £73.9 billion of net debt added between the end of March and the end of July 2026. Separately, the government borrowed £56.7 billion in the first four months of the 2026/27 financial year.</p>
+      </div>
+
+      <div class="qa">
+        <h3>How much national debt is that per person?</h3>
+        <p>About <strong>£44,000 for every person in the UK</strong>, using the ONS mid-year population estimate of 68.35 million. Per taxpayer the figure is considerably higher, since roughly 33 million people pay income tax.</p>
+      </div>
+
+      <div class="qa">
+        <h3>What is the difference between debt and the deficit?</h3>
+        <p>The <strong>deficit</strong> is the gap between what the government spends and what it raises in a single year — public sector net borrowing. The <strong>debt</strong> is the accumulated total of every past deficit, less anything repaid. A falling deficit still adds to the debt; the debt only falls when the government runs a surplus or when growth and inflation shrink it relative to GDP.</p>
+      </div>
+
+      <div class="qa">
+        <h3>How much interest does the UK pay on its debt?</h3>
+        <p>Interest payable was <strong>£7.7 billion in July 2026 alone</strong>, of which £1.3 billion came from the RPI-linked capital uplift on index-linked gilts. Because roughly a quarter of UK government debt is index-linked, inflation feeds into the interest bill far faster here than in most comparable economies.</p>
+      </div>
+
+      <div class="qa">
+        <h3>Is this real-time government data?</h3>
+        <p>No. The ONS publishes public sector finances once a month, around the 21st. This page takes the most recent official figure as its baseline and projects forward at a measured rate, so the number you see between releases is an <strong>estimate</strong>. Every input is listed below and the baseline is reset at each ONS release.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── METHODOLOGY ─────────────────────────────────────────── -->
+  <section class="prose" id="methodology">
+    <div class="prose-inner">
+      <h2>How this counter is calculated</h2>
+      <p class="sec-sub">Every input, in the open</p>
+      <ul class="method-list">
+        <li>
+          <span class="m-key">Measure</span>
+          <span class="m-val">Public sector net debt <strong>excluding</strong> public sector banks (PSND ex), the headline measure used by the ONS, OBR and HM Treasury.</span>
+        </li>
+        <li>
+          <span class="m-key">Baseline</span>
+          <span class="m-val"><strong>£2,984.9 billion</strong> at 31 July 2026, from <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest" rel="noopener">ONS Public sector finances, UK: July 2026</a>, published 21 August 2026.</span>
+        </li>
+        <li>
+          <span class="m-key">Rate</span>
+          <span class="m-val"><strong>£7,010 per second.</strong> Net debt rose £73.9 billion between 31 March and 31 July 2026 — 122 days, or 10,540,800 seconds. This is the observed accrual of debt, which is larger than borrowing alone because it also captures other financial transactions and gilt premia.</span>
+        </li>
+        <li>
+          <span class="m-key">GDP</span>
+          <span class="m-val"><strong>£3,172 billion</strong> nominal, implied by the ONS ratio of 94.1% of GDP at the July 2026 baseline. Held constant between releases, so the ratio shown drifts slightly high as the month goes on.</span>
+        </li>
+        <li>
+          <span class="m-key">Population</span>
+          <span class="m-val"><strong>68,350,000</strong>, ONS mid-year estimate.</span>
+        </li>
+        <li>
+          <span class="m-key">Revisions</span>
+          <span class="m-val">Baseline and rate are reset at each monthly ONS release. ONS figures for 2025/26 and 2026/27 are provisional and subject to revision. Next release: <strong>22 September 2026</strong>.</span>
+        </li>
+        <li>
+          <span class="m-key">Not advice</span>
+          <span class="m-val">This site is an information resource. Nothing here is financial advice. Partner links are affiliate links and may earn this site a commission at no cost to you.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>SOURCE: <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance" target="_blank" rel="noopener">ONS PUBLIC SECTOR FINANCES</a> · <a href="https://obr.uk" target="_blank" rel="noopener">OBR ECONOMIC &amp; FISCAL OUTLOOK</a> · <a href="https://ukdebtwatch.co.uk/">UKDEBTWATCH.CO.UK</a></span>
+    <span>⚠ ESTIMATED — NOT REAL-TIME GOVERNMENT DATA</span>
+  </footer>
+
+</div>
+
+<!-- ── STRUCTURED DATA ───────────────────────────────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://ukdebtwatch.co.uk/#website",
+      "url": "https://ukdebtwatch.co.uk/",
+      "name": "UK Debt Watch",
+      "description": "Live UK national debt clock based on ONS and OBR public sector finance data.",
+      "inLanguage": "en-GB",
+      "publisher": { "@id": "https://ukdebtwatch.co.uk/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://ukdebtwatch.co.uk/#org",
+      "name": "UK Debt Watch",
+      "url": "https://ukdebtwatch.co.uk/",
+      "logo": "https://ukdebtwatch.co.uk/og-image.jpg",
+      "sameAs": ["https://x.com/ukdebtwatch"]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://ukdebtwatch.co.uk/#dataset",
+      "name": "UK public sector net debt, live estimate",
+      "description": "A continuously updated estimate of UK public sector net debt excluding public sector banks, projected from the latest monthly ONS Public Sector Finances release.",
+      "url": "https://ukdebtwatch.co.uk/",
+      "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "isAccessibleForFree": true,
+      "creator": { "@id": "https://ukdebtwatch.co.uk/#org" },
+      "temporalCoverage": "2026-07-31/..",
+      "measurementTechnique": "Linear projection from the ONS end-July 2026 baseline at the observed rate of net debt accrual.",
+      "variableMeasured": [
+        { "@type": "PropertyValue", "name": "Public sector net debt (ex banks)", "value": "2984.9", "unitText": "GBP billion", "measurementTechnique": "ONS, end July 2026" },
+        { "@type": "PropertyValue", "name": "Debt as share of GDP", "value": "94.1", "unitText": "percent" },
+        { "@type": "PropertyValue", "name": "Rate of accrual", "value": "7010", "unitText": "GBP per second" }
+      ],
+      "isBasedOn": "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ukdebtwatch.co.uk/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much is the UK national debt right now?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Public sector net debt excluding public sector banks was £2,984.9 billion at the end of July 2026 — 94.1% of GDP — according to the ONS release published on 21 August 2026. The live counter estimates where that figure stands today by adding the observed rate of accrual since that date." }
+        },
+        {
+          "@type": "Question",
+          "name": "Has the UK passed £3 trillion?",
+          "acceptedAnswer": { "@type": "Answer", "text": "On the rate this counter uses, public sector net debt crossed £3 trillion during the last week of August 2026. The ONS release on 22 September 2026 covers August and should be the first official confirmation. Until then the figure is an estimate, not an official statistic." }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast is the UK national debt growing?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Roughly £7,010 every second — about £420,600 a minute, £25.2 million an hour and £605.7 million a day. That rate comes from the £73.9 billion of net debt added between the end of March and the end of July 2026. The government borrowed £56.7 billion in the first four months of the 2026/27 financial year." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much UK national debt is there per person?",
+          "acceptedAnswer": { "@type": "Answer", "text": "About £44,000 for every person in the UK, using the ONS mid-year population estimate of 68.35 million. Per taxpayer the figure is considerably higher, since roughly 33 million people pay income tax." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between the national debt and the deficit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The deficit is the gap between what the government spends and what it raises in a single year — public sector net borrowing. The debt is the accumulated total of every past deficit, less anything repaid. A falling deficit still adds to the debt; the debt only falls when the government runs a surplus or when growth and inflation shrink it relative to GDP." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much interest does the UK pay on its national debt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Interest payable was £7.7 billion in July 2026 alone, of which £1.3 billion came from the RPI-linked capital uplift on index-linked gilts. Because roughly a quarter of UK government debt is index-linked, inflation feeds into the interest bill faster than in most comparable economies." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the UK debt clock real-time government data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The ONS publishes public sector finances once a month, around the 21st. This page takes the most recent official figure as its baseline and projects forward at a measured rate, so the number between releases is an estimate. The baseline is reset at each ONS release." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+  'use strict';
+
+  /* ═══════════════════════════════════════════════════════════
+     CONSTANTS — update these at each monthly ONS release
+     (around the 21st of the month). Nothing else needs touching.
+
+     Source: ONS Public sector finances, UK: July 2026
+             published 21 August 2026
+     ═══════════════════════════════════════════════════════════ */
+  const BASELINE_DATE  = new Date('2026-07-31T00:00:00Z');
+  const BASELINE_DEBT  = 2_984_900_000_000;   // PSND ex banks, end July 2026
+  const PER_SECOND     = 7_010;               // £73.9bn over 122 days (31 Mar → 31 Jul 2026)
+  const UK_POP         = 68_350_000;          // ONS mid-year estimate
+  const GDP            = 3_172_000_000_000;   // implied by ONS ratio of 94.1% at baseline
+  const NEXT_RELEASE   = '22 SEP';
+  const BASELINE_LABEL = 'ONS 31 Jul 2026';
+
+  const startTime = Date.now();
+
+  const getDebt = () =>
+    BASELINE_DEBT + ((Date.now() - BASELINE_DATE.getTime()) / 1000) * PER_SECOND;
+
+  const fmtInt  = n => Math.floor(n).toLocaleString('en-GB');
+  const fmtDebt = n => '£' + fmtInt(n);
+
+  const $ = id => document.getElementById(id);
+
+  /* ── STATIC LABELS BUILT FROM THE CONSTANTS ─────────────────
+     Everything derives from one source of truth, so the context
+     bar can never contradict the tiles again.                  */
+  $('rate-val').textContent    = '▲ £' + fmtInt(PER_SECOND);
+  $('header-right').textContent =
+    'ONS DATA · ' + BASELINE_DATE.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' }).toUpperCase() +
+    ' · NEXT RELEASE ' + NEXT_RELEASE;
+
+  const ctx = [
+    ['Baseline',   BASELINE_LABEL],
+    ['At baseline', '£' + (BASELINE_DEBT / 1e12).toFixed(3) + ' trillion'],
+    ['Debt/GDP',   (BASELINE_DEBT / GDP * 100).toFixed(1) + '% at baseline'],
+    ['Rate',       '£' + fmtInt(PER_SECOND) + ' / sec'],
+    ['Per min',    '£' + fmtInt(PER_SECOND * 60)],
+    ['Per hour',   '£' + (PER_SECOND * 3600 / 1e6).toFixed(2) + 'm'],
+    ['Per day',    '£' + (PER_SECOND * 86400 / 1e6).toFixed(1) + 'm'],
+    ['Next ONS release', '22 September 2026'],
+  ];
+  $('context-bar').innerHTML = ctx
+    .map(([k, v]) => '<div class="ctx-item">' + k + ': <strong>' + v + '</strong></div>')
+    .join('');
+
+  /* ── TICKER ─────────────────────────────────────────────── */
+  const tickerEl = $('ticker');
+  let tickerBuilt = false;
+  let lastTickerSecond = -1;
+
+  function tickerText(debt) {
+    return [
+      `PSND: £${fmtInt(debt / 1e9)}bn`,
+      `Rate: £${fmtInt(PER_SECOND)}/sec`,
+      `Per min: £${fmtInt(PER_SECOND * 60)}`,
+      `Per hour: £${fmtInt(PER_SECOND * 3600)}`,
+      `Per citizen: £${fmtInt(debt / UK_POP)}`,
+      `Debt/GDP: ${(debt / GDP * 100).toFixed(1)}%`,
+      `Borrowing FY to date: £56.7bn`,
+      `Next ONS release: 22 Sep 2026`,
+      `Source: ONS / OBR`,
+    ].join('   ·   ');
+  }
+
+  function updateTicker(debt) {
+    const text = tickerText(debt);
+    if (!tickerBuilt) {
+      for (let i = 0; i < 4; i++) {
+        const span = document.createElement('span');
+        span.textContent = text;
+        tickerEl.appendChild(span);
+      }
+      tickerBuilt = true;
+    } else {
+      tickerEl.querySelectorAll('span').forEach(s => { s.textContent = text; });
+    }
+  }
+
+  /* ── UPDATE LOOP ────────────────────────────────────────────
+     requestAnimationFrame for the headline figure; the secondary
+     tiles and the ticker are throttled to once a second. Roughly
+     a tenth of the DOM work the old 100ms interval did.        */
+  let prevDebtInt = 0;
+  let lastStatSecond = -1;
+
+  function frame() {
+    const debt    = getDebt();
+    const debtInt = Math.floor(debt);
+    const session = Math.floor((Date.now() - startTime) / 1000);
+
+    if (debtInt !== prevDebtInt) {
+      $('main-counter').textContent  = fmtDebt(debt);
+      $('sub-trillions').textContent = '≈ £' + (debt / 1e12).toFixed(3) + ' trillion';
+      prevDebtInt = debtInt;
+    }
+
+    if (session !== lastStatSecond) {
+      lastStatSecond = session;
+      $('s-per-citizen').textContent  = '£' + fmtInt(debt / UK_POP);
+      $('s-gdp-pct').textContent      = (debt / GDP * 100).toFixed(2) + '%';
+      $('s-billions').textContent     = '£' + (debt / 1e9).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + 'bn';
+      $('s-session').textContent      = '£' + fmtInt(session * PER_SECOND);
+      $('s-session-time').textContent = fmtInt(session) + 's on page';
+
+      if (session % 5 === 0 && session !== lastTickerSecond) {
+        lastTickerSecond = session;
+        updateTicker(debt);
+      }
+
+      // 30-second dwell milestone — the metric a debt clock should win on
+      if (session === 30) track('30s_dwell', {});
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  // Static, non-flickering summary for screen readers
+  (function a11y() {
+    const d = getDebt();
+    $('a11y-summary').textContent =
+      'UK public sector net debt is approximately £' + (d / 1e12).toFixed(2) +
+      ' trillion, rising by about £' + fmtInt(PER_SECOND) + ' every second. ' +
+      'The last official ONS figure was £2,984.9 billion at the end of July 2026.';
+  })();
+
+  updateTicker(getDebt());
+  requestAnimationFrame(frame);
+
+  /* ── ANALYTICS HELPER ───────────────────────────────────────
+     Fires to Plausible and GA4, whichever is present.          */
+  function track(name, props) {
+    try {
+      if (window.plausible) window.plausible(name, { props: props });
+      if (window.gtag)      window.gtag('event', name, props);
+    } catch (e) { /* analytics must never break the page */ }
+  }
+
+  /* ── AFFILIATE VARIANTS ─────────────────────────────────────
+     LIVE partners only. Anything without a real, approved link
+     stays in AFF_PENDING below and is never rendered.          */
+  const AFF_VARIANTS = [
+    {
+      key      : 'gold',
+      headline : 'Governments can print money. <em>They can\'t print gold.</em> Protect your wealth with physical bullion.',
+      sub      : 'Buy, sell and store gold online. Insured and audited daily.',
+      cta      : 'Buy Gold',
+      provider : 'BullionVault · Capital at risk.',
+      accent   : '#f4a261',
+      url      : 'https://www.bullionvaultaffiliate.com/victorsbrown/en?utm_source=ukdebtwatch&utm_medium=affiliate_bar&utm_campaign=variant_gold',
+    },
+  ];
+
+  /* ── PENDING PARTNERS — DO NOT RENDER ───────────────────────
+     Move an object into AFF_VARIANTS above only once the real
+     affiliate reference has replaced the placeholder.
+
+     Trading 212 (approval pending):
+       key: 'isa',
+       headline: 'Every second the debt grows, <em>your cash savings lose value.</em> A stocks &amp; shares ISA lets your money fight back.',
+       sub: 'Up to £20,000 tax-free each year. Capital at risk.',
+       cta: 'Open an ISA',
+       provider: 'Capital at risk. Not financial advice.',
+       accent: '#f0c040',
+       url: 'https://www.trading212.com/?ref=REPLACE_ME&utm_source=ukdebtwatch&utm_medium=affiliate_bar&utm_campaign=variant_isa'
+
+     Coinbase (approval pending):
+       key: 'crypto',
+       headline: 'Bitcoin\'s supply is capped at <em>21 million.</em> The UK\'s national debt isn\'t.',
+       sub: 'Understand the alternative. Buy crypto on a regulated UK exchange.',
+       cta: 'Get Started',
+       provider: 'Coinbase · Crypto is unregulated &amp; high risk.',
+       accent: '#2ec4b6',
+       url: 'https://coinbase.com/join/REPLACE_ME?utm_source=ukdebtwatch&utm_medium=affiliate_bar&utm_campaign=variant_crypto'
+
+     Also worth applying for via Awin: Hargreaves Lansdown, AJ Bell, The Royal Mint.
+  ─────────────────────────────────────────────────────────── */
+
+  /* ── STICKY VARIANT ASSIGNMENT ──────────────────────────────
+     One variant per visitor, persisted, never rotated — so a
+     click can actually be attributed to the variant that earned
+     it. This is what makes the A/B test real.                  */
+  const STORE_KEY = 'ukdw_aff_variant';
+
+  function assignedIndex() {
+    let stored = null;
+    try { stored = localStorage.getItem(STORE_KEY); } catch (e) { /* private mode */ }
+    const known = AFF_VARIANTS.findIndex(v => v.key === stored);
+    if (known !== -1) return known;
+
+    const idx = Math.floor(Math.random() * AFF_VARIANTS.length);
+    try { localStorage.setItem(STORE_KEY, AFF_VARIANTS[idx].key); } catch (e) { /* ignore */ }
+    return idx;
+  }
+
+  let currentVariant = 0;
+
+  function applyVariant(idx) {
+    const v    = AFF_VARIANTS[idx];
+    const bar  = $('aff-bar');
+    const dots = $('aff-dots');
+
+    $('aff-headline').innerHTML  = v.headline;
+    $('aff-sub').textContent     = v.sub;
+    $('aff-cta-text').textContent = v.cta;
+    $('aff-provider').textContent = v.provider;
+
+    const cta = $('aff-cta');
+    cta.href = v.url;
+    cta.dataset.variant = v.key;
+
+    bar.style.setProperty('--aff-accent', v.accent);
+
+    dots.innerHTML = '';
+    if (AFF_VARIANTS.length > 1) {
+      AFF_VARIANTS.forEach((variant, i) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'aff-dot' + (i === idx ? ' active' : '');
+        d.setAttribute('aria-label', 'Show partner option ' + (i + 1) + ': ' + variant.cta);
+        d.addEventListener('click', () => applyVariant(i));
+        dots.appendChild(d);
+      });
+    }
+
+    currentVariant = idx;
+  }
+
+  currentVariant = assignedIndex();
+  applyVariant(currentVariant);
+
+  // Impression — needed to compute a click-through rate at all
+  track('affiliate_impression', { variant: AFF_VARIANTS[currentVariant].key });
+
+  $('aff-cta').addEventListener('click', function () {
+    track('affiliate_click', { variant: this.dataset.variant });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+._*
+
+# Claude Code local settings
+.claude/
+
+# Build artefacts / deploy packages — Netlify builds from the repo now
+*.zip

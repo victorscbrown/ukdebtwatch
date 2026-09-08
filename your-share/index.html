@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UK Debt Calculator — What Is Your Share of the National Debt? | UK Debt Watch</title>
+  <meta name="description" content="UK national debt calculator. Work out your personal share of the UK's £3 trillion national debt, your household's share, your share of the daily interest bill, and how it compares with the tax you pay." />
+  <link rel="canonical" href="https://ukdebtwatch.co.uk/your-share/" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23f04550' text-anchor='middle'%3E£%3C/text%3E%3C/svg%3E" />
+
+  <meta property="og:title" content="What is your share of the UK national debt?" />
+  <meta property="og:description" content="Work out your personal share of the UK's £3 trillion national debt — and how many years of your income tax it would take to clear it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ukdebtwatch.co.uk/your-share/" />
+  <meta property="og:site_name" content="UK Debt Watch" />
+  <meta property="og:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is your share of the UK national debt?" />
+  <meta name="twitter:description" content="Work out your personal share of the UK's £3 trillion national debt." />
+  <meta name="twitter:site" content="@ukdebtwatch" />
+  <meta name="twitter:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <script defer data-domain="ukdebtwatch.co.uk" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #f04550;
+      --amber:  #f4a261;
+      --teal:   #2ec4b6;
+      --gold:   #f0c040;
+      --ice:    #a8dadc;
+      --bg:     #0a0a0a;
+      --border: #272727;
+      --text:   #f5f2ee;
+      --muted:  #909090;
+    }
+
+    html, body {
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Mono', 'Courier New', monospace;
+      overflow-x: hidden; line-height: 1.6;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 2px;
+    }
+
+    /* ── HEADER ──────────────────────────────────────────────── */
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 28px; border-bottom: 1px solid var(--border);
+      background: var(--bg); position: sticky; top: 0; z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .live-dot {
+      width: 9px; height: 9px; background: var(--red); border-radius: 50%;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1) } 50%{ opacity:.4; transform:scale(.85) } }
+    .header a.live-label {
+      font-size: 11px; letter-spacing: .22em; color: #aaa;
+      text-transform: uppercase; text-decoration: none;
+    }
+    .header a.live-label:hover { color: #fff; }
+    .header-right { font-size: 10px; color: #666; letter-spacing: .1em; }
+
+    /* ── INTRO ───────────────────────────────────────────────── */
+    .intro {
+      padding: 52px 28px 34px; text-align: center; position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(230,57,70,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+      color: #888; margin-bottom: 18px;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(24px, 5vw, 44px); line-height: 1.08; letter-spacing: -.01em;
+      max-width: 22ch; margin: 0 auto 18px; text-wrap: balance;
+    }
+    h1 em { font-style: normal; color: var(--red); }
+    .intro p {
+      font-size: 13.5px; color: #9a9a9a; max-width: 60ch; margin: 0 auto;
+      line-height: 1.75;
+    }
+    .intro .total { color: #ddd; }
+
+    /* ── CALCULATOR ──────────────────────────────────────────── */
+    .calc { max-width: 1000px; margin: 0 auto; padding: 40px 28px 8px; }
+
+    .fields {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      border-radius: 2px; overflow: hidden; margin-bottom: 34px;
+    }
+    .field { background: #0d0d0d; padding: 18px 20px; }
+    .field label {
+      display: block; font-size: 10px; letter-spacing: .18em;
+      text-transform: uppercase; color: #999; margin-bottom: 10px;
+    }
+    .field .wrap { display: flex; align-items: baseline; gap: 6px; }
+    .field .prefix { color: #777; font-size: 18px; }
+    .field input {
+      width: 100%; background: transparent; border: none;
+      border-bottom: 1px solid #333; color: #fff;
+      font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500;
+      padding: 3px 0 6px; font-variant-numeric: tabular-nums;
+      -moz-appearance: textfield;
+    }
+    .field input::-webkit-outer-spin-button,
+    .field input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .field input:focus { border-bottom-color: var(--gold); }
+    .field .hint { font-size: 10px; color: #6e6e6e; margin-top: 8px; line-height: 1.5; }
+
+    /* headline result */
+    .headline-result {
+      border: 1px solid var(--border); border-left: 3px solid var(--red);
+      background: #0d0d0d; padding: 30px 30px 28px; margin-bottom: 20px;
+    }
+    .hr-lbl {
+      font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      color: #999; margin-bottom: 12px;
+    }
+    .hr-val {
+      font-size: clamp(34px, 7vw, 62px); font-weight: 500; color: var(--red);
+      line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums;
+    }
+    .hr-note { font-size: 12px; color: #8d8d8d; margin-top: 14px; line-height: 1.6; }
+    .hr-note strong { color: #ccc; font-weight: 400; }
+
+    /* result grid */
+    .results {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      border-radius: 2px; overflow: hidden; margin-bottom: 26px;
+    }
+    .res { background: #0d0d0d; padding: 20px 22px; position: relative; }
+    .res::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+    .res:nth-child(1)::before { background: var(--amber); }
+    .res:nth-child(2)::before { background: var(--gold); }
+    .res:nth-child(3)::before { background: var(--teal); }
+    .res:nth-child(4)::before { background: var(--ice); }
+    .res-lbl {
+      font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+      color: #999; margin-bottom: 9px;
+    }
+    .res-val {
+      font-size: clamp(18px, 2.6vw, 24px); font-weight: 500; color: #fff;
+      font-variant-numeric: tabular-nums; line-height: 1.15;
+    }
+    .res-note { font-size: 10px; color: #7d7d7d; margin-top: 6px; line-height: 1.5; }
+
+    /* verdict line */
+    .verdict {
+      border: 1px solid var(--border); border-left: 3px solid var(--gold);
+      background: #0b0b0b; padding: 24px 28px; margin-bottom: 8px;
+    }
+    .verdict p {
+      font-size: clamp(14px, 2vw, 16.5px); color: #d5d5d5; line-height: 1.75; margin: 0;
+    }
+    .verdict strong { color: var(--gold); font-weight: 500; font-variant-numeric: tabular-nums; }
+    .verdict .caveat { display: block; font-size: 11px; color: #7d7d7d; margin-top: 12px; line-height: 1.6; }
+
+    .share-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 4px; }
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: transparent; border: 1px solid var(--border); color: var(--ice);
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .1em;
+      text-transform: uppercase; padding: 12px 20px; border-radius: 2px;
+      cursor: pointer; text-decoration: none;
+      transition: border-color .15s, color .15s;
+    }
+    .share-btn:hover { border-color: var(--ice); color: #fff; }
+
+    /* ── PROSE ───────────────────────────────────────────────── */
+    .prose { border-top: 1px solid var(--border); padding: 48px 28px; background: #080808; margin-top: 44px; }
+    .prose-inner { max-width: 760px; margin: 0 auto; }
+    .prose h2 {
+      font-family: 'Syne', sans-serif; font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700; margin-bottom: 6px;
+    }
+    .prose .sec-sub {
+      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 26px;
+    }
+    .qa { border-top: 1px solid var(--border); padding: 20px 0; }
+    .qa:last-of-type { border-bottom: 1px solid var(--border); }
+    .qa h3 { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 9px; line-height: 1.4; }
+    .qa p { font-size: 13.5px; line-height: 1.75; color: #a8a8a8; margin: 0; }
+    .qa p + p { margin-top: 10px; }
+    .qa strong { color: #e4e4e4; font-weight: 500; }
+    .prose a { color: var(--ice); text-decoration: underline; text-underline-offset: 2px; }
+    .prose a:hover { color: #fff; }
+
+    /* ── AFFILIATE ───────────────────────────────────────────── */
+    .aff-bar {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: #0b0b0b; position: relative; overflow: hidden;
+    }
+    .aff-bar::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+      background: var(--amber); opacity: .7;
+    }
+    .aff-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; padding: 26px 28px; max-width: 1000px; margin: 0 auto;
+    }
+    .aff-label {
+      font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+      color: #6a6a6a; margin-bottom: 6px;
+    }
+    .aff-headline {
+      font-size: clamp(14px, 2vw, 18px); font-weight: 500; color: var(--text);
+      line-height: 1.35; max-width: 560px;
+    }
+    .aff-headline em { font-style: normal; color: var(--amber); }
+    .aff-sub { font-size: 11px; color: var(--muted); margin-top: 5px; max-width: 520px; line-height: 1.5; }
+    .aff-provider { font-size: 9px; color: #6a6a6a; margin-top: 8px; letter-spacing: .1em; }
+    .aff-cta {
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+      background: var(--amber); color: #080808; font-family: 'DM Mono', monospace;
+      font-size: 12px; font-weight: 500; letter-spacing: .1em; text-decoration: none;
+      border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+      transition: opacity .15s, transform .15s;
+    }
+    .aff-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ── BACKLINK + FOOTER ───────────────────────────────────── */
+    .backlink { max-width: 760px; margin: 0 auto; padding: 34px 28px 8px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .backlink a {
+      display: inline-flex; align-items: center; gap: 10px; font-size: 12px;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--ice);
+      text-decoration: none; border: 1px solid var(--border);
+      padding: 13px 22px; border-radius: 2px;
+      transition: border-color .15s, color .15s;
+    }
+    .backlink a:hover { border-color: var(--ice); color: #fff; }
+
+    .footer {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+      padding: 14px 28px; border-top: 1px solid var(--border); background: #050505;
+      margin-top: 40px;
+    }
+    .footer span { font-size: 10px; color: #777; letter-spacing: .08em; }
+    .footer a { color: #8a8a8a; text-decoration: none; }
+    .footer a:hover { color: #ccc; text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .header-right { display: none; }
+      .intro { padding: 38px 18px 28px; }
+      .calc { padding: 28px 18px 8px; }
+      .field { padding: 16px 16px; }
+      .headline-result { padding: 24px 20px; }
+      .res { padding: 17px 16px; }
+      .verdict { padding: 20px 18px; }
+      .prose { padding: 36px 18px; }
+      .aff-inner { padding: 20px 18px; }
+      .aff-cta { width: 100%; justify-content: center; }
+      .backlink { padding: 26px 18px 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left">
+      <div class="live-dot" aria-hidden="true"></div>
+      <a class="live-label" href="/">UK Debt Watch · Live</a>
+    </div>
+    <div class="header-right">ONS / OBR DATA · UK DEBT CALCULATOR</div>
+  </header>
+
+  <main>
+  <div class="intro">
+    <p class="eyebrow">UK Debt Calculator</p>
+    <h1>What is <em>your share</em> of the UK national debt?</h1>
+    <p>The national debt now stands at <span class="total" id="total-debt">£3 trillion</span> and rises by £7,010 every second. Divided across the population, some of it is yours. Change the figures below to see how much.</p>
+  </div>
+
+  <div class="calc">
+    <h2 class="sr-only">Your details</h2>
+    <div class="fields">
+      <div class="field">
+        <label for="in-income">Your annual income</label>
+        <div class="wrap"><span class="prefix">£</span><input type="number" id="in-income" value="38000" min="0" max="10000000" step="500" inputmode="numeric" /></div>
+        <p class="hint">Gross, before tax. Used only in your browser — nothing is sent anywhere.</p>
+      </div>
+      <div class="field">
+        <label for="in-age">Your age</label>
+        <div class="wrap"><input type="number" id="in-age" value="40" min="16" max="100" step="1" inputmode="numeric" /></div>
+        <p class="hint">Used to work out your share at state pension age.</p>
+      </div>
+      <div class="field">
+        <label for="in-household">People in your household</label>
+        <div class="wrap"><input type="number" id="in-household" value="2" min="1" max="20" step="1" inputmode="numeric" /></div>
+        <p class="hint">Everyone counts — the debt is divided per head, not per taxpayer.</p>
+      </div>
+    </div>
+
+    <h2 class="sr-only">Your results</h2>
+
+    <div class="headline-result">
+      <div class="hr-lbl">Your share of the national debt</div>
+      <div class="hr-val" id="r-share">£—</div>
+      <p class="hr-note">Rising by <strong id="r-rate">£—</strong> a day, every day, whatever you do. Your household of <strong id="r-hh-n">2</strong> carries <strong id="r-household">£—</strong> between you.</p>
+    </div>
+
+    <div class="results">
+      <div class="res">
+        <div class="res-lbl">Your income tax &amp; NI</div>
+        <div class="res-val" id="r-tax">£—</div>
+        <div class="res-note">This year, 2026/27 rates</div>
+      </div>
+      <div class="res">
+        <div class="res-lbl">Years of your tax to clear it</div>
+        <div class="res-val" id="r-years">—</div>
+        <div class="res-note">Every penny, nothing else funded</div>
+      </div>
+      <div class="res">
+        <div class="res-lbl">Your share of July's interest</div>
+        <div class="res-val" id="r-interest">£—</div>
+        <div class="res-note">One month · £7.7bn ÷ population</div>
+      </div>
+      <div class="res">
+        <div class="res-lbl">Your share at pension age</div>
+        <div class="res-val" id="r-future">£—</div>
+        <div class="res-note" id="r-future-note">If the current rate held to 67</div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <p id="verdict-text">—</p>
+      <span class="caveat">Income tax and National Insurance are calculated at England, Wales and Northern Ireland rates for 2026/27 (personal allowance £12,570, 20% to £50,270, 40% to £125,140, 45% above; employee NI 8% then 2%). Scottish rates differ. This is an illustration of scale, not a tax calculation or financial advice.</span>
+    </div>
+
+    <div class="share-row">
+      <button class="share-btn" id="btn-copy" type="button">Copy my figure</button>
+      <a class="share-btn" id="btn-x" href="#" target="_blank" rel="noopener">Post it on X</a>
+    </div>
+  </div>
+
+  <section class="prose">
+    <div class="prose-inner">
+      <h2>How the UK debt calculator works</h2>
+      <p class="sec-sub">And what the numbers do and don't mean</p>
+
+      <div class="qa">
+        <h3>How is my share of the national debt calculated?</h3>
+        <p>Public sector net debt divided by the UK population — <strong>68,350,000</strong>, the ONS mid-year estimate. That is the standard per-head measure, and it counts everybody: children, pensioners, people who have never paid a penny of income tax. The debt figure updates continuously from the last official ONS release. <a href="/#methodology">Full methodology here.</a></p>
+      </div>
+
+      <div class="qa">
+        <h3>Do I actually owe this money?</h3>
+        <p>No — and this is the honest caveat every debt calculator should carry. You have no personal liability for government debt. Nobody will send you a bill. It is a way of expressing the scale of a number too large to picture, by putting it on a human scale.</p>
+        <p>What it does represent is a claim on future taxes. The debt is serviced out of general taxation, so the larger it is, the more of what you pay funds interest rather than services.</p>
+      </div>
+
+      <div class="qa">
+        <h3>Why does it use everyone, not just taxpayers?</h3>
+        <p>Because that is how the standard per-capita figure is defined, and it is what the ONS population estimate supports. There are roughly <strong>33 million income tax payers</strong> against a population of 68.35 million, so a per-taxpayer figure would be about double. Both are defensible; the per-head number is the one used consistently across international comparisons.</p>
+      </div>
+
+      <div class="qa">
+        <h3>What does "years of your tax to clear it" mean?</h3>
+        <p>Your share of the debt divided by your annual income tax and National Insurance. It assumes every penny you pay goes to debt repayment and nothing else — no NHS, no schools, no pensions, no interest accruing meanwhile. It is deliberately unrealistic. It exists to show the ratio between what one person contributes and what one person's share amounts to.</p>
+      </div>
+
+      <div class="qa">
+        <h3>Is my income sent anywhere?</h3>
+        <p>No. Every calculation on this page runs in your browser. Nothing you type is transmitted, stored, or logged — there is no server to send it to. This page is a static file.</p>
+      </div>
+
+      <div class="qa">
+        <h3>Why does my share keep going up while I read?</h3>
+        <p>Because the debt does. At roughly £7,010 a second across 68.35 million people, each person's share grows by about a penny every ten seconds — around <strong>£8.86 a day</strong>. That is not a gimmick; it is the arithmetic of the current rate of borrowing.</p>
+      </div>
+    </div>
+  </section>
+
+  <aside class="aff-bar" aria-label="Partner offer">
+    <div class="aff-inner">
+      <div>
+        <div class="aff-label">Partner</div>
+        <div class="aff-headline">Your share grows by £8.86 a day. <em>Cash in the bank doesn't.</em></div>
+        <div class="aff-sub">Governments can print money; they cannot print gold. Buy, sell and store physical bullion online — insured and audited daily.</div>
+        <div class="aff-provider">BullionVault · Capital at risk. Not financial advice. Affiliate link.</div>
+      </div>
+      <a class="aff-cta" id="aff-cta" target="_blank" rel="noopener sponsored"
+         href="https://www.bullionvaultaffiliate.com/victorsbrown/en?utm_source=ukdebtwatch&utm_medium=article&utm_campaign=your_share">
+        Buy Gold →
+      </a>
+    </div>
+  </aside>
+
+  <div class="backlink">
+    <a href="/">← Live debt counter</a>
+    <a href="/3-trillion/">The £3 trillion milestone →</a>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <span>SOURCE: <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance" target="_blank" rel="noopener">ONS PUBLIC SECTOR FINANCES</a> · <a href="https://obr.uk" target="_blank" rel="noopener">OBR</a> · <a href="/">UKDEBTWATCH.CO.UK</a></span>
+    <span>⚠ ESTIMATED — NOT REAL-TIME GOVERNMENT DATA</span>
+  </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ukdebtwatch.co.uk/your-share/#app",
+      "name": "UK Debt Calculator",
+      "url": "https://ukdebtwatch.co.uk/your-share/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Calculate your personal share of the UK national debt, your household's share, your share of the monthly debt interest bill, and how it compares with the income tax and National Insurance you pay.",
+      "inLanguage": "en-GB",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+      "publisher": { "@type": "Organization", "name": "UK Debt Watch", "url": "https://ukdebtwatch.co.uk/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "UK Debt Watch", "item": "https://ukdebtwatch.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "UK debt calculator", "item": "https://ukdebtwatch.co.uk/your-share/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is my share of the UK national debt calculated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Public sector net debt divided by the UK population of 68,350,000, the ONS mid-year estimate. That is the standard per-head measure and it counts everybody — children, pensioners, and people who have never paid income tax. The debt figure updates continuously from the last official ONS release." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I personally owe my share of the national debt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. You have no personal liability for government debt and nobody will send you a bill. It is a way of expressing the scale of a very large number on a human scale. What it does represent is a claim on future taxes: the debt is serviced out of general taxation, so the larger it is, the more of what you pay funds interest rather than services." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the debt divided by everyone rather than just taxpayers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Because that is how the standard per-capita figure is defined. There are roughly 33 million income tax payers against a population of 68.35 million, so a per-taxpayer figure would be about double. Both are defensible; the per-head number is the one used consistently in international comparisons." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my income sent anywhere when I use this calculator?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Every calculation runs in your browser. Nothing you type is transmitted, stored or logged — the page is a static file with no server behind it." }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast does my share of the UK national debt grow?",
+          "acceptedAnswer": { "@type": "Answer", "text": "At roughly £7,010 a second across 68.35 million people, each person's share grows by about a penny every ten seconds — around £8.86 a day." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+  'use strict';
+
+  /* ═══════════════════════════════════════════════════════════
+     SHARED CONSTANTS — keep in sync with index.html and
+     3-trillion/index.html at each monthly ONS release.
+     Source: ONS Public sector finances, UK: July 2026 (21 Aug 2026)
+     ═══════════════════════════════════════════════════════════ */
+  const BASELINE_DATE   = new Date('2026-07-31T00:00:00Z');
+  const BASELINE_DEBT   = 2_984_900_000_000;
+  const PER_SECOND      = 7_010;
+  const UK_POP          = 68_350_000;
+  const MONTH_INTEREST  = 7_700_000_000;   // interest payable, July 2026
+  const PENSION_AGE     = 67;
+
+  /* UK income tax & NI, 2026/27 — England, Wales, NI.
+     Source: House of Commons Library, Direct taxes: rates and
+     allowances 2026/27. Update each April. */
+  const PA          = 12_570;
+  const BASIC_BAND  = 37_700;      // width of the 20% band above the allowance
+  const ADD_RATE_AT = 125_140;     // taxable income above this is 45%
+  const NI_LOWER    = 12_570, NI_UPPER = 50_270;
+
+  const $ = id => document.getElementById(id);
+  const gbp  = n => '£' + Math.round(n).toLocaleString('en-GB');
+  const gbp2 = n => '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const getDebt = () =>
+    BASELINE_DEBT + ((Date.now() - BASELINE_DATE.getTime()) / 1000) * PER_SECOND;
+
+  function incomeTax(income) {
+    const allowance = Math.max(0, PA - Math.max(0, (income - 100_000) / 2));
+    const taxable   = Math.max(0, income - allowance);
+    const basic     = Math.min(taxable, BASIC_BAND);
+    const higher    = Math.min(Math.max(taxable - BASIC_BAND, 0), ADD_RATE_AT - BASIC_BAND);
+    const addl      = Math.max(taxable - ADD_RATE_AT, 0);
+    return basic * 0.20 + higher * 0.40 + addl * 0.45;
+  }
+
+  function nationalInsurance(income) {
+    const main = Math.min(Math.max(income - NI_LOWER, 0), NI_UPPER - NI_LOWER);
+    const upper = Math.max(income - NI_UPPER, 0);
+    return main * 0.08 + upper * 0.02;
+  }
+
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+  function readInputs() {
+    return {
+      income:    clamp(parseFloat($('in-income').value)    || 0,  0, 10_000_000),
+      age:       clamp(parseFloat($('in-age').value)       || 0, 16, 100),
+      household: clamp(parseFloat($('in-household').value) || 1,  1, 20),
+    };
+  }
+
+  let lastShare = 0;
+
+  function render() {
+    const { income, age, household } = readInputs();
+    const debt      = getDebt();
+    const share     = debt / UK_POP;
+    const perDay    = (PER_SECOND * 86400) / UK_POP;
+    const tax       = incomeTax(income) + nationalInsurance(income);
+    const interest  = MONTH_INTEREST / UK_POP;
+    const yearsLeft = Math.max(0, PENSION_AGE - age);
+    const future    = share + perDay * 365.25 * yearsLeft;
+
+    lastShare = share;
+
+    $('total-debt').textContent   = gbp(debt);
+    $('r-share').textContent      = gbp(share);
+    $('r-rate').textContent       = gbp2(perDay);
+    $('r-household').textContent  = gbp(share * household);
+    $('r-hh-n').textContent       = household;
+    $('r-tax').textContent        = gbp(tax);
+    $('r-interest').textContent   = gbp2(interest);
+    $('r-future').textContent     = gbp(future);
+
+    $('r-future-note').textContent = yearsLeft > 0
+      ? 'In ' + Math.round(yearsLeft) + ' years, at today\'s rate'
+      : 'You have reached state pension age';
+
+    if (tax > 0) {
+      const years = share / tax;
+      $('r-years').textContent = years < 100 ? years.toFixed(1) + ' years' : '100+ years';
+      $('verdict-text').innerHTML =
+        'On an income of <strong>' + gbp(income) + '</strong>, you pay about <strong>' + gbp(tax) +
+        '</strong> a year in income tax and National Insurance. Your share of the national debt is <strong>' +
+        gbp(share) + '</strong> — that is <strong>' + years.toFixed(1) +
+        ' years</strong> of your entire tax bill, with every penny going to the debt and nothing to anything else.';
+    } else {
+      $('r-years').textContent = '—';
+      $('verdict-text').innerHTML =
+        'You pay no income tax or National Insurance at this income, but your share of the national debt is still <strong>' +
+        gbp(share) + '</strong>. The debt is divided per head, not per taxpayer.';
+    }
+
+    const text = 'My share of the UK national debt is ' + gbp(share) + '.';
+    $('btn-x').href = 'https://x.com/intent/post?text=' +
+      encodeURIComponent(text + ' Work out yours:') +
+      '&url=' + encodeURIComponent('https://ukdebtwatch.co.uk/your-share/');
+  }
+
+  ['in-income', 'in-age', 'in-household'].forEach(id =>
+    $(id).addEventListener('input', render));
+
+  render();
+  setInterval(render, 1000);
+
+  /* Copy button — clipboard with a legacy fallback */
+  $('btn-copy').addEventListener('click', function () {
+    const text = 'My share of the UK national debt is ' + gbp(lastShare) +
+                 ' — work out yours at ukdebtwatch.co.uk/your-share/';
+    const done = () => {
+      const prev = this.textContent;
+      this.textContent = 'Copied';
+      setTimeout(() => { this.textContent = prev; }, 1800);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done).catch(() => {});
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { /* ignore */ }
+      document.body.removeChild(ta);
+    }
+    track('calculator_share', { method: 'copy' });
+  });
+
+  function track(name, props) {
+    try {
+      if (window.plausible) window.plausible(name, { props: props });
+      if (window.gtag)      window.gtag('event', name, props);
+    } catch (e) { /* never break the page */ }
+  }
+
+  track('affiliate_impression', { variant: 'gold', placement: 'your_share' });
+  $('aff-cta').addEventListener('click', () =>
+    track('affiliate_click', { variant: 'gold', placement: 'your_share' }));
+  $('btn-x').addEventListener('click', () =>
+    track('calculator_share', { method: 'x' }));
+
+  /* One event when someone actually engages with the inputs */
+  let used = false;
+  ['in-income', 'in-age', 'in-household'].forEach(id =>
+    $(id).addEventListener('change', () => {
+      if (!used) { used = true; track('calculator_used', {}); }
+    }));
+</script>
+</body>
+</html>
