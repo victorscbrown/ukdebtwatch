@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UK Debt Calculator — What Is Your Share of the National Debt? | UK Debt Watch</title>
-  <meta name="description" content="UK national debt calculator. Work out your personal share of the UK's £3 trillion national debt, your household's share, your share of the daily interest bill, and how it compares with the tax you pay." />
+  <meta name="description" content="UK national debt calculator. Work out your personal share of the UK's almost £3 trillion national debt, your household's share, your share of the daily interest bill, and how it compares with the tax you pay." />
   <link rel="canonical" href="https://ukdebtwatch.co.uk/your-share/" />
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23f04550' text-anchor='middle'%3E£%3C/text%3E%3C/svg%3E" />
 
   <meta property="og:title" content="What is your share of the UK national debt?" />
-  <meta property="og:description" content="Work out your personal share of the UK's £3 trillion national debt — and how many years of your income tax it would take to clear it." />
+  <meta property="og:description" content="Work out your personal share of the UK's almost £3 trillion national debt — and how many years of your income tax it would take to clear it." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ukdebtwatch.co.uk/your-share/" />
   <meta property="og:site_name" content="UK Debt Watch" />
@@ -20,7 +20,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="What is your share of the UK national debt?" />
-  <meta name="twitter:description" content="Work out your personal share of the UK's £3 trillion national debt." />
+  <meta name="twitter:description" content="Work out your personal share of the UK's almost £3 trillion national debt." />
   <meta name="twitter:site" content="@ukdebtwatch" />
   <meta name="twitter:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
 
@@ -304,7 +304,7 @@
   <div class="intro">
     <p class="eyebrow">UK Debt Calculator</p>
     <h1>What is <em>your share</em> of the UK national debt?</h1>
-    <p>The national debt now stands at <span class="total" id="total-debt">£3 trillion</span> and rises by £7,010 every second. Divided across the population, some of it is yours. Change the figures below to see how much.</p>
+    <p>The national debt now stands at <span class="total" id="total-debt">£3 trillion</span> and rises by about £2,489 every second. Divided across the population, some of it is yours. Change the figures below to see how much.</p>
   </div>
 
   <div class="calc">
@@ -347,9 +347,9 @@
         <div class="res-note">Every penny, nothing else funded</div>
       </div>
       <div class="res">
-        <div class="res-lbl">Your share of July's interest</div>
+        <div class="res-lbl">Your share of August's interest</div>
         <div class="res-val" id="r-interest">£—</div>
-        <div class="res-note">One month · £7.7bn ÷ population</div>
+        <div class="res-note">One month · £8.8bn ÷ population</div>
       </div>
       <div class="res">
         <div class="res-lbl">Your share at pension age</div>
@@ -402,7 +402,7 @@
 
       <div class="qa">
         <h3>Why does my share keep going up while I read?</h3>
-        <p>Because the debt does. At roughly £7,010 a second across 68.35 million people, each person's share grows by about a penny every ten seconds — around <strong>£8.86 a day</strong>. That is not a gimmick; it is the arithmetic of the current rate of borrowing.</p>
+        <p>Because the debt does. At roughly £2,489 a second across 68.35 million people, each person's share grows by about a penny every four and a half minutes — around <strong>£3.15 a day</strong>. That is not a gimmick; it is the arithmetic of the current rate of borrowing.</p>
       </div>
     </div>
   </section>
@@ -411,7 +411,7 @@
     <div class="aff-inner">
       <div>
         <div class="aff-label">Partner</div>
-        <div class="aff-headline">Your share grows by £8.86 a day. <em>Cash in the bank doesn't.</em></div>
+        <div class="aff-headline">Your share grows by £3.15 a day. <em>Cash in the bank doesn't.</em></div>
         <div class="aff-sub">Governments can print money; they cannot print gold. Buy, sell and store physical bullion online — insured and audited daily.</div>
         <div class="aff-provider">BullionVault · Capital at risk. Not financial advice. Affiliate link.</div>
       </div>
@@ -484,7 +484,7 @@
         {
           "@type": "Question",
           "name": "How fast does my share of the UK national debt grow?",
-          "acceptedAnswer": { "@type": "Answer", "text": "At roughly £7,010 a second across 68.35 million people, each person's share grows by about a penny every ten seconds — around £8.86 a day." }
+          "acceptedAnswer": { "@type": "Answer", "text": "At roughly £2,489 a second across 68.35 million people, each person's share grows by about a penny every four and a half minutes — around £3.15 a day." }
         }
       ]
     }
@@ -498,13 +498,13 @@
   /* ═══════════════════════════════════════════════════════════
      SHARED CONSTANTS — keep in sync with index.html and
      3-trillion/index.html at each monthly ONS release.
-     Source: ONS Public sector finances, UK: July 2026 (21 Aug 2026)
+     Source: ONS Public sector finances, UK: August 2026 (22 Sep 2026)
      ═══════════════════════════════════════════════════════════ */
-  const BASELINE_DATE   = new Date('2026-07-31T00:00:00Z');
-  const BASELINE_DEBT   = 2_984_900_000_000;
-  const PER_SECOND      = 7_010;
+  const BASELINE_DATE   = new Date('2026-08-31T00:00:00Z');
+  const BASELINE_DEBT   = 2_985_500_000_000;
+  const PER_SECOND      = 2_489;
   const UK_POP          = 68_350_000;
-  const MONTH_INTEREST  = 7_700_000_000;   // interest payable, July 2026
+  const MONTH_INTEREST  = 8_800_000_000;   // interest payable, August 2026
   const PENSION_AGE     = 67;
 
   /* UK income tax & NI, 2026/27 — England, Wales, NI.
