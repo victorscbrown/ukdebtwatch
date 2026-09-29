@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UK National Debt by Year: Chart and Table Since 1993 | UK Debt Watch</title>
+  <meta name="description" content="UK national debt at the end of every year since 1993, in £ billions and as a share of GDP. Interactive chart and full table from official ONS figures." />
+  <link rel="canonical" href="https://ukdebtwatch.co.uk/uk-national-debt-by-year/" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23f04550' text-anchor='middle'%3E£%3C/text%3E%3C/svg%3E" />
+
+  <meta property="og:title" content="UK national debt by year, since 1993" />
+  <meta property="og:description" content="From £235bn in 1993 to £2,924bn at the end of 2025. Interactive chart and full table from official ONS figures." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ukdebtwatch.co.uk/uk-national-debt-by-year/" />
+  <meta property="og:site_name" content="UK Debt Watch" />
+  <meta property="og:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="UK national debt by year, since 1993" />
+  <meta name="twitter:description" content="From £235bn in 1993 to £2,924bn at the end of 2025 — chart and table from ONS figures." />
+  <meta name="twitter:site" content="@ukdebtwatch" />
+  <meta name="twitter:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- ── ANALYTICS · Google Analytics 4 ───────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-0KZHW8KQM0');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #f04550;
+      --amber:  #f4a261;
+      --teal:   #2ec4b6;
+      --gold:   #f0c040;
+      --bg:     #0a0a0a;
+      --panel:  #0d0d0d;
+      --border: #272727;
+      --grid:   #1d1d1d;
+      --text:   #f5f2ee;
+      --muted:  #909090;
+      --faint:  #6e6e6e;
+    }
+
+    html, body {
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Mono', 'Courier New', monospace;
+      overflow-x: hidden; line-height: 1.6;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 2px;
+    }
+
+    /* ── HEADER (matches /your-share/) ───────────────────────── */
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 28px; border-bottom: 1px solid var(--border);
+      background: var(--bg); position: sticky; top: 0; z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .live-dot {
+      width: 9px; height: 9px; background: var(--red); border-radius: 50%;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1) } 50%{ opacity:.4; transform:scale(.85) } }
+    .header a.live-label {
+      font-size: 11px; letter-spacing: .22em; color: #aaa;
+      text-transform: uppercase; text-decoration: none;
+    }
+    .header a.live-label:hover { color: #fff; }
+    .header-right { font-size: 10px; color: #666; letter-spacing: .1em; }
+
+    /* ── INTRO ───────────────────────────────────────────────── */
+    .intro {
+      padding: 52px 28px 34px; text-align: center; position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(230,57,70,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+      color: #888; margin-bottom: 18px;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(26px, 5.4vw, 48px); line-height: 1.06; letter-spacing: -.01em;
+      max-width: 20ch; margin: 0 auto 18px; text-wrap: balance;
+    }
+    .intro p {
+      font-size: 13.5px; color: #9a9a9a; max-width: 60ch; margin: 0 auto; line-height: 1.75;
+    }
+    .intro p b { color: #ddd; font-weight: 500; }
+
+    /* ── KEY FACTS ───────────────────────────────────────────── */
+    .facts {
+      max-width: 1000px; margin: 0 auto; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px; background: var(--border); border-bottom: 1px solid var(--border);
+    }
+    .fact { background: var(--bg); padding: 22px 24px; }
+    .fact .v {
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(24px, 3.4vw, 32px);
+      line-height: 1.1; color: var(--text);
+    }
+    .fact .l { font-size: 11.5px; color: var(--muted); margin-top: 6px; line-height: 1.55; }
+
+    /* ── CHART ───────────────────────────────────────────────── */
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 40px 28px 0; }
+
+    .chart-card { border: 1px solid var(--border); background: var(--panel); border-radius: 2px; }
+    .chart-head {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 16px 24px;
+      flex-wrap: wrap; padding: 20px 22px 6px;
+    }
+    .chart-title {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(16px, 2.4vw, 19px);
+      line-height: 1.25;
+    }
+    .chart-sub { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+
+    .toggle {
+      display: inline-flex; border: 1px solid #333; border-radius: 2px; overflow: hidden; flex: none;
+    }
+    .toggle button {
+      background: transparent; border: 0; color: #aaa; cursor: pointer;
+      font-family: 'DM Mono', monospace; font-size: 12px; padding: 8px 14px;
+    }
+    .toggle button + button { border-left: 1px solid #333; }
+    .toggle button[aria-pressed="true"] { background: rgba(240,69,80,.12); color: #fff; }
+    .toggle button:hover { color: #fff; }
+
+    .plot { position: relative; padding: 0 8px 8px; touch-action: pan-y; }
+    .plot svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .plot:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+
+    .axis text { fill: var(--faint); font-family: 'DM Mono', monospace; font-size: 11px; }
+    .grid line { stroke: var(--grid); stroke-width: 1; }
+    .baseline { stroke: #333; stroke-width: 1; }
+    .area { fill: var(--red); fill-opacity: .1; }
+    .line { fill: none; stroke: var(--red); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+    .est-line { fill: none; stroke: var(--red); stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; opacity: .8; }
+    .dot { fill: var(--red); stroke: var(--panel); stroke-width: 2; }
+    .now-dot { fill: var(--panel); stroke: var(--red); stroke-width: 2; }
+    .event line { stroke: #3a3a3a; stroke-width: 1; }
+    .event text, .end-label { fill: #bdbdbd; font-family: 'DM Mono', monospace; font-size: 11px; }
+    .end-label .big { fill: var(--text); font-weight: 500; }
+    .cross { stroke: #5a5a5a; stroke-width: 1; }
+    .hover-dot { fill: var(--red); stroke: var(--panel); stroke-width: 2; }
+
+    .tip {
+      position: absolute; pointer-events: none; z-index: 2; min-width: 150px;
+      background: #141414; border: 1px solid #333; border-radius: 2px;
+      padding: 9px 12px; font-size: 12px; line-height: 1.5;
+      box-shadow: 0 6px 18px rgba(0,0,0,.5); opacity: 0; transition: opacity .12s;
+    }
+    .tip.on { opacity: 1; }
+    .tip .t-year { color: var(--muted); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; }
+    .tip .t-main { color: #fff; font-size: 15px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+    .tip .t-main::before { content: ''; width: 12px; height: 2px; background: var(--red); flex: none; }
+    .tip .t-alt { color: #aaa; }
+
+    .chart-foot {
+      display: flex; justify-content: space-between; gap: 8px 20px; flex-wrap: wrap;
+      padding: 12px 22px 16px; border-top: 1px solid var(--border);
+      font-size: 10.5px; color: var(--faint); letter-spacing: .04em;
+    }
+    .chart-foot a { color: #9a9a9a; }
+
+    /* ── ARTICLE ─────────────────────────────────────────────── */
+    .article { max-width: 68ch; margin: 0 auto; padding: 48px 0 0; }
+    h2 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(19px, 3vw, 24px); line-height: 1.2; margin: 0 0 14px;
+    }
+    .article h2:not(:first-child) { margin-top: 40px; }
+    .article p { font-size: 14px; color: #b4b4b4; line-height: 1.8; margin-bottom: 14px; }
+    .article p b { color: #eee; font-weight: 500; }
+    .article a, .faq a { color: var(--gold); }
+
+    /* ── TABLE ───────────────────────────────────────────────── */
+    .table-wrap { margin-top: 48px; }
+    .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 2px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+    caption { text-align: left; }
+    thead th {
+      position: sticky; top: 0; background: #111; text-align: right;
+      font-size: 10px; font-weight: 400; letter-spacing: .14em; text-transform: uppercase;
+      color: #999; padding: 12px 16px; border-bottom: 1px solid var(--border); white-space: nowrap;
+    }
+    thead th:first-child, tbody th { text-align: left; }
+    tbody th, tbody td { padding: 9px 16px; border-bottom: 1px solid #1a1a1a; white-space: nowrap; }
+    tbody th { font-weight: 500; color: #eee; }
+    tbody td { text-align: right; color: #c4c4c4; }
+    tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #121212; }
+    tbody tr.hl { background: rgba(240,69,80,.06); }
+    .table-note { font-size: 11.5px; color: var(--faint); margin-top: 10px; line-height: 1.7; }
+
+    /* ── FAQ ─────────────────────────────────────────────────── */
+    .faq { max-width: 68ch; margin: 48px auto 0; }
+    .faq details { border-bottom: 1px solid var(--border); }
+    .faq details:first-of-type { border-top: 1px solid var(--border); }
+    .faq summary {
+      cursor: pointer; list-style: none; padding: 15px 28px 15px 0; position: relative;
+      font-size: 14px; color: #eee;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; position: absolute; right: 4px; top: 13px; color: var(--red); font-size: 18px; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq p { font-size: 13.5px; color: #a8a8a8; line-height: 1.8; padding: 0 0 16px; }
+
+    .next {
+      max-width: 1000px; margin: 48px auto 0; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 2px;
+    }
+    .next a { background: var(--bg); padding: 18px 20px; text-decoration: none; color: var(--text); }
+    .next a:hover { background: #111; }
+    .next b { display: block; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .next span { font-size: 12px; color: var(--muted); }
+
+    /* ── FOOTER (matches /your-share/) ───────────────────────── */
+    .footer {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+      padding: 14px 28px; border-top: 1px solid var(--border); background: #050505;
+      margin-top: 48px;
+    }
+    .footer span { font-size: 10px; color: #777; letter-spacing: .08em; }
+    .footer a { color: #8a8a8a; text-decoration: none; }
+    .footer a:hover { color: #ccc; text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .header-right { display: none; }
+      .intro { padding: 38px 18px 28px; }
+      .fact { padding: 18px; }
+      .wrap { padding: 28px 12px 0; }
+      .chart-head { padding: 16px 14px 4px; }
+      .chart-foot { padding: 12px 14px 14px; }
+      .plot { padding: 0 2px 6px; }
+      .article, .faq { padding-left: 6px; padding-right: 6px; }
+      tbody th, tbody td, thead th { padding-left: 12px; padding-right: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .live-dot { animation: none; }
+      .tip { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left">
+      <div class="live-dot" aria-hidden="true"></div>
+      <a class="live-label" href="/">UK Debt Watch · Live</a>
+    </div>
+    <div class="header-right">ONS DATA · UK DEBT BY YEAR</div>
+  </header>
+
+  <main>
+  <div class="intro">
+    <p class="eyebrow">UK debt history</p>
+    <h1>UK national debt by year</h1>
+    <p>The UK's national debt was <b>£234.9bn</b> at the end of 1993. By the end of 2025 it was <b>£2,924.5bn</b>, more than twelve times larger. Measured against the size of the economy, it has more than tripled, from <b>29.7%</b> to <b>94.2%</b> of GDP.</p>
+  </div>
+
+  <section class="facts" aria-label="Key figures">
+    <div class="fact"><div class="v">£317bn</div><div class="l">Biggest one-year rise, in 2020. Next biggest: £210bn in 2021 and £209bn in 2009.</div></div>
+    <div class="fact"><div class="v">36% → 84%</div><div class="l">Debt as a share of GDP from 2007, before the financial crisis, to 2019.</div></div>
+    <div class="fact"><div class="v">1998 &amp; 2000</div><div class="l">The only years the debt fell: by £0.7bn and by £35bn.</div></div>
+  </section>
+
+  <div class="wrap">
+    <figure class="chart-card" aria-labelledby="chart-title">
+      <div class="chart-head">
+        <div>
+          <div class="chart-title" id="chart-title">UK national debt, end of each year, £ billions</div>
+          <div class="chart-sub" id="chart-sub">1993 to 2025, with today's live estimate</div>
+        </div>
+        <div class="toggle" role="group" aria-label="Measure">
+          <button type="button" data-measure="bn" aria-pressed="true">£ billions</button>
+          <button type="button" data-measure="pct" aria-pressed="false">% of GDP</button>
+        </div>
+      </div>
+      <div class="plot" id="plot" tabindex="0" aria-describedby="plot-help">
+        <p class="sr-only" id="plot-help">Interactive chart. Use the left and right arrow keys to step through the years. The same figures are in the table below.</p>
+        <svg id="chart" role="img" aria-labelledby="chart-title chart-desc"><desc id="chart-desc">Line chart of UK public sector net debt at the end of each year from 1993 to 2025, rising from £234.9 billion to £2,924.5 billion, with the sharpest rises in 2008 to 2010 and in 2020.</desc></svg>
+        <div class="tip" id="tip" aria-hidden="true"></div>
+      </div>
+      <figcaption class="chart-foot">
+        <span>Source: <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf" target="_blank" rel="noopener">ONS HF6W</a> and <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf" target="_blank" rel="noopener">HF6X</a>, public sector net debt excl. public sector banks</span>
+        <span>Dotted section: UK Debt Watch <a href="/">live estimate</a></span>
+      </figcaption>
+    </figure>
+
+    <article class="article">
+      <h2>What the chart shows</h2>
+      <p><b>1993 to 2007: steady.</b> Debt rose in cash terms but stayed between roughly 29% and 37% of GDP. It fell in 2000, by £35bn, when the government ran a budget surplus and paid some of it down.</p>
+      <p><b>2008 to 2019: the financial crisis and after.</b> Debt went from £574.7bn at the end of 2007 to £1,152.5bn at the end of 2010, the first year it ended above £1 trillion. As a share of the economy it rose from 36.1% to 84.2% by 2019, and never returned to pre-crisis levels.</p>
+      <p><b>2020 onwards: Covid and the cost of borrowing.</b> Debt jumped by £317bn in 2020, the largest rise in the series, ending the year above £2 trillion for the first time at 97.7% of GDP. It has stayed between 93% and 97% of GDP since, while still rising by more than £100bn every year in cash terms. The <a href="/">live counter</a> estimates where it stands today, and our <a href="/3-trillion/">£3 trillion page</a> tracks the next milestone.</p>
+
+      <h2>Why the % of GDP view matters</h2>
+      <p>Cash figures always look alarming over long periods because prices and incomes rise too. Dividing the debt by the size of the economy (GDP) shows how heavy it is to carry. Switch the chart to <b>% of GDP</b> and the story changes shape: flat for fifteen years, then two big steps up, in 2008–10 and in 2020, and a plateau since.</p>
+
+      <h2>Where the figures come from</h2>
+      <p>Every figure is the Office for National Statistics' measure of public sector net debt excluding public sector banks, the headline measure of UK national debt, taken at the end of December each year. The ONS revises past figures as better data arrives, so they can differ slightly from what was reported at the time: the end of 2020, for example, was first published as £2,131.7bn and is now £2,154.2bn.</p>
+    </article>
+
+    <section class="table-wrap" aria-labelledby="table-title">
+      <h2 id="table-title">UK national debt by year: full table</h2>
+      <div class="table-scroll">
+        <table id="data">
+          <caption class="sr-only">UK public sector net debt excluding public sector banks, end of December each year, 1993 to 2025</caption>
+          <thead>
+            <tr><th scope="col">Year</th><th scope="col">Debt</th><th scope="col">% of GDP</th><th scope="col">Change on year</th></tr>
+          </thead>
+          <tbody>
+          <tr data-year="2025" data-bn="2924.5" data-pct="94.2"><th scope="row">2025</th><td>£2,924.5bn</td><td>94.2%</td><td>+£108.1bn</td></tr>
+          <tr data-year="2024" data-bn="2816.4" data-pct="94.8"><th scope="row">2024</th><td>£2,816.4bn</td><td>94.8%</td><td>+£122.4bn</td></tr>
+          <tr data-year="2023" data-bn="2694.0" data-pct="95.5"><th scope="row">2023</th><td>£2,694.0bn</td><td>95.5%</td><td>+£194.8bn</td></tr>
+          <tr data-year="2022" data-bn="2499.2" data-pct="93.1"><th scope="row">2022</th><td>£2,499.2bn</td><td>93.1%</td><td>+£134.7bn</td></tr>
+          <tr data-year="2021" data-bn="2364.5" data-pct="96.2"><th scope="row">2021</th><td>£2,364.5bn</td><td>96.2%</td><td>+£210.3bn</td></tr>
+          <tr data-year="2020" data-bn="2154.2" data-pct="97.7"><th scope="row">2020</th><td>£2,154.2bn</td><td>97.7%</td><td>+£317.0bn</td></tr>
+          <tr data-year="2019" data-bn="1837.2" data-pct="84.2"><th scope="row">2019</th><td>£1,837.2bn</td><td>84.2%</td><td>+£36.5bn</td></tr>
+          <tr data-year="2018" data-bn="1800.7" data-pct="81.4"><th scope="row">2018</th><td>£1,800.7bn</td><td>81.4%</td><td>+£54.3bn</td></tr>
+          <tr data-year="2017" data-bn="1746.4" data-pct="81.8"><th scope="row">2017</th><td>£1,746.4bn</td><td>81.8%</td><td>+£55.7bn</td></tr>
+          <tr data-year="2016" data-bn="1690.7" data-pct="82.5"><th scope="row">2016</th><td>£1,690.7bn</td><td>82.5%</td><td>+£87.8bn</td></tr>
+          <tr data-year="2015" data-bn="1602.9" data-pct="81.7"><th scope="row">2015</th><td>£1,602.9bn</td><td>81.7%</td><td>+£51.8bn</td></tr>
+          <tr data-year="2014" data-bn="1551.1" data-pct="81.5"><th scope="row">2014</th><td>£1,551.1bn</td><td>81.5%</td><td>+£98.5bn</td></tr>
+          <tr data-year="2013" data-bn="1452.6" data-pct="79.2"><th scope="row">2013</th><td>£1,452.6bn</td><td>79.2%</td><td>+£98.3bn</td></tr>
+          <tr data-year="2012" data-bn="1354.3" data-pct="77.3"><th scope="row">2012</th><td>£1,354.3bn</td><td>77.3%</td><td>+£103.7bn</td></tr>
+          <tr data-year="2011" data-bn="1250.6" data-pct="73.8"><th scope="row">2011</th><td>£1,250.6bn</td><td>73.8%</td><td>+£98.1bn</td></tr>
+          <tr data-year="2010" data-bn="1152.5" data-pct="70.1"><th scope="row">2010</th><td>£1,152.5bn</td><td>70.1%</td><td>+£193.9bn</td></tr>
+          <tr data-year="2009" data-bn="958.6" data-pct="60.6"><th scope="row">2009</th><td>£958.6bn</td><td>60.6%</td><td>+£208.7bn</td></tr>
+          <tr data-year="2008" data-bn="749.9" data-pct="47.6"><th scope="row">2008</th><td>£749.9bn</td><td>47.6%</td><td>+£175.2bn</td></tr>
+          <tr data-year="2007" data-bn="574.7" data-pct="36.1"><th scope="row">2007</th><td>£574.7bn</td><td>36.1%</td><td>+£35.7bn</td></tr>
+          <tr data-year="2006" data-bn="539.0" data-pct="35.7"><th scope="row">2006</th><td>£539.0bn</td><td>35.7%</td><td>+£35.5bn</td></tr>
+          <tr data-year="2005" data-bn="503.5" data-pct="34.9"><th scope="row">2005</th><td>£503.5bn</td><td>34.9%</td><td>+£39.7bn</td></tr>
+          <tr data-year="2004" data-bn="463.8" data-pct="34.0"><th scope="row">2004</th><td>£463.8bn</td><td>34.0%</td><td>+£59.2bn</td></tr>
+          <tr data-year="2003" data-bn="404.6" data-pct="31.2"><th scope="row">2003</th><td>£404.6bn</td><td>31.2%</td><td>+£35.9bn</td></tr>
+          <tr data-year="2002" data-bn="368.7" data-pct="30.1"><th scope="row">2002</th><td>£368.7bn</td><td>30.1%</td><td>+£33.2bn</td></tr>
+          <tr data-year="2001" data-bn="335.5" data-pct="28.7"><th scope="row">2001</th><td>£335.5bn</td><td>28.7%</td><td>+£2.2bn</td></tr>
+          <tr data-year="2000" data-bn="333.3" data-pct="29.5"><th scope="row">2000</th><td>£333.3bn</td><td>29.5%</td><td>−£35.0bn</td></tr>
+          <tr data-year="1999" data-bn="368.3" data-pct="34.2"><th scope="row">1999</th><td>£368.3bn</td><td>34.2%</td><td>+£4.0bn</td></tr>
+          <tr data-year="1998" data-bn="364.3" data-pct="35.6"><th scope="row">1998</th><td>£364.3bn</td><td>35.6%</td><td>−£0.7bn</td></tr>
+          <tr data-year="1997" data-bn="365.0" data-pct="37.2"><th scope="row">1997</th><td>£365.0bn</td><td>37.2%</td><td>+£23.1bn</td></tr>
+          <tr data-year="1996" data-bn="341.9" data-pct="36.7"><th scope="row">1996</th><td>£341.9bn</td><td>36.7%</td><td>+£28.3bn</td></tr>
+          <tr data-year="1995" data-bn="313.6" data-pct="35.7"><th scope="row">1995</th><td>£313.6bn</td><td>35.7%</td><td>+£35.2bn</td></tr>
+          <tr data-year="1994" data-bn="278.4" data-pct="33.6"><th scope="row">1994</th><td>£278.4bn</td><td>33.6%</td><td>+£43.5bn</td></tr>
+          <tr data-year="1993" data-bn="234.9" data-pct="29.7"><th scope="row">1993</th><td>£234.9bn</td><td>29.7%</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">End of December each year. Source: ONS public sector finances, series HF6W (£ billion) and HF6X (% of GDP), as published in September 2026.</p>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <details>
+        <summary>What was the UK national debt in 2008?</summary>
+        <p>£749.9bn at the end of 2008, or 47.6% of GDP, up from £574.7bn (36.1%) a year earlier as the financial crisis hit.</p>
+      </details>
+      <details>
+        <summary>When did UK debt pass £2 trillion?</summary>
+        <p>2020 was the first year the debt ended above £2 trillion, at £2,154.2bn, after a rise of £317bn during the pandemic. It had first ended a year above £1 trillion in 2010.</p>
+      </details>
+      <details>
+        <summary>Is UK debt the highest it has ever been?</summary>
+        <p>In cash terms, yes, and it rises almost every year. As a share of the economy, the highest year-end since 1993 was 2020, at 97.7% of GDP. That is still well below the levels after the Second World War, when the debt was more than twice the size of the economy.</p>
+      </details>
+      <details>
+        <summary>What is the UK national debt today?</summary>
+        <p>The ONS publishes new figures monthly. Between releases, our <a href="/">live UK debt clock</a> estimates the current total second by second, and our <a href="/your-share/">calculator</a> shows your personal share of it.</p>
+      </details>
+    </section>
+
+    <nav class="next" aria-label="More from UK Debt Watch">
+      <a href="/"><b>Live debt clock</b><span>The UK debt now, second by second</span></a>
+      <a href="/your-share/"><b>Your share</b><span>Work out your personal share of the debt</span></a>
+      <a href="/3-trillion/"><b>The £3 trillion milestone</b><span>When the debt passes £3 trillion</span></a>
+    </nav>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <span>SOURCE: <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance" target="_blank" rel="noopener">ONS PUBLIC SECTOR FINANCES</a> · <a href="https://obr.uk" target="_blank" rel="noopener">OBR</a> · <a href="/">UKDEBTWATCH.CO.UK</a></span>
+    <span>ANNUAL FIGURES: ONS · TODAY'S FIGURE: ESTIMATE</span>
+  </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Dataset",
+      "@id": "https://ukdebtwatch.co.uk/uk-national-debt-by-year/#dataset",
+      "name": "UK national debt by year, 1993 to 2025",
+      "description": "UK public sector net debt excluding public sector banks at the end of December each year from 1993 to 2025, in £ billion and as a percentage of GDP, from the Office for National Statistics.",
+      "url": "https://ukdebtwatch.co.uk/uk-national-debt-by-year/",
+      "temporalCoverage": "1993/2025",
+      "spatialCoverage": { "@type": "Place", "name": "United Kingdom" },
+      "variableMeasured": ["Public sector net debt excluding public sector banks (£ billion)", "Public sector net debt excluding public sector banks (% of GDP)"],
+      "isBasedOn": [
+        "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6w/pusf",
+        "https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/timeseries/hf6x/pusf"
+      ],
+      "creator": { "@type": "Organization", "name": "Office for National Statistics", "url": "https://www.ons.gov.uk/" },
+      "publisher": { "@type": "Organization", "name": "UK Debt Watch", "url": "https://ukdebtwatch.co.uk/" },
+      "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "UK Debt Watch", "item": "https://ukdebtwatch.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "UK national debt by year", "item": "https://ukdebtwatch.co.uk/uk-national-debt-by-year/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What was the UK national debt in 2008?",
+          "acceptedAnswer": { "@type": "Answer", "text": "£749.9bn at the end of 2008, or 47.6% of GDP, up from £574.7bn (36.1%) a year earlier as the financial crisis hit." } },
+        { "@type": "Question", "name": "When did UK debt pass £2 trillion?",
+          "acceptedAnswer": { "@type": "Answer", "text": "2020 was the first year the debt ended above £2 trillion, at £2,154.2bn, after a rise of £317bn during the pandemic. It had first ended a year above £1 trillion in 2010." } },
+        { "@type": "Question", "name": "Is UK debt the highest it has ever been?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In cash terms, yes. As a share of the economy, the highest year-end since 1993 was 2020, at 97.7% of GDP, still well below the levels after the Second World War, when the debt was more than twice the size of the economy." } },
+        { "@type": "Question", "name": "What is the UK national debt today?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The ONS publishes new figures monthly. Between releases, the UK Debt Watch live debt clock estimates the current total second by second." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+  'use strict';
+
+  /* ═══════════════════════════════════════════════════════════
+     LIVE ESTIMATE — keep in sync with index.html, your-share/
+     and 3-trillion/ at each monthly ONS release.
+     Source: ONS Public sector finances, UK: August 2026 (22 Sep 2026)
+
+     ANNUAL DATA lives in the table above (data-year / data-bn /
+     data-pct on each <tr>). Each January, after the ONS publishes
+     the December figure, add one row at the top of the table.
+     The chart reads the table, so nothing else needs changing.
+     ═══════════════════════════════════════════════════════════ */
+  const BASELINE_DATE = new Date('2026-08-31T00:00:00Z');
+  const BASELINE_DEBT = 2_985_500_000_000;
+  const PER_SECOND    = 2_489;
+
+  const EVENTS = [
+    { year: 2008, label: 'Financial crisis' },
+    { year: 2020, label: 'Covid-19' }
+  ];
+
+  const $ = id => document.getElementById(id);
+  const NS = 'http://www.w3.org/2000/svg';
+
+  const data = [...document.querySelectorAll('#data tbody tr')]
+    .map(tr => ({ year: +tr.dataset.year, bn: +tr.dataset.bn, pct: +tr.dataset.pct, tr }))
+    .sort((a, b) => a.year - b.year);
+
+  const liveBn = () =>
+    (BASELINE_DEBT + ((Date.now() - BASELINE_DATE.getTime()) / 1000) * PER_SECOND) / 1e9;
+  const nowYear = () => {
+    const d = new Date(), y = d.getFullYear();
+    return y + (d - new Date(y, 0, 1)) / (new Date(y + 1, 0, 1) - new Date(y, 0, 1));
+  };
+
+  const fmtBn = v => '£' + v.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'bn';
+  const fmtPct = v => v.toFixed(1) + '% of GDP';
+
+  const MEASURES = {
+    bn: {
+      title: 'UK national debt, end of each year, £ billions',
+      sub: '1993 to 2025, with today’s live estimate',
+      key: 'bn', max: 3300, ticks: [0, 1000, 2000, 3000],
+      tick: v => v === 0 ? '£0' : '£' + (v / 1000) + 'tn',
+      value: fmtBn
+    },
+    pct: {
+      title: 'UK national debt as a share of GDP, end of each year',
+      sub: '1993 to 2025, per cent of GDP',
+      key: 'pct', max: 105, ticks: [0, 25, 50, 75, 100],
+      tick: v => v + '%',
+      value: fmtPct
+    }
+  };
+
+  let measure = 'bn';
+  let geom = null;      // last layout, reused by the hover layer
+  let activeIdx = -1;
+
+  function el(name, attrs, parent) {
+    const n = document.createElementNS(NS, name);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+
+  function render() {
+    const svg = $('chart');
+    const desc = $('chart-desc');
+    while (svg.lastChild !== desc) svg.removeChild(svg.lastChild);
+
+    const M = MEASURES[measure];
+    const W = Math.max(300, $('plot').clientWidth - 16);
+    const narrow = W < 560;
+    const H = narrow ? 280 : 380;
+    const pad = { t: 34, r: narrow ? 14 : 110, b: 30, l: narrow ? 40 : 48 };
+    const showLive = measure === 'bn';
+    const xMin = 1993, xMax = showLive ? Math.max(2026, nowYear()) : 2025;
+
+    const x = yr => pad.l + (yr - xMin) / (xMax - xMin) * (W - pad.l - pad.r);
+    const y = v => pad.t + (1 - v / M.max) * (H - pad.t - pad.b);
+
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    // grid + y ticks
+    const g = el('g', { class: 'grid' }, svg);
+    const ax = el('g', { class: 'axis' }, svg);
+    M.ticks.forEach(t => {
+      if (t > 0) el('line', { x1: pad.l, x2: W - pad.r + 8, y1: y(t), y2: y(t) }, g);
+      const tx = el('text', { x: pad.l - 8, y: y(t) + 4, 'text-anchor': 'end' }, ax);
+      tx.textContent = M.tick(t);
+    });
+    el('line', { class: 'baseline', x1: pad.l, x2: W - pad.r + 8, y1: y(0), y2: y(0) }, svg);
+
+    // x ticks
+    const step = narrow ? 10 : 5;
+    for (let yr = 1995; yr <= 2025; yr += step) {
+      const tx = el('text', { x: x(yr), y: H - 8, 'text-anchor': 'middle' }, ax);
+      tx.textContent = yr;
+    }
+
+    // events
+    const ev = el('g', { class: 'event' }, svg);
+    EVENTS.forEach(e => {
+      el('line', { x1: x(e.year), x2: x(e.year), y1: pad.t - 14, y2: y(0) }, ev);
+      const tx = el('text', { x: x(e.year) - 5, y: pad.t - 18, 'text-anchor': 'end' }, ev);
+      tx.textContent = narrow ? String(e.year) : e.label;
+    });
+
+    // area + line
+    const pts = data.map(d => [x(d.year), y(d[M.key])]);
+    const path = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ',' + p[1].toFixed(1)).join('');
+    el('path', { class: 'area', d: path + `L${pts[pts.length - 1][0]},${y(0)}L${pts[0][0]},${y(0)}Z` }, svg);
+    el('path', { class: 'line', d: path }, svg);
+
+    const last = data[data.length - 1];
+    const lx = x(last.year), ly = y(last[M.key]);
+
+    // live estimate (cash view only)
+    if (showLive) {
+      const nx = x(nowYear()), ny = y(liveBn());
+      el('path', { class: 'est-line', d: `M${lx},${ly}L${nx},${ny}` }, svg);
+      el('circle', { class: 'now-dot', cx: nx, cy: ny, r: 4.5 }, svg);
+      // narrow screens: label sits above-left of the point, no right gutter
+      const tx0 = narrow ? nx - 2 : nx + 10, anchor = narrow ? 'end' : 'start';
+      const t = el('text', { class: 'end-label', x: tx0, y: narrow ? ny - 30 : ny - 12, 'text-anchor': anchor }, svg);
+      const a = el('tspan', { class: 'big', x: tx0 }, t);
+      a.textContent = '£' + (liveBn() / 1000).toFixed(2) + 'tn';
+      const b = el('tspan', { x: tx0, dy: 15 }, t);
+      b.textContent = 'today (est.)';
+    }
+
+    el('circle', { class: 'dot', cx: lx, cy: ly, r: 4 }, svg);
+    if (!showLive) {
+      const t = el('text', narrow
+        ? { class: 'end-label', x: lx - 2, y: ly - 14, 'text-anchor': 'end' }
+        : { class: 'end-label', x: lx + 10, y: ly + 4 }, svg);
+      const a = el('tspan', { class: 'big' }, t);
+      a.textContent = last.pct.toFixed(1) + '%';
+      const b = el('tspan', { dx: 6 }, t);
+      b.textContent = String(last.year);
+    } else {
+      if (!narrow) {
+        const t = el('text', { class: 'end-label', x: lx + 10, y: ly + 18 }, svg);
+        t.textContent = String(last.year);
+      }
+    }
+
+    // hover layer
+    const hover = el('g', { style: 'display:none' }, svg);
+    const cross = el('line', { class: 'cross', y1: pad.t - 4, y2: y(0) }, hover);
+    const hdot = el('circle', { class: 'hover-dot', r: 5 }, hover);
+
+    geom = { x, y, M, W, H, hover, cross, hdot, pad };
+    if (activeIdx >= 0) show(activeIdx);
+  }
+
+  function show(i) {
+    if (!geom) return;
+    activeIdx = i;
+    const d = data[i], { x, y, M, hover, cross, hdot } = geom;
+    const px = x(d.year), py = y(d[M.key]);
+    hover.style.display = '';
+    cross.setAttribute('x1', px); cross.setAttribute('x2', px);
+    hdot.setAttribute('cx', px); hdot.setAttribute('cy', py);
+
+    const tip = $('tip');
+    tip.textContent = '';
+    const r1 = document.createElement('div'); r1.className = 't-year'; r1.textContent = 'End of ' + d.year;
+    const r2 = document.createElement('div'); r2.className = 't-main';
+    r2.textContent = measure === 'bn' ? fmtBn(d.bn) : fmtPct(d.pct);
+    const r3 = document.createElement('div'); r3.className = 't-alt';
+    r3.textContent = measure === 'bn' ? fmtPct(d.pct) : fmtBn(d.bn);
+    tip.append(r1, r2, r3);
+    if (i > 0) {
+      const ch = d.bn - data[i - 1].bn;
+      const r4 = document.createElement('div'); r4.className = 't-alt';
+      r4.textContent = (ch >= 0 ? '+' : '−') + fmtBn(Math.abs(ch)) + ' on the year';
+      tip.append(r4);
+    }
+
+    // position in CSS pixels
+    const svg = $('chart'), plot = $('plot');
+    const sr = svg.getBoundingClientRect(), pr = plot.getBoundingClientRect();
+    const scale = sr.width / geom.W;
+    const sx = px * scale + (sr.left - pr.left), sy = py * scale + (sr.top - pr.top);
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = sx + 14;
+    if (left + tw > plot.clientWidth - 4) left = sx - tw - 14;
+    let top = Math.max(4, sy - th - 12);
+    tip.style.left = Math.max(4, left) + 'px';
+    tip.style.top = top + 'px';
+    tip.classList.add('on');
+
+    data.forEach(r => r.tr.classList.toggle('hl', r === d));
+  }
+
+  function hide() {
+    activeIdx = -1;
+    if (geom) geom.hover.style.display = 'none';
+    $('tip').classList.remove('on');
+    data.forEach(r => r.tr.classList.remove('hl'));
+  }
+
+  function nearest(clientX) {
+    const svg = $('chart');
+    const rect = svg.getBoundingClientRect();
+    const vx = (clientX - rect.left) * (geom.W / rect.width);
+    let best = 0, bd = Infinity;
+    data.forEach((d, i) => { const dd = Math.abs(geom.x(d.year) - vx); if (dd < bd) { bd = dd; best = i; } });
+    return best;
+  }
+
+  const plot = $('plot');
+  plot.addEventListener('pointermove', e => { if (geom) show(nearest(e.clientX)); });
+  plot.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') hide(); });
+  plot.addEventListener('pointerdown', e => { if (geom) show(nearest(e.clientX)); });
+  plot.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const i = activeIdx < 0 ? data.length - 1 : activeIdx + (e.key === 'ArrowRight' ? 1 : -1);
+      show(Math.max(0, Math.min(data.length - 1, i)));
+    } else if (e.key === 'Escape') hide();
+  });
+  plot.addEventListener('blur', hide);
+
+  document.querySelectorAll('.toggle button').forEach(b => b.addEventListener('click', () => {
+    measure = b.dataset.measure;
+    document.querySelectorAll('.toggle button').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+    $('chart-title').textContent = MEASURES[measure].title;
+    $('chart-sub').textContent = MEASURES[measure].sub;
+    render();
+    if (window.gtag) window.gtag('event', 'history_chart_toggle', { measure });
+  }));
+
+  let rt = 0;
+  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 120); });
+  render();
+</script>
+</body>
+</html>
