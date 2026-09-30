@@ -12,6 +12,8 @@ Netlify publishes the repository root exactly as it is.
 | `index.html` | `/` | Live debt counter, FAQ, methodology |
 | `your-share/index.html` | `/your-share/` | UK debt calculator — personal share, tax comparison |
 | `3-trillion/index.html` | `/3-trillion/` | The £3 trillion milestone |
+| `uk-national-debt-by-year/index.html` | `/uk-national-debt-by-year/` | Debt by year chart and table |
+| `help/index.html` | `/help/` | Mortgage arrears & repossession help (linked from social videos) |
 
 Also tracked, and **required in every deploy**:
 

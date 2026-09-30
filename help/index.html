@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Behind on Your Mortgage? What Happens Next and Where to Get Free Help | UK Debt Watch</title>
+  <meta name="description" content="Missed a mortgage payment? What your lender must do, how the repossession process works in England and Wales, the options you may have, and where to get free, impartial advice." />
+  <link rel="canonical" href="https://ukdebtwatch.co.uk/help/" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23f04550' text-anchor='middle'%3E£%3C/text%3E%3C/svg%3E" />
+
+  <meta property="og:title" content="Behind on your mortgage? What happens next" />
+  <meta property="og:description" content="The repossession process step by step, the options you may have, and where to get free, impartial help." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ukdebtwatch.co.uk/help/" />
+  <meta property="og:site_name" content="UK Debt Watch" />
+  <meta property="og:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Behind on your mortgage? What happens next" />
+  <meta name="twitter:description" content="The repossession process step by step, and where to get free, impartial help." />
+  <meta name="twitter:site" content="@ukdebtwatch" />
+  <meta name="twitter:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- ── ANALYTICS · Google Analytics 4 ───────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-0KZHW8KQM0');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #f04550;
+      --amber:  #f4a261;
+      --teal:   #2ec4b6;
+      --gold:   #f0c040;
+      --bg:     #0a0a0a;
+      --panel:  #0d0d0d;
+      --border: #272727;
+      --text:   #f5f2ee;
+      --muted:  #909090;
+      --faint:  #6e6e6e;
+    }
+
+    html, body {
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Mono', 'Courier New', monospace;
+      overflow-x: hidden; line-height: 1.6;
+    }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 2px;
+    }
+
+    /* ── HEADER (matches other pages) ────────────────────────── */
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 28px; border-bottom: 1px solid var(--border);
+      background: var(--bg); position: sticky; top: 0; z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .live-dot {
+      width: 9px; height: 9px; background: var(--red); border-radius: 50%;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1) } 50%{ opacity:.4; transform:scale(.85) } }
+    .header a.live-label {
+      font-size: 11px; letter-spacing: .22em; color: #aaa;
+      text-transform: uppercase; text-decoration: none;
+    }
+    .header a.live-label:hover { color: #fff; }
+    .header-right { font-size: 10px; color: #666; letter-spacing: .1em; }
+
+    /* ── INTRO ───────────────────────────────────────────────── */
+    .intro {
+      padding: 52px 28px 34px; text-align: center; position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(46,196,182,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+      color: #888; margin-bottom: 18px;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(26px, 5.4vw, 48px); line-height: 1.06; letter-spacing: -.01em;
+      max-width: 20ch; margin: 0 auto 18px; text-wrap: balance;
+    }
+    .intro p {
+      font-size: 13.5px; color: #9a9a9a; max-width: 60ch; margin: 0 auto; line-height: 1.75;
+    }
+    .intro p b { color: #ddd; font-weight: 500; }
+
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 40px 28px 0; }
+
+    /* ── FIRST STEP CALLOUT ──────────────────────────────────── */
+    .callout {
+      max-width: 68ch; margin: 0 auto; border: 1px solid rgba(46,196,182,.45);
+      background: rgba(46,196,182,.06); border-radius: 2px; padding: 20px 22px;
+    }
+    .callout h2 { margin-bottom: 8px; }
+    .callout p { font-size: 14px; color: #cfcfcf; line-height: 1.8; }
+    .callout p + p { margin-top: 10px; }
+    .callout b { color: #fff; font-weight: 500; }
+
+    /* ── FREE HELP GRID ──────────────────────────────────────── */
+    .help-grid {
+      margin: 22px auto 0; max-width: 1000px; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 2px;
+    }
+    .help-grid a { background: var(--bg); padding: 18px 20px; text-decoration: none; color: var(--text); }
+    .help-grid a:hover { background: #111; }
+    .help-grid b { display: block; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .help-grid span { font-size: 12px; color: var(--muted); line-height: 1.6; display: block; }
+    .help-grid .go { color: var(--teal); margin-top: 8px; font-size: 11px; letter-spacing: .08em; }
+    .help-note { max-width: 1000px; margin: 10px auto 0; font-size: 11.5px; color: var(--faint); line-height: 1.7; }
+
+    /* ── STEPS ───────────────────────────────────────────────── */
+    .steps { max-width: 68ch; margin: 48px auto 0; list-style: none; counter-reset: step; }
+    .steps > li {
+      position: relative; padding: 0 0 30px 58px; counter-increment: step;
+    }
+    .steps > li::before {
+      content: counter(step); position: absolute; left: 0; top: 0;
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid var(--red); color: var(--red);
+      display: grid; place-items: center; font-weight: 500; font-size: 15px;
+    }
+    .steps > li:not(:last-child)::after {
+      content: ''; position: absolute; left: 19px; top: 44px; bottom: 6px; width: 1px; background: var(--border);
+    }
+    .steps h3 {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.25;
+      margin: 6px 0 10px;
+    }
+
+    /* ── ARTICLE ─────────────────────────────────────────────── */
+    .article { max-width: 68ch; margin: 0 auto; padding: 48px 0 0; }
+    h2 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(19px, 3vw, 24px); line-height: 1.2; margin: 0 0 14px;
+    }
+    .article h2:not(:first-child) { margin-top: 40px; }
+    .article p, .steps p, .article li, .steps li li { font-size: 14px; color: #b4b4b4; line-height: 1.8; }
+    .article p, .steps p { margin-bottom: 14px; }
+    .article p b, .steps p b, .article li b, .steps li b { color: #eee; font-weight: 500; }
+    .article ul, .steps ul { margin: 0 0 14px 1.2em; }
+    .article li, .steps li li { margin-bottom: 8px; }
+    .article a, .steps a, .faq a, .callout a { color: var(--gold); }
+    .warn {
+      border-left: 2px solid var(--amber); padding: 4px 0 4px 16px; margin: 6px 0 16px;
+    }
+    .warn p { margin-bottom: 0; }
+
+    /* ── FAQ ─────────────────────────────────────────────────── */
+    .faq { max-width: 68ch; margin: 48px auto 0; }
+    .faq details { border-bottom: 1px solid var(--border); }
+    .faq details:first-of-type { border-top: 1px solid var(--border); }
+    .faq summary {
+      cursor: pointer; list-style: none; padding: 15px 28px 15px 0; position: relative;
+      font-size: 14px; color: #eee;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; position: absolute; right: 4px; top: 13px; color: var(--red); font-size: 18px; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq p { font-size: 13.5px; color: #a8a8a8; line-height: 1.8; padding: 0 0 16px; }
+
+    .disclaimer {
+      max-width: 68ch; margin: 40px auto 0; font-size: 11.5px; color: var(--faint); line-height: 1.75;
+      border-top: 1px solid var(--border); padding-top: 18px;
+    }
+
+    .next {
+      max-width: 1000px; margin: 48px auto 0; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 2px;
+    }
+    .next a { background: var(--bg); padding: 18px 20px; text-decoration: none; color: var(--text); }
+    .next a:hover { background: #111; }
+    .next b { display: block; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .next span { font-size: 12px; color: var(--muted); }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    .footer {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+      padding: 14px 28px; border-top: 1px solid var(--border); background: #050505;
+      margin-top: 48px;
+    }
+    .footer span { font-size: 10px; color: #777; letter-spacing: .08em; }
+    .footer a { color: #8a8a8a; text-decoration: none; }
+    .footer a:hover { color: #ccc; text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .header-right { display: none; }
+      .intro { padding: 38px 18px 28px; }
+      .wrap { padding: 28px 16px 0; }
+      .steps > li { padding-left: 50px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .live-dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left">
+      <div class="live-dot" aria-hidden="true"></div>
+      <a class="live-label" href="/">UK Debt Watch · Live</a>
+    </div>
+    <div class="header-right">HELP · MORTGAGE ARREARS</div>
+  </header>
+
+  <main>
+  <div class="intro">
+    <p class="eyebrow">Mortgage arrears &amp; repossession</p>
+    <h1>Behind on your mortgage? What happens next</h1>
+    <p>Missing a mortgage payment is frightening, but repossession is <b>not automatic</b> and it is <b>not quick</b>. Lenders have to try to help you first, and there is free, impartial advice at every stage. Here is how the process works in England and Wales, and what you can do about it.</p>
+  </div>
+
+  <div class="wrap">
+
+    <section class="callout" aria-labelledby="first-title">
+      <h2 id="first-title">If you do one thing today</h2>
+      <p><b>Talk to your lender, and get free debt advice.</b> Contact your lender as soon as you know you can't pay, ideally before you miss a payment. Then speak to a free debt advice service below. They can check your budget, talk to your lender for you, and tell you what options you have.</p>
+      <p>You never need to pay for debt advice. Be wary of any firm that charges you to "stop repossession".</p>
+    </section>
+
+    <nav class="help-grid" aria-label="Free, impartial help">
+      <a href="https://www.moneyhelper.org.uk/en/homes/buying-a-home/government-help-if-you-cant-pay-your-mortgage" target="_blank" rel="noopener" data-help="moneyhelper">
+        <b>MoneyHelper</b><span>Government-backed guidance on help with mortgage payments, plus a debt advice locator to find free advice near you.</span><span class="go">MONEYHELPER.ORG.UK ↗</span></a>
+      <a href="https://www.stepchange.org/" target="_blank" rel="noopener" data-help="stepchange">
+        <b>StepChange</b><span>Free debt advice charity. Online or by phone, including help with mortgage arrears.</span><span class="go">STEPCHANGE.ORG ↗</span></a>
+      <a href="https://nationaldebtline.org/" target="_blank" rel="noopener" data-help="nationaldebtline">
+        <b>National Debtline</b><span>Free, confidential debt advice by phone and webchat, with fact sheets and letter templates.</span><span class="go">NATIONALDEBTLINE.ORG ↗</span></a>
+      <a href="https://www.citizensadvice.org.uk/debt-and-money/mortgage-problems/" target="_blank" rel="noopener" data-help="citizensadvice">
+        <b>Citizens Advice</b><span>Free advice in person, by phone or online, including on mortgage problems.</span><span class="go">CITIZENSADVICE.ORG.UK ↗</span></a>
+      <a href="https://england.shelter.org.uk/housing_advice/repossession" target="_blank" rel="noopener" data-help="shelter">
+        <b>Shelter</b><span>Housing charity with detailed guidance on repossession and a free helpline.</span><span class="go">SHELTER.ORG.UK ↗</span></a>
+    </nav>
+    <p class="help-note">UK Debt Watch is not a debt advice service and is not connected to any of these organisations. We link to them because they are free and impartial.</p>
+
+    <ol class="steps" aria-label="The repossession process">
+      <li>
+        <h3>Missed payment: arrears start to build</h3>
+        <p>Once you miss a payment you are "in arrears". Your lender will contact you, usually by letter and phone, and may add charges. Arrears grow quickly, so the earlier you act, the more options you are likely to have.</p>
+        <p>Open every letter and reply. Keep a record of every call and what was agreed.</p>
+      </li>
+      <li>
+        <h3>Your lender must try to help first</h3>
+        <p>Lenders regulated by the Financial Conduct Authority must treat you fairly, consider your circumstances and treat repossession as <b>a last resort</b>. Before going to court they must follow the <a href="https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_mha" target="_blank" rel="noopener">pre-action protocol for mortgage arrears</a>, which means giving you information about the arrears and genuinely considering any reasonable proposal you make.</p>
+        <p>Most large lenders have also signed the <a href="https://www.ukfinance.org.uk/policy-and-guidance/guidance/faqs-mortgage-charter" target="_blank" rel="noopener">Mortgage Charter</a>. Under it, they agree not to start repossession within <b>12 months of your first missed payment</b> without your consent, except in exceptional circumstances. Ask your lender whether it has signed up.</p>
+      </li>
+      <li>
+        <h3>Court process: a possession claim</h3>
+        <p>If you can't agree a way forward, your lender can apply to the county court for a possession order. You'll be sent the claim, a <b>defence form</b> and a hearing date. Fill in and return the defence form. It is your chance to explain your situation and what you can afford.</p>
+        <p><b>Go to the hearing.</b> Free legal advice, and often someone to speak for you in court, is available through the <a href="https://www.gov.uk/guidance/legal-aid-for-possession-proceedings" target="_blank" rel="noopener">Housing Loss Prevention Advice Service</a>. It is not means-tested, and you can get help as soon as you receive the court papers.</p>
+        <p>At the hearing, the judge can:</p>
+        <ul>
+          <li><b>Adjourn</b> the case, for example to give you time to sort things out;</li>
+          <li>Make a <b>suspended possession order</b>, so you can stay as long as you keep to a payment plan the court sets; or</li>
+          <li>Make an <b>outright possession order</b>, which gives a date to leave the property.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Eviction: the last stage</h3>
+        <p>If an outright order isn't followed, or a suspended order is broken, the lender can ask the court for a warrant so that bailiffs can carry out an eviction. You'll be sent a notice with the eviction date. Even at this stage you can <b>apply to the court to suspend the eviction</b> if your circumstances have changed. Get advice straight away.</p>
+      </li>
+    </ol>
+
+    <article class="article">
+      <h2>Options you may have before the property is lost</h2>
+      <p>What's available depends on your lender and your situation, and a free debt adviser can help you work out which fits. Common options include:</p>
+      <ul>
+        <li><b>An arrangement to pay the arrears.</b> You pay your normal monthly payment plus an agreed amount towards what you owe.</li>
+        <li><b>Changing your mortgage for a while.</b> Your lender may agree to extend the mortgage term, or switch you to interest-only temporarily, to lower your monthly payments. Under the Mortgage Charter, many lenders allow a switch to interest-only for six months, or a term extension, without a new affordability check.</li>
+        <li><b>Re-mortgaging or switching deal.</b> A cheaper deal may bring your payments down, though this is harder once you are in arrears.</li>
+        <li><b>Help from the government.</b> If you get Universal Credit, Pension Credit or income-related Employment and Support Allowance, you may be able to get a <a href="https://www.gov.uk/support-for-mortgage-interest" target="_blank" rel="noopener">Support for Mortgage Interest</a> loan. It pays interest on part of your mortgage directly to your lender. It is a loan, repaid with interest when you sell or transfer your home.</li>
+        <li><b>Selling your home yourself.</b> If keeping the home isn't realistic, selling it yourself usually gets a better price and costs less than a repossession sale. Tell your lender, as it may give you time to sell.</li>
+      </ul>
+      <div class="warn">
+        <p><b>Be careful with "we buy any house" and sale-and-rent-back offers.</b> Some firms target people in arrears with fast, below-value offers. Get free advice before signing anything.</p>
+      </div>
+
+      <h2>Scotland and Northern Ireland</h2>
+      <p>The court process is different in Scotland and Northern Ireland, though the same advice applies: talk to your lender early and get free advice. In Scotland, see <a href="https://scotland.shelter.org.uk/housing_advice/repossession" target="_blank" rel="noopener">Shelter Scotland</a>. In Northern Ireland, see <a href="https://www.adviceni.net/" target="_blank" rel="noopener">Advice NI</a>.</p>
+    </article>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <details>
+        <summary>How many missed payments before repossession?</summary>
+        <p>There's no fixed number. Lenders must try to agree a solution before going to court and treat repossession as a last resort. Lenders that have signed the Mortgage Charter agree not to start repossession within 12 months of the first missed payment without your consent, except in exceptional circumstances. After that, a court still has to make an order before you can be evicted.</p>
+      </details>
+      <details>
+        <summary>Can I stop a repossession once court action has started?</summary>
+        <p>Often, yes. The court can adjourn the case or make a suspended order if you can show a realistic plan to pay. Return the defence form, go to the hearing, and get free legal advice through the Housing Loss Prevention Advice Service. You can also apply to suspend an eviction if things change.</p>
+      </details>
+      <details>
+        <summary>Will I still owe money after a repossession?</summary>
+        <p>You might. If the sale doesn't cover the mortgage, arrears and costs, the shortfall is still a debt you owe. Selling your home yourself usually gets a better price, which is one reason to get advice early.</p>
+      </details>
+      <details>
+        <summary>Do I have to pay for debt advice?</summary>
+        <p>No. MoneyHelper, StepChange, National Debtline, Citizens Advice and Shelter are all free. Be cautious of anyone charging a fee to deal with your lender for you.</p>
+      </details>
+    </section>
+
+    <p class="disclaimer">This page is general information about the process in England and Wales, not financial or legal advice. Every situation is different, so speak to your lender and a free, regulated debt adviser about yours. UK Debt Watch is not a debt advice service. Last reviewed September 2026.</p>
+
+    <nav class="next" aria-label="More from UK Debt Watch">
+      <a href="/"><b>Live debt clock</b><span>The UK national debt now, second by second</span></a>
+      <a href="/your-share/"><b>Your share</b><span>Your personal share of the national debt</span></a>
+      <a href="/uk-national-debt-by-year/"><b>UK debt by year</b><span>Chart and table since 1993</span></a>
+    </nav>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <span>GENERAL INFORMATION · NOT FINANCIAL OR LEGAL ADVICE · <a href="/">UKDEBTWATCH.CO.UK</a></span>
+    <span>ENGLAND &amp; WALES · REVIEWED SEP 2026</span>
+  </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "UK Debt Watch", "item": "https://ukdebtwatch.co.uk/" },
+        { "@type": "ListItem", "position": 2, "name": "Behind on your mortgage? What happens next", "item": "https://ukdebtwatch.co.uk/help/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How many missed payments before repossession?",
+          "acceptedAnswer": { "@type": "Answer", "text": "There's no fixed number. Lenders must try to agree a solution before going to court and treat repossession as a last resort. Lenders that have signed the Mortgage Charter agree not to start repossession within 12 months of the first missed payment without your consent, except in exceptional circumstances. After that, a court still has to make an order before you can be evicted." } },
+        { "@type": "Question", "name": "Can I stop a repossession once court action has started?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Often, yes. The court can adjourn the case or make a suspended order if you can show a realistic plan to pay. Return the defence form, go to the hearing, and get free legal advice through the Housing Loss Prevention Advice Service. You can also apply to suspend an eviction if things change." } },
+        { "@type": "Question", "name": "Will I still owe money after a repossession?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You might. If the sale doesn't cover the mortgage, arrears and costs, the shortfall is still a debt you owe. Selling your home yourself usually gets a better price." } },
+        { "@type": "Question", "name": "Do I have to pay for debt advice?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. MoneyHelper, StepChange, National Debtline, Citizens Advice and Shelter are all free." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+  'use strict';
+  // Outbound clicks to advice services, same event style as other pages.
+  document.querySelectorAll('[data-help]').forEach(a => a.addEventListener('click', () => {
+    if (window.gtag) window.gtag('event', 'help_click', { service: a.dataset.help });
+  }));
+</script>
+</body>
+</html>
