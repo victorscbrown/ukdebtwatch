@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debt Payoff Planner UK: Which Debt to Pay First? | UK Debt Watch</title>
+<meta name="description" content="Free UK debt payoff planner. Compare avalanche vs snowball, see your debt-free date, total interest and a month-by-month plan of which debt to pay first. Nothing you enter leaves your browser.">
+<link rel="canonical" href="https://ukdebtwatch.co.uk/debt-planner/">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23f04550' text-anchor='middle'%3E£%3C/text%3E%3C/svg%3E" />
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="UK Debt Watch">
+<meta property="og:title" content="Debt Payoff Planner: Which Debt Should You Pay First?">
+<meta property="og:description" content="Avalanche vs snowball, your debt-free date and a month-by-month plan. Free, UK-specific, and nothing you type is stored.">
+<meta property="og:url" content="https://ukdebtwatch.co.uk/debt-planner/">
+<meta property="og:image" content="https://ukdebtwatch.co.uk/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ukdebtwatch">
+<!-- Google Analytics 4 (same property as the rest of the site) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0KZHW8KQM0');
+  function track(name, props){
+    try{ if(window.gtag) gtag('event', name, props||{}); }catch(e){}
+    try{ if(window.plausible) plausible(name, {props: props||{}}); }catch(e){}
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Debt Payoff Planner","url":"https://ukdebtwatch.co.uk/debt-planner/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"publisher":{"@type":"Organization","name":"UK Debt Watch","url":"https://ukdebtwatch.co.uk/"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Which debt should I pay off first in the UK?","acceptedAnswer":{"@type":"Answer","text":"Deal with priority debts first: rent or mortgage, council tax, energy bills, court fines, child maintenance and money owed to HMRC, because missing them can lead to losing your home, enforcement agents or losing your energy supply. After that, paying the highest interest rate first (the avalanche method) costs the least overall."}},
+{"@type":"Question","name":"What is the difference between the avalanche and snowball methods?","acceptedAnswer":{"@type":"Answer","text":"Both pay the minimum on every debt and put any spare money on one target. Avalanche targets the highest interest rate first and usually costs less. Snowball targets the smallest balance first, giving quicker wins that some people find easier to stick with."}},
+{"@type":"Question","name":"What if I can't afford my minimum payments?","acceptedAnswer":{"@type":"Answer","text":"Get free, confidential debt advice before you miss payments. StepChange, National Debtline, Citizens Advice and MoneyHelper are free. You should never need to pay for debt advice."}},
+{"@type":"Question","name":"Is my data stored?","acceptedAnswer":{"@type":"Answer","text":"No. The planner runs entirely in your browser. Nothing you enter is sent to UK Debt Watch or anyone else, and it is cleared when you close the page."}}
+]}
+]}
+</script>
+<style>
+:root{
+  --bg:#0a0a0a;--panel:#141414;--panel-2:#1b1b1b;--line:#2a2a2a;
+  --text:#f2f2f2;--muted:#9a9a9a;--faint:#6b6b6b;
+  --accent:#f04550;--accent-soft:rgba(240,69,80,.12);
+  --good:#30d158;--good-soft:rgba(48,209,88,.12);
+  --warn:#ffb020;--warn-soft:rgba(255,176,32,.12);
+  --display:"Syne",-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --r:10px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 var(--sans)}
+a{color:var(--text);text-decoration-color:var(--accent);text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header.top{border-bottom:1px solid var(--line);padding:14px 0}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:700}
+.brand span{color:var(--accent)}
+nav.top a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-left:16px}
+nav.top a:first-child{margin-left:0}
+nav.top a:hover{color:var(--text)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:36px 0 8px}
+h1,h2{font-family:var(--display);text-wrap:balance}
+h1{font-size:clamp(28px,6vw,42px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}
+.lede{color:var(--muted);font-size:17px;max-width:640px;margin:0 0 8px}
+.privacy{display:inline-flex;gap:8px;align-items:center;font-family:var(--mono);font-size:12px;color:var(--good);background:var(--good-soft);border-radius:999px;padding:6px 12px;margin:10px 0 0}
+h2{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin:24px 0}
+.step-head{display:flex;gap:12px;align-items:baseline;margin-bottom:14px}
+.step-num{font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:2px 9px;flex-shrink:0}
+.hint{color:var(--muted);font-size:14px;margin:0}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.check{display:flex;gap:10px;align-items:center;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;font-size:15px}
+.check input{width:18px;height:18px;accent-color:var(--accent);flex-shrink:0}
+.callout{border-radius:8px;padding:14px 16px;margin-top:14px;font-size:15px}
+.callout.warn{background:var(--warn-soft);border:1px solid rgba(255,176,32,.35)}
+.callout.stop{background:var(--accent-soft);border:1px solid rgba(255,59,48,.4)}
+.callout.ok{background:var(--good-soft);border:1px solid rgba(48,209,88,.35)}
+.callout strong{display:block;margin-bottom:4px}
+.callout p{margin:6px 0 0}
+.callout ul{margin:8px 0 0;padding-left:20px}
+label.f{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+input[type=text],input[type=number]{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:10px;font:15px var(--sans)}
+input[type=number]{font-family:var(--mono)}
+input:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+.debt{display:grid;grid-template-columns:1.6fr 1fr .8fr 1fr auto;gap:10px;align-items:end;padding:12px 0;border-top:1px solid var(--line)}
+.debt:first-child{border-top:0;padding-top:0}
+.rm{background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;width:40px;height:42px;font-size:18px;cursor:pointer}
+.rm:hover{color:var(--accent);border-color:var(--accent)}
+.btn{font:600 15px var(--sans);border-radius:8px;padding:12px 18px;cursor:pointer;border:1px solid var(--line);background:var(--panel-2);color:var(--text)}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{filter:brightness(1.1)}
+.row-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.budget{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:end}
+.mins{font-family:var(--mono);font-size:13px;color:var(--muted);padding-bottom:10px}
+.err{color:var(--accent);font-size:14px;margin:10px 0 0;min-height:0}
+#results[hidden]{display:none}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.card{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:14px}
+.card.best{border-color:var(--good)}
+.card h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:600}
+.card .badge{font-family:var(--mono);font-size:10px;color:var(--good);background:var(--good-soft);border-radius:999px;padding:2px 7px;margin-left:6px;letter-spacing:.06em}
+.big{font-family:var(--mono);font-size:22px;font-weight:700;line-height:1.2}
+.sub{color:var(--muted);font-size:13px;margin-top:4px;font-family:var(--mono)}
+.explain{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.ex{border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.ex h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.ex p{margin:0;font-size:14px;color:#cfcfcf}
+.ex p strong{color:var(--text)}
+.ex-both{grid-column:1/-1;margin:0;font-size:13px;color:var(--muted)}
+@media (max-width:640px){.explain{grid-template-columns:1fr}}
+.verdict{font-size:16px;margin:16px 0 0}
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:4px 0 14px}
+.toggle button{background:none;border:0;color:var(--muted);font:600 14px var(--sans);padding:9px 14px;cursor:pointer}
+.toggle button[aria-pressed=true]{background:var(--text);color:var(--bg)}
+:root{--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767}
+.chart-fig{position:relative;margin:0 0 22px}
+.chart-cap{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:8px;font-size:13px;color:var(--text)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.chart svg{display:block;width:100%;height:auto;touch-action:pan-y}
+.chart text{fill:var(--muted);font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums}
+.tip{position:absolute;top:0;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--text);min-width:150px;box-shadow:0 4px 16px rgba(0,0,0,.5);z-index:2}
+.tip b{display:block;font-weight:600;margin-bottom:2px}
+.tip .r{display:flex;justify-content:space-between;gap:12px}
+.tip .r span:first-child{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
+.tip .tot{border-top:1px solid var(--line);margin-top:4px;padding-top:4px}
+ol.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:6px}
+ol.timeline li{position:relative;padding:0 0 18px 20px}
+ol.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+ol.timeline li.done::before{background:var(--good);border-color:var(--good)}
+.when{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.what{font-size:15px;margin-top:2px}
+table.sched{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;margin-top:8px}
+.sched th,.sched td{text-align:right;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.sched th:first-child,.sched td:first-child{text-align:left}
+.sched th{color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+details{margin-top:16px}
+summary{cursor:pointer;color:var(--muted);font-family:var(--mono);font-size:13px}
+.faq h3{font-size:17px;margin:20px 0 6px}
+.faq p{color:#cfcfcf;margin:0}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 40px;color:var(--faint);font-size:13px}
+footer p{margin:6px 0}
+@media (max-width:640px){
+  .debt{grid-template-columns:1fr 1fr;}
+  .debt .name{grid-column:1/-1}
+  .debt .rm{width:100%}
+  .cards{grid-template-columns:1fr}
+  .budget{grid-template-columns:1fr}
+  nav.top a{margin-left:12px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">UK<span>Debt</span>Watch</a>
+    <nav class="top" aria-label="Main">
+      <a href="/">Debt clock</a>
+      <a href="/your-share/">Your share</a>
+      <a href="/help/">Help</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">Free tool · Personal debt</p>
+  <h1>Debt Payoff Planner</h1>
+  <p class="lede">See which debt to pay first, when you'll be debt-free, and how much interest you'll pay. The planner compares the avalanche and snowball methods and builds a month-by-month plan.</p>
+  <p class="privacy">● Runs in your browser. Nothing you enter is stored or sent anywhere.</p>
+
+  <!-- STEP 1 -->
+  <section class="step" aria-labelledby="s1">
+    <div class="step-head"><span class="step-num">1</span><div><h2 id="s1">Are you behind on any of these?</h2><p class="hint">These are priority debts. Missing them has the most serious consequences, so they come before everything else.</p></div></div>
+    <div class="checks" id="priority">
+      <label class="check"><input type="checkbox" value="Rent or mortgage">Rent or mortgage</label>
+      <label class="check"><input type="checkbox" value="Council tax">Council tax</label>
+      <label class="check"><input type="checkbox" value="Gas or electricity">Gas or electricity</label>
+      <label class="check"><input type="checkbox" value="Court fines or CCJs">Court fines or CCJs</label>
+      <label class="check"><input type="checkbox" value="Income tax or VAT owed to HMRC">Money owed to HMRC</label>
+      <label class="check"><input type="checkbox" value="Child maintenance">Child maintenance</label>
+      <label class="check"><input type="checkbox" value="TV licence">TV licence</label>
+      <label class="check"><input type="checkbox" value="Hire purchase you need (e.g. car for work)">Hire purchase you rely on</label>
+    </div>
+    <div id="priorityOut" aria-live="polite"></div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step" aria-labelledby="s2">
+    <div class="step-head"><span class="step-num">2</span><div><h2 id="s2">Your other debts</h2><p class="hint">Credit cards, loans, overdrafts, car finance, buy now pay later. Use your latest statements. The figures below are examples, so replace them with your own.</p></div></div>
+    <div id="debts"></div>
+    <div class="row-actions">
+      <button class="btn" type="button" id="addDebt">+ Add a debt</button>
+      <button class="btn" type="button" id="clearDebts">Clear all</button>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step" aria-labelledby="s3">
+    <div class="step-head"><span class="step-num">3</span><div><h2 id="s3">What can you pay each month?</h2><p class="hint">The total you can put towards these debts after essentials and priority bills. Be realistic. A plan you can keep beats an ambitious one you can't.</p></div></div>
+    <div class="budget">
+      <div><label class="f" for="budget">Monthly amount (£)</label><input type="number" id="budget" inputmode="decimal" min="0" step="1" value="500"></div>
+      <div class="mins" id="minsTotal"></div>
+    </div>
+    <div class="row-actions"><button class="btn primary" type="button" id="run">Build my plan</button></div>
+    <p class="err" id="err" role="alert"></p>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" hidden aria-live="polite">
+    <div class="step" id="stopBox" hidden></div>
+
+    <div class="step" id="planBox">
+      <div class="step-head"><span class="step-num">✓</span><div><h2>Your plan</h2><p class="hint" id="startNote"></p></div></div>
+      <div class="explain" aria-label="How the two methods work">
+        <div class="ex"><h3>Avalanche</h3><p><strong>Highest interest rate first.</strong> You tackle the most expensive debt before cheaper ones. This always costs the least interest overall, or ties.</p></div>
+        <div class="ex"><h3>Snowball</h3><p><strong>Smallest balance first.</strong> You clear small debts quickly, whatever their rate. It usually costs a little more, but the early wins help many people stay on track.</p></div>
+        <p class="ex-both">Both pay the minimum on every debt and put your spare money on one target. When that debt is cleared, its payment rolls onto the next.</p>
+      </div>
+      <div class="cards" id="cards"></div>
+      <p class="verdict" id="verdict"></p>
+    </div>
+
+    <div class="step" id="timelineBox">
+      <div class="step-head"><span class="step-num">⟶</span><div><h2>What to do, and when</h2><p class="hint">Pay the minimum on everything, then put every spare pound on the current target. When a debt clears, its payment rolls onto the next one.</p></div></div>
+      <p class="hint" style="margin-bottom:6px">Switch method to see how the order changes.</p>
+      <div class="toggle" role="group" aria-label="Method">
+        <button type="button" data-m="avalanche" aria-pressed="true">Avalanche</button>
+        <button type="button" data-m="snowball" aria-pressed="false">Snowball</button>
+      </div>
+      <figure class="chart-fig" aria-labelledby="chartCap">
+        <figcaption id="chartCap" class="chart-cap">What you owe, month by month</figcaption>
+        <div class="legend" id="legend"></div>
+        <div class="chart" id="chart"></div>
+        <div class="tip" id="tip" hidden></div>
+      </figure>
+      <ol class="timeline" id="timeline"></ol>
+      <details>
+        <summary>Show month-by-month schedule</summary>
+        <div class="tablewrap"><table class="sched" id="sched"></table></div>
+      </details>
+    </div>
+
+    <!-- Optional partner slot: shown only to visitors whose plan is affordable. Add your own copy/link, or leave hidden. -->
+    <div class="step" id="partnerSlot" hidden></div>
+  </section>
+
+  <section class="faq" aria-labelledby="faqh">
+    <h2 id="faqh" style="margin-top:40px">Questions about paying off debt</h2>
+    <h3>Which debt should I pay off first?</h3>
+    <p>Priority debts first: rent or mortgage, council tax, energy, court fines, child maintenance and HMRC. Missing these can lead to eviction, enforcement agents or losing your supply. After that, paying the highest interest rate first (avalanche) costs the least.</p>
+    <h3>Avalanche or snowball?</h3>
+    <p>Avalanche targets the highest APR and almost always saves money. Snowball targets the smallest balance, so you clear debts sooner and see progress faster. If the difference in cost is small, pick the one you'll stick with.</p>
+    <h3>What if my budget doesn't cover the minimums?</h3>
+    <p>Speak to a free debt adviser before you miss payments. They can talk to lenders for you and explain options such as breathing space, a debt management plan or a debt relief order. You should never need to pay for debt advice.</p>
+    <h3>How accurate is this?</h3>
+    <p>It assumes rates and minimum payments stay the same and that you add no new borrowing. Real minimums often fall as balances fall, and 0% deals end, so treat the dates as a guide and rerun the plan when things change.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Not advice.</strong> This planner is an information tool. It does not recommend any debt solution and is not regulated debt advice. For free, confidential advice, contact <a href="https://www.stepchange.org/" rel="noopener">StepChange</a>, <a href="https://nationaldebtline.org/" rel="noopener">National Debtline</a>, <a href="https://www.citizensadvice.org.uk/debt-and-money/" rel="noopener">Citizens Advice</a> or <a href="https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt" rel="noopener">MoneyHelper</a>.</p>
+    <p>© UK Debt Watch · <a href="/">ukdebtwatch.co.uk</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var GBP = new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',maximumFractionDigits:0});
+  var GBP2 = new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',minimumFractionDigits:2,maximumFractionDigits:2});
+  var MAX_MONTHS = 600;
+  var EPS = 0.005;
+  var $ = function(id){return document.getElementById(id);};
+  var lastRuns = null, currentMethod = 'avalanche';
+
+  var ADVICE = '<ul>'+
+    '<li><a href="https://www.stepchange.org/" rel="noopener">StepChange</a>: free online advice, or call 0800 138 1111</li>'+
+    '<li><a href="https://nationaldebtline.org/" rel="noopener">National Debtline</a>: 0808 808 4000</li>'+
+    '<li><a href="https://www.citizensadvice.org.uk/debt-and-money/" rel="noopener">Citizens Advice</a>: local, face-to-face help</li>'+
+    '<li><a href="https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt" rel="noopener">MoneyHelper</a>: free, government-backed</li>'+
+    '</ul>';
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  /* ---------- Step 1: priority triage ---------- */
+  function updatePriority(){
+    var ticked = Array.prototype.filter.call(document.querySelectorAll('#priority input'),function(i){return i.checked;}).map(function(i){return i.value;});
+    var out = $('priorityOut');
+    if(!ticked.length){out.innerHTML='';return;}
+    out.innerHTML = '<div class="callout warn"><strong>Deal with these first: '+esc(ticked.join(', '))+'</strong>'+
+      '<p>Contact the lender or council now and ask for an affordable arrangement. Don\'t put spare money towards cards or loans until these are under control. Priority creditors can take stronger action than other lenders.</p>'+
+      '<p>See our <a href="/help/">help page</a>, or get free advice:</p>'+ADVICE+'</div>';
+  }
+  document.querySelectorAll('#priority input').forEach(function(i){i.addEventListener('change',updatePriority);});
+
+  /* ---------- Step 2: debt rows ---------- */
+  var rowId = 0;
+  function addRow(d){
+    d = d || {name:'',balance:'',apr:'',min:''};
+    var id = ++rowId;
+    var el = document.createElement('div');
+    el.className='debt';
+    el.innerHTML =
+      '<div class="name"><label class="f" for="n'+id+'">Debt</label><input type="text" id="n'+id+'" data-k="name" placeholder="e.g. Credit card" value="'+esc(d.name)+'"></div>'+
+      '<div><label class="f" for="b'+id+'">Balance £</label><input type="number" id="b'+id+'" data-k="balance" inputmode="decimal" min="0" step="0.01" value="'+esc(d.balance)+'"></div>'+
+      '<div><label class="f" for="a'+id+'">APR %</label><input type="number" id="a'+id+'" data-k="apr" inputmode="decimal" min="0" step="0.1" value="'+esc(d.apr)+'"></div>'+
+      '<div><label class="f" for="m'+id+'">Min / month £</label><input type="number" id="m'+id+'" data-k="min" inputmode="decimal" min="0" step="0.01" value="'+esc(d.min)+'"></div>'+
+      '<button class="rm" type="button" aria-label="Remove this debt">×</button>';
+    el.querySelector('.rm').addEventListener('click',function(){el.remove();updateMins();});
+    el.querySelectorAll('input').forEach(function(i){i.addEventListener('input',updateMins);});
+    $('debts').appendChild(el);
+    updateMins();
+  }
+  function readDebts(){
+    var rows = Array.prototype.slice.call(document.querySelectorAll('#debts .debt'));
+    var debts=[], problems=[];
+    rows.forEach(function(r,idx){
+      var g=function(k){return r.querySelector('[data-k='+k+']').value.trim();};
+      var name=g('name')||('Debt '+(idx+1)), bal=parseFloat(g('balance')), apr=parseFloat(g('apr')), min=parseFloat(g('min'));
+      if(isNaN(bal)&&isNaN(apr)&&isNaN(min)&&!g('name')) return; // fully empty row
+      if(isNaN(bal)||bal<0) problems.push(name+': enter the balance');
+      if(isNaN(apr)) apr=0;
+      if(apr<0||apr>500) problems.push(name+': APR looks wrong');
+      if(isNaN(min)||min<0) problems.push(name+': enter the minimum payment (use 0 if there isn\'t one)');
+      if(bal>0) debts.push({name:name,balance:bal,apr:apr,min:isNaN(min)?0:min});
+    });
+    return {debts:debts,problems:problems};
+  }
+  function updateMins(){
+    var d=readDebts().debts;
+    var total=d.reduce(function(s,x){return s+Math.min(x.min,x.balance);},0);
+    var bal=d.reduce(function(s,x){return s+x.balance;},0);
+    $('minsTotal').textContent = d.length ? ('Minimums total '+GBP2.format(total)+' · Owed '+GBP.format(bal)) : '';
+  }
+  $('addDebt').addEventListener('click',function(){addRow();});
+  $('clearDebts').addEventListener('click',function(){$('debts').innerHTML='';addRow();$('results').hidden=true;});
+
+  /* ---------- Engine ---------- */
+  function order(active,method){
+    return active.slice().sort(method==='avalanche'
+      ? function(a,b){return (b.apr-a.apr)||(a.bal-b.bal);}
+      : function(a,b){return (a.bal-b.bal)||(b.apr-a.apr);});
+  }
+  function simulate(debts,budget,method){
+    var ds = debts.map(function(d,i){return {i:i,name:d.name,apr:d.apr,min:d.min,bal:d.balance,interest:0,paidOff:null};});
+    var month=0,totalInt=0,totalPaid=0,rows=[],targets=[];
+    while(ds.some(function(d){return d.bal>EPS;}) && month<MAX_MONTHS){
+      month++;
+      var row={m:month,paid:{},target:null};
+      ds.forEach(function(d){ if(d.bal>EPS){var i=d.bal*d.apr/100/12; d.bal+=i; d.interest+=i; totalInt+=i;} });
+      var avail = method==='minimum' ? Infinity : budget;
+      ds.forEach(function(d){
+        if(d.bal>EPS){var p=Math.min(d.min,d.bal,avail); d.bal-=p; avail-=p; totalPaid+=p; row.paid[d.i]=(row.paid[d.i]||0)+p;}
+      });
+      if(method!=='minimum'){
+        var first=null;
+        while(avail>EPS){
+          var act=order(ds.filter(function(d){return d.bal>EPS;}),method);
+          if(!act.length) break;
+          var t=act[0]; if(!first) first=t;
+          var p=Math.min(avail,t.bal); t.bal-=p; avail-=p; totalPaid+=p; row.paid[t.i]=(row.paid[t.i]||0)+p;
+        }
+        row.target = first ? first.name : null;
+      }
+      ds.forEach(function(d){ if(d.bal<=EPS){ if(d.paidOff===null) d.paidOff=month; d.bal=0; } });
+      row.bals = ds.map(function(d){return d.bal;});
+      rows.push(row); targets.push(row.target);
+    }
+    var done = !ds.some(function(d){return d.bal>EPS;});
+    return {start:debts.map(function(d){return d.balance;}),method:method,months:month,done:done,totalInt:totalInt,totalPaid:totalPaid,debts:ds,rows:rows,targets:targets};
+  }
+
+  /* ---------- Dates ---------- */
+  var now=new Date(), startY=now.getFullYear(), startM=now.getMonth()+1; // plan starts next month
+  function dateOf(m){var d=new Date(startY,startM+m-1,1);return d.toLocaleDateString('en-GB',{month:'short',year:'numeric'});}
+  function dur(m){var y=Math.floor(m/12),r=m%12;var s=[];if(y)s.push(y+' yr'+(y>1?'s':''));if(r)s.push(r+' mo');return s.join(' ')||'0 mo';}
+
+  /* ---------- Render ---------- */
+  function card(title,run,best,extra){
+    return '<div class="card'+(best?' best':'')+'"><h3>'+title+(best?'<span class="badge">CHEAPEST</span>':'')+'</h3>'+
+      (run.done
+        ? '<div class="big">'+dateOf(run.months)+'</div><div class="sub">'+dur(run.months)+' · interest '+GBP.format(run.totalInt)+'</div>'
+        : '<div class="big">Never</div><div class="sub">Minimums don\'t clear the debt'+(run.months>=MAX_MONTHS?' within 50 years':'')+'</div>')+
+      (extra||'')+'</div>';
+  }
+  function renderTimeline(run){
+    var items=[], start=1;
+    for(var m=1;m<=run.months;m++){
+      var t=run.targets[m-1], next=run.targets[m];
+      var cleared=run.debts.filter(function(d){return d.paidOff===m;});
+      if(!t){ start=m+1; }
+      else if(t!==next || m===run.months){
+        items.push({k:start,o:1,h:'<li><div class="when">'+(start===m?dateOf(m):dateOf(start)+' to '+dateOf(m))+' · month'+(start===m?' '+m:'s '+start+'–'+m)+'</div>'+
+          '<div class="what">Focus spare money on <strong>'+esc(t)+'</strong>. Pay minimums on the rest.</div></li>'});
+        start=m+1;
+      }
+      cleared.forEach(function(d){
+        items.push({k:m,o:0,h:'<li class="done"><div class="when">'+dateOf(m)+' · month '+m+'</div><div class="what"><strong>'+esc(d.name)+'</strong> cleared. Interest paid on it: '+GBP.format(d.interest)+'.</div></li>'});
+      });
+    }
+    items.sort(function(a,b){return (a.k-b.k)||(a.o-b.o);});
+    items=items.map(function(x){return x.h;});
+    items.push('<li class="done"><div class="when">'+dateOf(run.months)+'</div><div class="what"><strong>Debt-free.</strong> Keep paying yourself the same '+GBP.format(parseFloat($('budget').value))+' a month into savings.</div></li>');
+    $('timeline').innerHTML=items.join('');
+
+    var heads='<tr><th>Month</th>'+run.debts.map(function(d){return '<th>'+esc(d.name)+'</th>';}).join('')+'<th>Total owed</th></tr>';
+    var body=run.rows.map(function(r){
+      var tot=r.bals.reduce(function(s,b){return s+b;},0);
+      return '<tr><td>'+dateOf(r.m)+'</td>'+r.bals.map(function(b){return '<td>'+(b>0?GBP.format(b):'✓')+'</td>';}).join('')+'<td>'+GBP.format(tot)+'</td></tr>';
+    }).join('');
+    $('sched').innerHTML='<thead>'+heads+'</thead><tbody>'+body+'</tbody>';
+  }
+  /* ---------- Chart: stacked balances per debt ---------- */
+  var COLORS=['--s1','--s2','--s3','--s4','--s5','--s6','--s7','--s8'];
+  function niceStep(max,count){var raw=max/count,p=Math.pow(10,Math.floor(Math.log10(raw))),f=raw/p;return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p;}
+  function shortGBP(v){return v>=1000?'£'+(v/1000).toFixed(v%1000===0?0:1)+'k':'£'+Math.round(v);}
+  function renderChart(run){
+    var box=$('chart'), tip=$('tip'), fig=box.parentNode;
+    // series: one per debt; debts beyond 8 fold into "Other" so colours never repeat
+    var series=run.debts.map(function(d,i){return {name:d.name,vals:[run.start[i]].concat(run.rows.map(function(r){return r.bals[i];}))};});
+    if(series.length>8){
+      var rest=series.slice(7), other={name:'Other ('+rest.length+')',vals:rest[0].vals.map(function(_,k){return rest.reduce(function(s,x){return s+x.vals[k];},0);})};
+      series=series.slice(0,7).concat([other]);
+    }
+    series.forEach(function(s,i){s.color='var('+COLORS[i]+')';});
+    $('legend').innerHTML=series.map(function(s){return '<span><i style="background:'+s.color+'"></i>'+esc(s.name)+'</span>';}).join('');
+
+    var n=run.rows.length, W=Math.max(300,box.clientWidth||640), H=W<480?220:260, m={l:48,r:10,t:8,b:26};
+    var totals=series[0].vals.map(function(_,k){return series.reduce(function(s,x){return s+x.vals[k];},0);});
+    var step=niceStep(Math.max.apply(null,totals),4), ymax=Math.ceil(Math.max.apply(null,totals)/step)*step;
+    var x=function(k){return m.l+k/n*(W-m.l-m.r);}, y=function(v){return m.t+(1-v/ymax)*(H-m.t-m.b);};
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Stacked chart of each debt balance falling to zero by '+esc(dateOf(n))+'">';
+    for(var v=0;v<=ymax+0.01;v+=step){
+      svg+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--line)" stroke-width="1"'+(v?' stroke-dasharray="2 4"':'')+'/>';
+      svg+='<text x="'+(m.l-8)+'" y="'+(y(v)+4)+'" text-anchor="end">'+shortGBP(v)+'</text>';
+    }
+    // x ticks: each January for long plans, every 3 months for short ones
+    var every=n>18?12:3;
+    for(var k=0;k<=n;k++){
+      var d=new Date(startY,startM+k-1,1), isTick=every===12?(d.getMonth()===0):(k%3===0);
+      if(isTick&&k>0&&k<n+1){
+        var lx=x(k), label=every===12?String(d.getFullYear()):d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'});
+        if(lx>m.l+16&&lx<W-m.r-12) svg+='<text x="'+lx+'" y="'+(H-8)+'" text-anchor="middle">'+label+'</text>';
+      }
+    }
+    // stacked areas, first debt at the bottom; a 2px surface stroke separates the layers
+    var cum=series[0].vals.map(function(){return 0;});
+    series.forEach(function(s){
+      var lower=cum.slice(); cum=cum.map(function(c,k){return c+s.vals[k];});
+      var top=cum.map(function(c,k){return x(k).toFixed(1)+','+y(c).toFixed(1);});
+      var bot=lower.map(function(c,k){return x(k).toFixed(1)+','+y(c).toFixed(1);}).reverse();
+      svg+='<path d="M'+top.join('L')+'L'+bot.join('L')+'Z" fill="'+s.color+'" stroke="var(--panel)" stroke-width="2" stroke-linejoin="round"/>';
+    });
+    svg+='<line id="xhair" x1="0" x2="0" y1="'+m.t+'" y2="'+(H-m.b)+'" stroke="var(--text)" stroke-width="1" opacity="0"/>';
+    svg+='<rect id="hit" x="'+m.l+'" y="0" width="'+(W-m.l-m.r)+'" height="'+H+'" fill="transparent"/></svg>';
+    box.innerHTML=svg;
+
+    var hit=box.querySelector('#hit'), xh=box.querySelector('#xhair'), svgEl=box.querySelector('svg');
+    function show(ev){
+      var r=svgEl.getBoundingClientRect(), px=(ev.clientX-r.left)*W/r.width;
+      var k=Math.max(0,Math.min(n,Math.round((px-m.l)/(W-m.l-m.r)*n)));
+      xh.setAttribute('x1',x(k)); xh.setAttribute('x2',x(k)); xh.setAttribute('opacity','.5');
+      tip.innerHTML='<b>'+(k===0?'Today':dateOf(k)+' · month '+k)+'</b>'+
+        series.slice().reverse().map(function(s){return '<div class="r"><span><i style="width:8px;height:8px;border-radius:2px;display:inline-block;background:'+s.color+'"></i>'+esc(s.name)+'</span><span>'+(s.vals[k]>0?GBP.format(s.vals[k]):'✓ cleared')+'</span></div>';}).join('')+
+        '<div class="r tot"><span>Total owed</span><span>'+GBP.format(totals[k])+'</span></div>';
+      tip.hidden=false;
+      var fr=fig.getBoundingClientRect(), left=r.left-fr.left+x(k)*r.width/W, tw=tip.offsetWidth;
+      tip.style.left=Math.max(0,Math.min(fr.width-tw,left+(left+tw+12>fr.width?-tw-12:12)))+'px';
+      tip.style.top=(box.offsetTop+8)+'px';
+    }
+    function hide(){tip.hidden=true; xh.setAttribute('opacity','0');}
+    hit.addEventListener('pointermove',show); hit.addEventListener('pointerdown',show); hit.addEventListener('pointerleave',hide);
+  }
+  var rzTimer; window.addEventListener('resize',function(){clearTimeout(rzTimer);rzTimer=setTimeout(function(){if(lastRuns) renderChart(lastRuns[currentMethod]);},150);});
+
+  function setMethod(m){
+    currentMethod=m;
+    document.querySelectorAll('.toggle button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.m===m));});
+    if(lastRuns){ renderTimeline(lastRuns[m]); renderChart(lastRuns[m]); }
+  }
+  document.querySelectorAll('.toggle button').forEach(function(b){b.addEventListener('click',function(){setMethod(b.dataset.m);});});
+
+  function run(){
+    var err=$('err'); err.textContent='';
+    var r=readDebts(), budget=parseFloat($('budget').value);
+    if(r.problems.length){err.textContent=r.problems[0];return;}
+    if(!r.debts.length){err.textContent='Add at least one debt with a balance.';return;}
+    if(isNaN(budget)||budget<=0){err.textContent='Enter how much you can pay each month.';return;}
+
+    var debts=r.debts;
+    var minsTotal=debts.reduce(function(s,d){return s+Math.min(d.min,d.balance);},0);
+    var firstInterest=debts.reduce(function(s,d){return s+d.balance*d.apr/100/12;},0);
+    var res=$('results'), stop=$('stopBox');
+    res.hidden=false;
+
+    if(budget+EPS<minsTotal || budget<=firstInterest){
+      var gap = budget+EPS<minsTotal
+        ? 'Your budget of '+GBP2.format(budget)+' is '+GBP2.format(minsTotal-budget)+' short of your minimum payments ('+GBP2.format(minsTotal)+').'
+        : 'Your budget of '+GBP2.format(budget)+' doesn\'t cover the monthly interest (about '+GBP2.format(firstInterest)+'), so the debt would keep growing.';
+      stop.hidden=false;
+      stop.innerHTML='<div class="callout stop"><strong>A payoff plan won\'t work at this budget.</strong><p>'+gap+'</p>'+
+        '<p>This is exactly when free debt advice helps most. An adviser can contact lenders for you, ask them to freeze interest, and explain options such as Breathing Space, a debt management plan or a debt relief order. Get in touch <em>before</em> you miss payments. It\'s free and confidential:</p>'+ADVICE+
+        '<p>Avoid companies that charge fees for debt help. Free services offer the same solutions.</p></div>';
+      ['planBox','timelineBox','partnerSlot'].forEach(function(id){$(id).hidden=true;});
+      lastRuns=null;
+      track('calculator_used',{tool:'debt_planner',debts:debts.length,outcome:'unaffordable'});
+      stop.scrollIntoView({behavior:'smooth',block:'start'});
+      return;
+    }
+    stop.hidden=true; $('planBox').hidden=false; $('timelineBox').hidden=false;
+
+    var av=simulate(debts,budget,'avalanche'), sb=simulate(debts,budget,'snowball'), mn=simulate(debts,budget,'minimum');
+    lastRuns={avalanche:av,snowball:sb};
+    var avBest = av.totalInt <= sb.totalInt + 0.5;
+    var saveVsMin = mn.done ? (mn.totalInt-Math.min(av.totalInt,sb.totalInt)) : null;
+
+    $('startNote').textContent='Starting '+dateOf(1)+', paying '+GBP2.format(budget)+' a month towards '+GBP.format(debts.reduce(function(s,d){return s+d.balance;},0))+' of debt.';
+    $('cards').innerHTML =
+      card('Avalanche',av,avBest,'<div class="sub">Highest APR first</div>')+
+      card('Snowball',sb,!avBest,'<div class="sub">Smallest balance first</div>')+
+      card('Minimums only',mn,false,'<div class="sub">For comparison</div>');
+
+    var diff=Math.abs(av.totalInt-sb.totalInt), firstWin=function(run){return Math.min.apply(null,run.debts.map(function(d){return d.paidOff||Infinity;}));};
+    var v='';
+    if(diff<1){ v='Both methods cost the same here, so choose whichever feels easier to stick with.'; }
+    else if(avBest){
+      v='<strong>Avalanche saves '+GBP.format(diff)+'</strong> in interest compared with snowball';
+      var fa=firstWin(av), fs=firstWin(sb);
+      v+= fs<fa ? '. Snowball clears your first debt sooner (month '+fs+' vs '+fa+'), so if quick wins keep you motivated, the extra cost may be worth it.' : '.';
+    } else { v='<strong>Snowball saves '+GBP.format(diff)+'</strong> here, which is unusual. It\'s usually because a small debt has a high minimum.'; }
+    if(saveVsMin!==null && saveVsMin>1) v+=' Paying '+GBP2.format(budget)+' instead of just the minimums saves <strong>'+GBP.format(saveVsMin)+'</strong> and finishes '+dur(mn.months-Math.min(av.months,sb.months))+' sooner.';
+    else if(!mn.done) v+=' On minimums alone, at least one debt would never be cleared, so paying extra matters.';
+    if(debts.some(function(d){return d.apr===0;})) v+=' <em>Tip: if a 0% deal ends before it\'s cleared, re-run the plan with the new rate.</em>';
+    $('verdict').innerHTML=v;
+
+    setMethod(avBest?'avalanche':'snowball');
+    track('calculator_used',{tool:'debt_planner',debts:debts.length,outcome:'plan'});
+
+    // Partner slot: fill #partnerSlot with your own content if you want something here. Stays hidden by default.
+    // $('partnerSlot').hidden=false;
+
+    $('planBox').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $('run').addEventListener('click',run);
+
+  /* ---------- Example data ---------- */
+  addRow({name:'Credit card',balance:3800,apr:24.9,min:114});
+  addRow({name:'Car finance',balance:6500,apr:9.9,min:210});
+  addRow({name:'Personal loan',balance:1100,apr:8.9,min:95});
+})();
+</script>
+</body>
+</html>

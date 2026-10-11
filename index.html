@@ -264,7 +264,7 @@
     /* ── SITE NAV STRIP ──────────────────────────────────────── */
     .nav-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1px;
       background: var(--border);
       border-top: 1px solid var(--border);
@@ -283,6 +283,9 @@
     .nav-strip a:nth-child(1)::before { background: var(--gold); }
     .nav-strip a:nth-child(2)::before { background: var(--red); }
     .nav-strip a:nth-child(3)::before { background: var(--teal); }
+    .nav-strip a:nth-child(4)::before { background: var(--amber); }
+    @media (min-width: 600px) { .nav-strip { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1000px) { .nav-strip { grid-template-columns: repeat(4, 1fr); } }
     .nav-strip a:hover { background: #161616; }
     .nav-strip .n-lbl {
       font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
@@ -584,6 +587,11 @@
       <div class="n-lbl">History</div>
       <div class="n-title">UK debt by year <span aria-hidden="true">→</span></div>
       <div class="n-desc">Every year since 1993 in one chart: how the debt grew from £235bn to almost £3 trillion, in cash and as a share of GDP.</div>
+    </a>
+    <a href="/debt-planner/">
+      <div class="n-lbl">Your money</div>
+      <div class="n-title">Debt payoff planner <span aria-hidden="true">→</span></div>
+      <div class="n-desc">Got personal debts? See which to pay first, compare avalanche and snowball, and get your debt-free date.</div>
     </a>
   </nav>
 
