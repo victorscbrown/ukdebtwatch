@@ -26,17 +26,28 @@ git is the main reason this repo exists.
 
 ## The monthly update
 
-The ONS publishes *Public sector finances* around the 21st of each month.
-Each release, update the constants block at the top of the `<script>` in
-**all three** HTML files. They must stay in sync — every figure on every page
-derives from them, so the pages can never contradict each other.
+The ONS publishes *Public sector finances* around the 21st of each month — but
+the exact day moves (21 Aug, 22 Sep, 21 Oct, 20 Nov 2026), so do not rely on a
+fixed date.
+
+Each release, update the constants block at the top of the `<script>` in **every
+page that carries it**. Do not work from a remembered list of files — pages get
+added, and a page left on an old baseline contradicts the rest of the site:
+
+```sh
+grep -rln "BASELINE_DEBT" --include=*.html .
+```
+
+As of October 2026 that is `index.html`, `your-share/index.html`,
+`3-trillion/index.html` and `uk-national-debt-by-year/index.html`. They must
+stay byte-identical — every figure on every page derives from them.
 
 ```js
-const BASELINE_DATE = new Date('2026-07-31T00:00:00Z');
-const BASELINE_DEBT = 2_984_900_000_000;   // PSND ex banks, latest ONS print
-const PER_SECOND    = 7_010;               // observed accrual since previous print
+const BASELINE_DATE = new Date('2026-09-30T00:00:00Z');
+const BASELINE_DEBT = 3_005_000_000_000;   // PSND ex banks, latest ONS print
+const PER_SECOND    = 2_907;               // 12-month rise / 31,536,000
 const UK_POP        = 68_350_000;          // ONS mid-year estimate
-const GDP           = 3_172_000_000_000;   // implied by the ONS debt/GDP ratio
+const GDP           = 3_196_800_000_000;   // implied by the ONS debt/GDP ratio
 ```
 
 Deriving each one:
@@ -44,12 +55,35 @@ Deriving each one:
 - **BASELINE_DEBT** — public sector net debt excluding public sector banks, from the
   latest [ONS bulletin](https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/latest).
 - **BASELINE_DATE** — the last day of the month that bulletin covers.
-- **PER_SECOND** — `(new debt − previous debt) ÷ seconds between the two dates`.
+- **PER_SECOND** — `(the twelve-month rise in net debt) ÷ 31,536,000`, using the
+  year-on-year figure the bulletin states ("£X billion more than a year
+  earlier"). **Not** the one-month change. Single months are far too volatile
+  and the ONS revises them heavily: July 2026 was revised down £2.9bn and
+  August by a further £4.4bn, which would have made a one-month rate absurd.
+  This constant also drives the calculator's pension-age projection, so a noisy
+  rate does visible damage.
 - **GDP** — `new debt ÷ (ONS debt-to-GDP percentage ÷ 100)`.
 
 Also refresh the static tiles that quote a specific month: borrowing financial year
-to date, and monthly debt interest. On `/3-trillion/`, the amber ESTIMATE banner has
-its confirmed replacement wording in an HTML comment directly above it.
+to date, and monthly debt interest.
+
+Then grep for the **previous** month's figures as literal strings (debt, percentage,
+per-second rate, interest, borrowing, and the month's name) across every HTML file and
+update each one. Stale duplicates in prose are the usual failure mode — these numbers
+are repeated in page copy, meta descriptions, Open Graph and Twitter tags, FAQ answers,
+methodology blocks, JSON-LD, tickers and screen-reader summaries. Update `dateModified`
+in any JSON-LD and `<lastmod>` in `sitemap.xml`, but only for pages this release
+actually changed.
+
+`/3-trillion/` passed its milestone in September 2026, confirmed by the ONS on
+21 October 2026, and its banner is now in the green confirmed state. The ONS
+publishes a monthly snapshot rather than a running total, so there is no official
+crossing date *inside* September — the page states the month and must not assert a day.
+
+If a release contradicts something the site asserts, make the pages accurate to what
+the ONS actually published rather than forcing the update to fit. That happened twice
+running: the September release was expected to confirm £3 trillion and did not, and the
+October release confirmed it a month earlier than the page had projected.
 
 Tax bands in `your-share/index.html` are separate and change each April, not monthly.
 
