@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Is UK Debt High? UK vs G7 Countries Compared (2026) | UK Debt Watch</title>
+  <meta name="description" content="UK government debt was 102.3% of GDP in 2025 on the IMF measure, second lowest in the G7, behind Japan, Italy, the US, France and Canada. But it has grown faster than its peers&#x27; and costs more to service." />
+  <link rel="canonical" href="https://ukdebtwatch.co.uk/uk-debt-vs-other-countries/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23f04550' text-anchor='middle'%3E£%3C/text%3E%3C/svg%3E" />
+  <meta property="og:title" content="Is UK debt high? How Britain compares" />
+  <meta property="og:description" content="UK government debt was 102.3% of GDP in 2025 on the IMF measure, second lowest in the G7, behind Japan, Italy, the US, France and Canada. But it has grown faster than its peers&#x27; and costs more to service." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ukdebtwatch.co.uk/uk-debt-vs-other-countries/" />
+  <meta property="og:site_name" content="UK Debt Watch" />
+  <meta property="og:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="article:published_time" content="2026-11-10" />
+  <meta property="article:modified_time" content="2026-11-10" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Is UK debt high? How Britain compares" />
+  <meta name="twitter:description" content="UK government debt was 102.3% of GDP in 2025 on the IMF measure, second lowest in the G7, behind Japan, Italy, the US, France and Canada. But it has grown faster than its peers&#x27; and costs more to service." />
+  <meta name="twitter:site" content="@ukdebtwatch" />
+  <meta name="twitter:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- ── ANALYTICS · Google Analytics 4 ───────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-0KZHW8KQM0');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #f04550;
+      --amber:  #f4a261;
+      --teal:   #2ec4b6;
+      --gold:   #f0c040;
+      --ice:    #a8dadc;
+      --bg:     #0a0a0a;
+      --border: #272727;
+      --text:   #f5f2ee;
+      --muted:  #909090;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', 'Courier New', monospace;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    /* ── HEADER ──────────────────────────────────────────────── */
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 28px; border-bottom: 1px solid var(--border);
+      background: var(--bg); position: sticky; top: 0; z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .live-dot {
+      width: 9px; height: 9px; background: var(--red); border-radius: 50%;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1) } 50%{ opacity:.4; transform:scale(.85) } }
+    .header a.live-label {
+      font-size: 11px; letter-spacing: .22em; color: #aaa;
+      text-transform: uppercase; text-decoration: none;
+    }
+    .header a.live-label:hover { color: #fff; }
+    .header-right { font-size: 10px; color: #666; letter-spacing: .1em; }
+
+    /* ── STATUS BANNER ───────────────────────────────────────── */
+    .status {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      padding: 11px 28px; font-size: 11px; letter-spacing: .06em;
+      background: rgba(244,162,97,.08);
+      border-bottom: 1px solid rgba(244,162,97,.25);
+      color: var(--amber);
+    }
+    .status b { color: #ffd9b0; font-weight: 500; }
+
+    /* Confirmed state: the milestone is an official ONS statistic. */
+    .status.status-confirmed {
+      background: rgba(74,222,128,.08);
+      border-bottom: 1px solid rgba(74,222,128,.25);
+      color: #86efac;
+    }
+    .status.status-confirmed b { color: #d9fbe4; }
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      padding: 64px 24px 52px; text-align: center;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(230,57,70,.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+      color: #888; margin-bottom: 20px;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 5.6vw, 52px);
+      font-weight: 800; line-height: 1.06; letter-spacing: -.01em;
+      max-width: 16ch; margin: 0 auto 26px; text-wrap: balance;
+    }
+    h1 em { font-style: normal; color: var(--red); }
+    .counter {
+      font-size: clamp(26px, 6.4vw, 68px); font-weight: 500;
+      color: var(--red); letter-spacing: -.03em; line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .over {
+      display: inline-block; margin-top: 20px; padding: 11px 24px;
+      background: rgba(240,69,80,.09); border: 1px solid rgba(240,69,80,.25);
+      border-radius: 2px; font-size: clamp(12px, 1.8vw, 14px); color: #ddd;
+    }
+    .over strong { color: var(--red); font-weight: 500; font-variant-numeric: tabular-nums; }
+    .crossed { margin-top: 18px; font-size: 12px; color: #8d8d8d; letter-spacing: .06em; }
+    .crossed strong { color: #ccc; font-weight: 400; }
+
+    /* ── STATS ───────────────────────────────────────────────── */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .stat-cell {
+      padding: 22px 24px; background: #0d0d0d;
+      border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .stat-cell::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+    .stat-cell:nth-child(1)::before { background: var(--red); }
+    .stat-cell:nth-child(2)::before { background: var(--amber); }
+    .stat-cell:nth-child(3)::before { background: var(--gold); }
+    .stat-cell:nth-child(4)::before { background: var(--teal); }
+    .stat-lbl {
+      font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      color: #999; margin-bottom: 8px;
+    }
+    .stat-val {
+      font-size: clamp(17px, 2.4vw, 22px); font-weight: 500; color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-note { font-size: 10px; color: #7d7d7d; margin-top: 5px; line-height: 1.4; }
+
+    /* ── ARTICLE ─────────────────────────────────────────────── */
+    article { max-width: 760px; margin: 0 auto; padding: 56px 28px 20px; }
+    article h2 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(19px, 3vw, 26px); letter-spacing: .01em;
+      margin: 48px 0 16px; line-height: 1.2;
+    }
+    article h2:first-of-type { margin-top: 0; }
+    article p { font-size: 14.5px; line-height: 1.85; color: #b0b0b0; margin-bottom: 17px; }
+    article p strong { color: #f0f0f0; font-weight: 500; }
+    article p.stand {
+      font-size: clamp(15px, 2.2vw, 17px); color: #d8d8d8; line-height: 1.75;
+      border-left: 2px solid var(--red); padding-left: 20px; margin-bottom: 34px;
+    }
+    article a { color: var(--ice); text-decoration: underline; text-underline-offset: 2px; }
+    article a:hover { color: #fff; }
+
+    /* ── TIMELINE ────────────────────────────────────────────── */
+    .timeline { list-style: none; margin: 26px 0 10px; }
+    .timeline li {
+      display: grid; grid-template-columns: 118px 1fr; gap: 20px;
+      border-top: 1px solid var(--border); padding: 16px 0;
+    }
+    .timeline li:last-child { border-bottom: 1px solid var(--border); }
+    .timeline .t-when {
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--amber); padding-top: 3px;
+    }
+    .timeline .t-what { font-size: 13.5px; color: #b0b0b0; line-height: 1.7; }
+    .timeline .t-what b { color: #fff; font-weight: 500; }
+    .timeline li.now .t-when { color: var(--red); }
+    @media (max-width: 540px) {
+      .timeline li { grid-template-columns: 1fr; gap: 5px; }
+    }
+
+    /* ── PULL FIGURE ─────────────────────────────────────────── */
+    .pull {
+      border: 1px solid var(--border); background: #0d0d0d;
+      padding: 26px 28px; margin: 30px 0; border-left: 3px solid var(--gold);
+    }
+    .pull .p-fig {
+      font-family: 'Syne', sans-serif; font-size: clamp(24px, 4.5vw, 36px);
+      font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .pull .p-txt { font-size: 13px; color: #a0a0a0; line-height: 1.7; }
+
+    /* ── FAQ ─────────────────────────────────────────────────── */
+    .qa { border-top: 1px solid var(--border); padding: 20px 0; }
+    .qa:last-of-type { border-bottom: 1px solid var(--border); }
+    .qa h3 { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 9px; line-height: 1.4; }
+    .qa p { font-size: 13.5px; line-height: 1.75; color: #a8a8a8; margin: 0; }
+
+    /* ── AFFILIATE ───────────────────────────────────────────── */
+    .aff-bar {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: #0b0b0b; position: relative; overflow: hidden; margin-top: 56px;
+    }
+    .aff-bar::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+      background: var(--amber); opacity: .7;
+    }
+    .aff-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; padding: 26px 28px;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .aff-label {
+      font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+      color: #6a6a6a; margin-bottom: 6px;
+    }
+    .aff-headline {
+      font-size: clamp(14px, 2vw, 18px); font-weight: 500; color: var(--text);
+      line-height: 1.35; max-width: 560px;
+    }
+    .aff-headline em { font-style: normal; color: var(--amber); }
+    .aff-sub { font-size: 11px; color: var(--muted); margin-top: 5px; max-width: 520px; line-height: 1.5; }
+    .aff-provider { font-size: 9px; color: #6a6a6a; margin-top: 8px; letter-spacing: .1em; }
+    .aff-cta {
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+      background: var(--amber); color: #080808; font-family: 'DM Mono', monospace;
+      font-size: 12px; font-weight: 500; letter-spacing: .1em; text-decoration: none;
+      border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+      transition: opacity .15s, transform .15s;
+    }
+    .aff-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ── BACK LINK + FOOTER ──────────────────────────────────── */
+    .backlink { max-width: 760px; margin: 0 auto; padding: 34px 28px 8px; }
+    .backlink a {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--ice); text-decoration: none;
+      border: 1px solid var(--border); padding: 13px 22px; border-radius: 2px;
+      transition: border-color .15s, color .15s;
+    }
+    .backlink a:hover { border-color: var(--ice); color: #fff; }
+
+    .footer {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+      padding: 14px 28px; border-top: 1px solid var(--border); background: #050505;
+      margin-top: 40px;
+    }
+    .footer span { font-size: 10px; color: #777; letter-spacing: .08em; }
+    .footer a { color: #8a8a8a; text-decoration: none; }
+    .footer a:hover { color: #ccc; text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .header-right { display: none; }
+      .hero { padding: 44px 18px 38px; }
+      .stat-cell { padding: 18px 16px; }
+      article { padding: 40px 18px 16px; }
+      .aff-inner { padding: 20px 18px; }
+      .aff-cta { width: 100%; justify-content: center; }
+      .backlink { padding: 26px 18px 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  
+    /* ── ARTICLE EXTRAS ─────────────────────────────────────── */
+    .byline { font-size: 11px; color: #8a8a8a; letter-spacing: .08em; margin-top: 4px; }
+    .byline b { color: #c8c8c8; font-weight: 400; }
+    .lede { font-size: clamp(14px, 2vw, 16px); color: #bdbdbd; max-width: 56ch; margin: 0 auto; line-height: 1.7; }
+    article h3 { font-size: 15px; font-weight: 500; color: #fff; margin: 30px 0 10px; }
+    article ul.list { margin: 4px 0 20px 0; padding-left: 0; list-style: none; }
+    article ul.list li { font-size: 14px; color: #b0b0b0; line-height: 1.8; padding-left: 18px; position: relative; margin-bottom: 6px; }
+    article ul.list li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+    article ul.list li strong { color: #f0f0f0; font-weight: 500; }
+
+    /* bar chart (pure HTML, scales on any screen) */
+    .chart { border: 1px solid var(--border); background: #0d0d0d; padding: 22px 22px 16px; margin: 28px 0; }
+    .chart-title { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #cfcfcf; margin-bottom: 4px; }
+    .chart-sub { font-size: 11px; color: #7d7d7d; margin-bottom: 18px; line-height: 1.5; }
+    .bar-row { display: grid; grid-template-columns: minmax(92px, 28%) 1fr; gap: 12px; align-items: center; margin-bottom: 9px; }
+    .bar-lbl { font-size: 12px; color: #c8c8c8; line-height: 1.3; }
+    .bar-track { position: relative; height: 22px; }
+    .bar { height: 100%; background: #3a3a3a; min-width: 2px; }
+    .bar.hi { background: var(--red); }
+    .bar.amber { background: var(--amber); }
+    .bar.teal { background: var(--teal); }
+    .bar.gold { background: var(--gold); }
+    .bar-val { position: absolute; top: 50%; transform: translateY(-50%); font-size: 12px; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 8px; }
+    .chart-src { font-size: 10px; color: #6f6f6f; margin-top: 12px; line-height: 1.5; }
+
+    /* data table → cards on phones */
+    .dtable { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px; }
+    .dtable caption { text-align: left; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #cfcfcf; padding-bottom: 10px; }
+    .dtable th { text-align: left; font-weight: 400; color: #8a8a8a; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid var(--border); padding: 8px 10px; }
+    .dtable td { border-bottom: 1px solid #1c1c1c; padding: 10px; color: #c8c8c8; vertical-align: top; }
+    .dtable td.num, .dtable th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .dtable tr.uk td { color: #fff; background: rgba(240,69,80,.07); }
+    @media (max-width: 600px) {
+      .dtable thead { display: none; }
+      .dtable caption { display: block; width: 100%; }
+      .dtable, .dtable tbody, .dtable tr, .dtable td { display: block; width: 100%; }
+      .dtable tr { border: 1px solid var(--border); margin-bottom: 10px; padding: 6px 0; }
+      .dtable td { border: 0; padding: 5px 12px; display: flex; justify-content: space-between; gap: 12px; text-align: right; }
+      .dtable td::before { content: attr(data-label); color: #8a8a8a; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; text-align: left; }
+      .dtable td.num { text-align: right; }
+      .bar-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    .keypoints { border: 1px solid var(--border); border-left: 3px solid var(--teal); background: #0d0d0d; padding: 20px 24px; margin: 0 0 36px; }
+    .keypoints h2 { font-size: 13px !important; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 12px !important; font-family: 'DM Mono', monospace !important; font-weight: 500 !important; color: var(--teal); }
+    .keypoints ul { list-style: none; }
+    .keypoints li { font-size: 13.5px; color: #c4c4c4; line-height: 1.7; padding-left: 16px; position: relative; margin-bottom: 6px; }
+    .keypoints li::before { content: '·'; position: absolute; left: 2px; color: var(--teal); font-weight: 700; }
+
+    .sources { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 18px; }
+    .sources h2 { font-size: 13px !important; letter-spacing: .16em; text-transform: uppercase; font-family: 'DM Mono', monospace !important; font-weight: 500 !important; margin: 0 0 10px !important; }
+    .sources ol { padding-left: 20px; }
+    .sources li { font-size: 12px; color: #8f8f8f; line-height: 1.7; margin-bottom: 4px; word-break: break-word; }
+    .sources a { color: #9cc; }
+
+    .related { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 40px 0 0; }
+    .related a { background: #0d0d0d; padding: 18px 20px; text-decoration: none; display: block; }
+    .related a:hover { background: #151515; }
+    .related .r-k { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #7f7f7f; }
+    .related .r-t { font-size: 14px; color: #f0f0f0; margin-top: 6px; line-height: 1.4; }
+    .header a.nav-link { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #aaa; text-decoration: none; }
+    .header a.nav-link:hover { color: #fff; }
+    .note { font-size: 12.5px !important; color: #8d8d8d !important; border-left: 2px solid #333; padding-left: 14px; }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <div class="live-dot" aria-hidden="true"></div>
+      <a class="live-label" href="/">UK Debt Watch · Live</a>
+    </div>
+    <a class="nav-link" href="/articles/">Articles</a>
+  </header>
+
+  <main>
+  <section class="hero">
+    <div class="eyebrow">Explainer · International comparison</div>
+    <h1>Is UK debt high? How Britain <em>compares</em></h1>
+    <p class="lede">The UK's debt is middling for a rich country. What stands out is how fast it has grown, and how much it costs.</p>
+    <p class="byline">By <b>UK Debt Watch</b> · Published 10 November 2026</p>
+  </section>
+
+  <article>
+
+    <aside class="keypoints" aria-label="Key points">
+      <h2>Key points</h2>
+      <ul>
+        <li>On the IMF's common measure, UK debt was <strong>102.3% of GDP</strong> in 2025: second lowest of the seven G7 economies.</li>
+        <li>Japan, Italy, the US, France and Canada owe more relative to their economies. Germany owes far less.</li>
+        <li>The UK's problem is less the level than the <strong>speed</strong>: its net debt rose 19 points of GDP from 2019 to 2025, against 5 for the rest of the G7 (OBR).</li>
+        <li>The UK also had the <strong>second-largest deficit</strong> in the G7 in 2025, and pays more interest than most.</li>
+      </ul>
+    </aside>
+
+    <p class="stand">"Britain is drowning in debt" and "Britain's debt is perfectly normal" are both said with confidence. The official international figures show something in between: the UK's debt is middling for a rich country, but it has grown faster than its peers', and it is unusually expensive to service.</p>
+
+    <h2>First, which number?</h2>
+    <p>Comparing countries means using the same yardstick. The figure on our <a href="/">live counter</a>, public sector net debt, is the UK's own headline measure: <strong>£3,005.0 billion, or 94.0% of GDP</strong>, at the end of September 2026. Other countries don't publish that exact measure.</p>
+    <p>For international comparisons, economists use <strong>general government gross debt</strong>, which the IMF and the EU calculate in the same way for every country. On that basis the ONS puts UK debt at <strong>£3,231.9 billion</strong> at the end of September 2026, about <strong>101% of GDP</strong> (our calculation from ONS figures). The two UK numbers are both correct. They just count different things: the gross figure doesn't subtract the government's cash and liquid assets, and it leaves out the Bank of England and other public corporations.</p>
+
+    <h2>The G7 league table</h2>
+<figure class="chart" role="img" aria-label="Government gross debt, G7, 2025">
+<div class="chart-title">Government gross debt, G7, 2025</div>
+<div class="chart-sub">General government gross debt, % of GDP. IMF Fiscal Monitor, April 2026.</div>
+<div class="bar-row"><div class="bar-lbl">Japan</div><div class="bar-track"><div class="bar " style="width:78.0%"></div><span class="bar-val" style="left:78.0%">206.5%</span></div></div>
+<div class="bar-row"><div class="bar-lbl">Italy</div><div class="bar-track"><div class="bar " style="width:51.8%"></div><span class="bar-val" style="left:51.8%">137.1%</span></div></div>
+<div class="bar-row"><div class="bar-lbl">United States</div><div class="bar-track"><div class="bar " style="width:46.8%"></div><span class="bar-val" style="left:46.8%">123.9%</span></div></div>
+<div class="bar-row"><div class="bar-lbl">France</div><div class="bar-track"><div class="bar " style="width:43.8%"></div><span class="bar-val" style="left:43.8%">116.0%</span></div></div>
+<div class="bar-row"><div class="bar-lbl">Canada</div><div class="bar-track"><div class="bar " style="width:42.9%"></div><span class="bar-val" style="left:42.9%">113.5%</span></div></div>
+<div class="bar-row"><div class="bar-lbl">United Kingdom</div><div class="bar-track"><div class="bar hi" style="width:38.6%"></div><span class="bar-val" style="left:38.6%">102.3%</span></div></div>
+<div class="bar-row"><div class="bar-lbl">Germany</div><div class="bar-track"><div class="bar " style="width:23.8%"></div><span class="bar-val" style="left:23.8%">62.9%</span></div></div>
+<figcaption class="chart-src">Source: IMF Fiscal Monitor, April 2026, Statistical Table A7. Figures for 2025 include IMF estimates.</figcaption></figure>
+    <p>On this measure the UK sits sixth of seven: only Germany is lower. <strong>Japan</strong> is in a league of its own at 206.5%, which is lower than older figures because the IMF changed how it measures Japan's debt. <strong>Italy</strong> (137.1%), the <strong>United States</strong> (123.9%), <strong>France</strong> (116.0%) and <strong>Canada</strong> (113.5%) all carry more debt relative to the size of their economies. Only <strong>Germany</strong> (62.9%) is far below.</p>
+    <p>Beyond the G7, Greece is at 145.7% and Spain at 100.4%, close to the UK. Ireland (32.9%) and Australia (51.0%) are much lower.</p>
+
+    <h3>Net debt tells a similar story, with one twist</h3>
+    <p>The IMF also estimates <strong>net debt</strong>, which subtracts the financial assets governments hold. The UK's 2025 figure is 93.8%, below Italy (127.7%), France (108.8%), the US (96.7%) and Japan (136.5%), and well above Germany (47.2%). The twist is <strong>Canada</strong>: its net debt is just 10.2% because its governments hold large financial assets, including public pension funds. Countries differ in how much they save as well as how much they borrow.</p>
+
+    <h2>Where the UK stands out</h2>
+    <h3>1. How fast it has grown</h3>
+    <p>The Office for Budget Responsibility's October 2026 outlook makes the point bluntly. UK net debt rose by <strong>19 percentage points of GDP</strong> between 2019 and 2025, against an average of 5 points for the other G7 economies.</p>
+
+    <h3>2. The deficit</h3>
+    <p>In 2025 the UK government spent 5.4% of GDP more than it raised, according to the IMF. Of the G7, only the US ran a bigger deficit (6.8%). France was at 5.1%, Italy 3.1%, Germany 2.7%, Canada 1.8% and Japan 1.1%. The IMF projected the UK deficit to narrow to 3.9% in 2026.</p>
+
+    <h3>3. The interest bill</h3>
+    <p>This is where the UK looks worst. The OBR says UK interest rates have been <em>"among the highest in the G7 since 2022"</em>. It puts UK debt interest at <strong>£109 billion, or 3.5% of GDP</strong>, in 2025/26, rising to £160 billion (4.2%) by 2031/32. On a net basis derived from IMF data, the UK's interest burden in 2025 was about 2.6% of GDP. That is behind only the US and Italy (both 3.6%) in the G7, and above France (2.0%) and Germany (0.9%).</p>
+    <p>Part of the reason is that about a quarter of UK gilts (25.3% at the end of March 2026, according to the Debt Management Office) are linked to inflation, so the 2022 price surge fed straight into the bill. We explain it in full in <a href="/uk-debt-interest/">the UK's interest bill</a>.</p>
+
+    <h3>4. One genuine strength: long-dated debt</h3>
+    <p>UK government debt takes an average of <strong>13.5 years</strong> to mature, the second-longest in the OECD after South Korea, against an OECD average of 8 years, according to the OECD's figures for 2025 (Global Debt Report 2026). That means a rise in interest rates takes years to work through the whole stock of debt, giving the UK more time to adjust than countries that must refinance quickly.</p>
+
+    <h2>Debt the UK has carried before</h2>
+    <p>By its own history, today's debt is not extreme. The OBR's records show UK debt at close to 180% of GDP after the Napoleonic Wars, 143% after the First World War, and an all-time high of about <strong>250%</strong> after the Second World War. It fell to a low of 24% in 1991/92.</p>
+    <p>The difference is what drove it. Those peaks came from wars, and were brought down over decades of growth and inflation. Today's debt has built up in peacetime, through the 2008 financial crisis, the pandemic and the energy shock, and interest rates are no longer near zero.</p>
+
+    <h2>So, is UK debt high?</h2>
+    <p>Compared with other big economies: <strong>middling</strong>. Compared with its own peacetime history: <strong>high</strong>. Compared with how fast peers' debts have moved since 2019, and with what it costs to service: <strong>a real concern</strong>. The level is not unusual; the trend and the price are.</p>
+    <p class="note">The comparison uses the IMF's April 2026 Fiscal Monitor so that every country is measured the same way. The IMF published an update in October 2026. Its figures may differ slightly; we will update this page when they can be checked.</p>
+
+<h2>Questions people ask</h2><div class="qa"><h3>Is UK debt over 100% of GDP?</h3><p>On the international measure, general government gross debt, yes: the ONS put it at £3,231.9 billion at the end of September 2026, about 101% of GDP (our calculation). On the UK's headline measure, public sector net debt, it is 94.0%.</p></div><div class="qa"><h3>Which country has the most debt?</h3><p>Among the G7, Japan has by far the highest government debt relative to its economy: 206.5% of GDP in 2025, according to the IMF. In cash terms, the United States owes the most.</p></div><div class="qa"><h3>Does the UK have more debt than France?</h3><p>No. On the IMF's comparable measure, France's gross debt was 116.0% of GDP in 2025 against the UK's 102.3%. France's deficit (5.1%) was slightly smaller than the UK's (5.4%).</p></div><div class="qa"><h3>Has UK debt ever been higher?</h3><p>Yes, much higher. The OBR's historical data show UK debt at about 250% of GDP after the Second World War, its all-time high.</p></div>
+<section class="sources"><h2>Sources</h2><ol><li>IMF Fiscal Monitor, April 2026, Methodological and Statistical Appendix (Tables A1, A2, A7, A8) — <a href="https://www.imf.org/-/media/files/publications/fiscal-monitor/2026/april/english/msa.pdf" target="_blank" rel="noopener">www.imf.org/-/media/files/publications/fiscal-monitor/2026/april/engli</a></li><li>OBR Economic and Fiscal Outlook, October 2026 — <a href="https://www.gov.uk/government/publications/october-2026-economic-and-fiscal-outlook/economic-and-fiscal-outlook-october-2026" target="_blank" rel="noopener">www.gov.uk/government/publications/october-2026-economic-and-fiscal-ou</a></li><li>ONS Public sector finances, UK: September 2026 (PSND and general government gross debt) — <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/september2026" target="_blank" rel="noopener">www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfina</a></li><li>OECD Global Debt Report 2026, sovereign borrowing outlook — <a href="https://www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-report/sovereign-borrowing-outlook_4470147b.html" target="_blank" rel="noopener">www.oecd.org/en/publications/global-debt-report-2026_e9d80efd-en/full-</a></li><li>DMO Annual Review 2025-26 (index-linked share) — <a href="https://www.dmo.gov.uk/media/zvypwjss/gar2026.pdf" target="_blank" rel="noopener">www.dmo.gov.uk/media/zvypwjss/gar2026.pdf</a></li><li>OBR, 300 years of UK public finance data — <a href="https://articles.obr.uk/300-years-of-uk-public-finance-data/index.html" target="_blank" rel="noopener">articles.obr.uk/300-years-of-uk-public-finance-data/index.html</a></li></ol></section>
+<nav class="related" aria-label="More articles"><a href="/uk-debt-interest/"><div class="r-k">Cost</div><div class="r-t">The interest bill: what the UK pays just to service its debt</div></a><a href="/who-owns-uk-debt/"><div class="r-k">Ownership</div><div class="r-t">Who does the UK owe £3 trillion to?</div></a><a href="/billionaires-leaving-uk/"><div class="r-k">League table</div><div class="r-t">Billionaires who have left the UK since 2021</div></a></nav>
+  </article>
+
+  <div class="backlink" style="display:flex;gap:12px;flex-wrap:wrap;">
+    <a href="/">← Watch the live UK debt counter</a>
+    <a href="/articles/">All articles →</a>
+    <a href="/your-share/">Work out your share →</a>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <span>INDEPENDENT ANALYSIS OF OFFICIAL DATA · <a href="/articles/">ARTICLES</a> · <a href="/">UKDEBTWATCH.CO.UK</a></span>
+    <span>GENERAL INFORMATION · NOT FINANCIAL ADVICE</span>
+  </footer>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://ukdebtwatch.co.uk/uk-debt-vs-other-countries/#article",
+   "headline": "Is UK debt high? How Britain compares",
+   "description": "UK government debt was 102.3% of GDP in 2025 on the IMF measure, second lowest in the G7, behind Japan, Italy, the US, France and Canada. But it has grown faster than its peers' and costs more to service.",
+   "url": "https://ukdebtwatch.co.uk/uk-debt-vs-other-countries/",
+   "mainEntityOfPage": "https://ukdebtwatch.co.uk/uk-debt-vs-other-countries/",
+   "datePublished": "2026-11-10",
+   "dateModified": "2026-11-10",
+   "image": "https://ukdebtwatch.co.uk/og-image.jpg",
+   "inLanguage": "en-GB",
+   "author": {
+    "@type": "Organization",
+    "name": "UK Debt Watch",
+    "url": "https://ukdebtwatch.co.uk/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "UK Debt Watch",
+    "url": "https://ukdebtwatch.co.uk/",
+    "logo": "https://ukdebtwatch.co.uk/og-image.jpg"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "UK Debt Watch",
+     "item": "https://ukdebtwatch.co.uk/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Articles",
+     "item": "https://ukdebtwatch.co.uk/articles/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Is UK debt high? How Britain compares",
+     "item": "https://ukdebtwatch.co.uk/uk-debt-vs-other-countries/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is UK debt over 100% of GDP?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "On the international measure, general government gross debt, yes: the ONS put it at £3,231.9 billion at the end of September 2026, about 101% of GDP (our calculation). On the UK's headline measure, public sector net debt, it is 94.0%."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which country has the most debt?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Among the G7, Japan has by far the highest government debt relative to its economy: 206.5% of GDP in 2025, according to the IMF. In cash terms, the United States owes the most."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the UK have more debt than France?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. On the IMF's comparable measure, France's gross debt was 116.0% of GDP in 2025 against the UK's 102.3%. France's deficit (5.1%) was slightly smaller than the UK's (5.4%)."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Has UK debt ever been higher?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, much higher. The OBR's historical data show UK debt at about 250% of GDP after the Second World War, its all-time high."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who Owns UK Government Debt? Gilt Holders Explained (2026) | UK Debt Watch</title>
+  <meta name="description" content="Overseas investors hold a third of UK gilts, pension funds a fifth, and the Bank of England&#x27;s share has halved since 2021. Who the UK owes its £3 trillion debt to, with official DMO, ONS and Bank of England figures." />
+  <link rel="canonical" href="https://ukdebtwatch.co.uk/who-owns-uk-debt/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%23f04550' text-anchor='middle'%3E£%3C/text%3E%3C/svg%3E" />
+  <meta property="og:title" content="Who does the UK owe £3 trillion to?" />
+  <meta property="og:description" content="Overseas investors hold a third of UK gilts, pension funds a fifth, and the Bank of England&#x27;s share has halved since 2021. Who the UK owes its £3 trillion debt to, with official DMO, ONS and Bank of England figures." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ukdebtwatch.co.uk/who-owns-uk-debt/" />
+  <meta property="og:site_name" content="UK Debt Watch" />
+  <meta property="og:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="article:published_time" content="2026-11-10" />
+  <meta property="article:modified_time" content="2026-11-10" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Who does the UK owe £3 trillion to?" />
+  <meta name="twitter:description" content="Overseas investors hold a third of UK gilts, pension funds a fifth, and the Bank of England&#x27;s share has halved since 2021. Who the UK owes its £3 trillion debt to, with official DMO, ONS and Bank of England figures." />
+  <meta name="twitter:site" content="@ukdebtwatch" />
+  <meta name="twitter:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- ── ANALYTICS · Google Analytics 4 ───────────────────────── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-0KZHW8KQM0');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #f04550;
+      --amber:  #f4a261;
+      --teal:   #2ec4b6;
+      --gold:   #f0c040;
+      --ice:    #a8dadc;
+      --bg:     #0a0a0a;
+      --border: #272727;
+      --text:   #f5f2ee;
+      --muted:  #909090;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', 'Courier New', monospace;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    /* ── HEADER ──────────────────────────────────────────────── */
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 28px; border-bottom: 1px solid var(--border);
+      background: var(--bg); position: sticky; top: 0; z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .live-dot {
+      width: 9px; height: 9px; background: var(--red); border-radius: 50%;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1) } 50%{ opacity:.4; transform:scale(.85) } }
+    .header a.live-label {
+      font-size: 11px; letter-spacing: .22em; color: #aaa;
+      text-transform: uppercase; text-decoration: none;
+    }
+    .header a.live-label:hover { color: #fff; }
+    .header-right { font-size: 10px; color: #666; letter-spacing: .1em; }
+
+    /* ── STATUS BANNER ───────────────────────────────────────── */
+    .status {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      padding: 11px 28px; font-size: 11px; letter-spacing: .06em;
+      background: rgba(244,162,97,.08);
+      border-bottom: 1px solid rgba(244,162,97,.25);
+      color: var(--amber);
+    }
+    .status b { color: #ffd9b0; font-weight: 500; }
+
+    /* Confirmed state: the milestone is an official ONS statistic. */
+    .status.status-confirmed {
+      background: rgba(74,222,128,.08);
+      border-bottom: 1px solid rgba(74,222,128,.25);
+      color: #86efac;
+    }
+    .status.status-confirmed b { color: #d9fbe4; }
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      padding: 64px 24px 52px; text-align: center;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(230,57,70,.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+      color: #888; margin-bottom: 20px;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 5.6vw, 52px);
+      font-weight: 800; line-height: 1.06; letter-spacing: -.01em;
+      max-width: 16ch; margin: 0 auto 26px; text-wrap: balance;
+    }
+    h1 em { font-style: normal; color: var(--red); }
+    .counter {
+      font-size: clamp(26px, 6.4vw, 68px); font-weight: 500;
+      color: var(--red); letter-spacing: -.03em; line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .over {
+      display: inline-block; margin-top: 20px; padding: 11px 24px;
+      background: rgba(240,69,80,.09); border: 1px solid rgba(240,69,80,.25);
+      border-radius: 2px; font-size: clamp(12px, 1.8vw, 14px); color: #ddd;
+    }
+    .over strong { color: var(--red); font-weight: 500; font-variant-numeric: tabular-nums; }
+    .crossed { margin-top: 18px; font-size: 12px; color: #8d8d8d; letter-spacing: .06em; }
+    .crossed strong { color: #ccc; font-weight: 400; }
+
+    /* ── STATS ───────────────────────────────────────────────── */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .stat-cell {
+      padding: 22px 24px; background: #0d0d0d;
+      border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .stat-cell::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+    .stat-cell:nth-child(1)::before { background: var(--red); }
+    .stat-cell:nth-child(2)::before { background: var(--amber); }
+    .stat-cell:nth-child(3)::before { background: var(--gold); }
+    .stat-cell:nth-child(4)::before { background: var(--teal); }
+    .stat-lbl {
+      font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      color: #999; margin-bottom: 8px;
+    }
+    .stat-val {
+      font-size: clamp(17px, 2.4vw, 22px); font-weight: 500; color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-note { font-size: 10px; color: #7d7d7d; margin-top: 5px; line-height: 1.4; }
+
+    /* ── ARTICLE ─────────────────────────────────────────────── */
+    article { max-width: 760px; margin: 0 auto; padding: 56px 28px 20px; }
+    article h2 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(19px, 3vw, 26px); letter-spacing: .01em;
+      margin: 48px 0 16px; line-height: 1.2;
+    }
+    article h2:first-of-type { margin-top: 0; }
+    article p { font-size: 14.5px; line-height: 1.85; color: #b0b0b0; margin-bottom: 17px; }
+    article p strong { color: #f0f0f0; font-weight: 500; }
+    article p.stand {
+      font-size: clamp(15px, 2.2vw, 17px); color: #d8d8d8; line-height: 1.75;
+      border-left: 2px solid var(--red); padding-left: 20px; margin-bottom: 34px;
+    }
+    article a { color: var(--ice); text-decoration: underline; text-underline-offset: 2px; }
+    article a:hover { color: #fff; }
+
+    /* ── TIMELINE ────────────────────────────────────────────── */
+    .timeline { list-style: none; margin: 26px 0 10px; }
+    .timeline li {
+      display: grid; grid-template-columns: 118px 1fr; gap: 20px;
+      border-top: 1px solid var(--border); padding: 16px 0;
+    }
+    .timeline li:last-child { border-bottom: 1px solid var(--border); }
+    .timeline .t-when {
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--amber); padding-top: 3px;
+    }
+    .timeline .t-what { font-size: 13.5px; color: #b0b0b0; line-height: 1.7; }
+    .timeline .t-what b { color: #fff; font-weight: 500; }
+    .timeline li.now .t-when { color: var(--red); }
+    @media (max-width: 540px) {
+      .timeline li { grid-template-columns: 1fr; gap: 5px; }
+    }
+
+    /* ── PULL FIGURE ─────────────────────────────────────────── */
+    .pull {
+      border: 1px solid var(--border); background: #0d0d0d;
+      padding: 26px 28px; margin: 30px 0; border-left: 3px solid var(--gold);
+    }
+    .pull .p-fig {
+      font-family: 'Syne', sans-serif; font-size: clamp(24px, 4.5vw, 36px);
+      font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .pull .p-txt { font-size: 13px; color: #a0a0a0; line-height: 1.7; }
+
+    /* ── FAQ ─────────────────────────────────────────────────── */
+    .qa { border-top: 1px solid var(--border); padding: 20px 0; }
+    .qa:last-of-type { border-bottom: 1px solid var(--border); }
+    .qa h3 { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 9px; line-height: 1.4; }
+    .qa p { font-size: 13.5px; line-height: 1.75; color: #a8a8a8; margin: 0; }
+
+    /* ── AFFILIATE ───────────────────────────────────────────── */
+    .aff-bar {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: #0b0b0b; position: relative; overflow: hidden; margin-top: 56px;
+    }
+    .aff-bar::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+      background: var(--amber); opacity: .7;
+    }
+    .aff-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; padding: 26px 28px;
+      max-width: 1080px; margin: 0 auto;
+    }
+    .aff-label {
+      font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+      color: #6a6a6a; margin-bottom: 6px;
+    }
+    .aff-headline {
+      font-size: clamp(14px, 2vw, 18px); font-weight: 500; color: var(--text);
+      line-height: 1.35; max-width: 560px;
+    }
+    .aff-headline em { font-style: normal; color: var(--amber); }
+    .aff-sub { font-size: 11px; color: var(--muted); margin-top: 5px; max-width: 520px; line-height: 1.5; }
+    .aff-provider { font-size: 9px; color: #6a6a6a; margin-top: 8px; letter-spacing: .1em; }
+    .aff-cta {
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+      background: var(--amber); color: #080808; font-family: 'DM Mono', monospace;
+      font-size: 12px; font-weight: 500; letter-spacing: .1em; text-decoration: none;
+      border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+      transition: opacity .15s, transform .15s;
+    }
+    .aff-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ── BACK LINK + FOOTER ──────────────────────────────────── */
+    .backlink { max-width: 760px; margin: 0 auto; padding: 34px 28px 8px; }
+    .backlink a {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--ice); text-decoration: none;
+      border: 1px solid var(--border); padding: 13px 22px; border-radius: 2px;
+      transition: border-color .15s, color .15s;
+    }
+    .backlink a:hover { border-color: var(--ice); color: #fff; }
+
+    .footer {
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+      padding: 14px 28px; border-top: 1px solid var(--border); background: #050505;
+      margin-top: 40px;
+    }
+    .footer span { font-size: 10px; color: #777; letter-spacing: .08em; }
+    .footer a { color: #8a8a8a; text-decoration: none; }
+    .footer a:hover { color: #ccc; text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .header-right { display: none; }
+      .hero { padding: 44px 18px 38px; }
+      .stat-cell { padding: 18px 16px; }
+      article { padding: 40px 18px 16px; }
+      .aff-inner { padding: 20px 18px; }
+      .aff-cta { width: 100%; justify-content: center; }
+      .backlink { padding: 26px 18px 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  
+    /* ── ARTICLE EXTRAS ─────────────────────────────────────── */
+    .byline { font-size: 11px; color: #8a8a8a; letter-spacing: .08em; margin-top: 4px; }
+    .byline b { color: #c8c8c8; font-weight: 400; }
+    .lede { font-size: clamp(14px, 2vw, 16px); color: #bdbdbd; max-width: 56ch; margin: 0 auto; line-height: 1.7; }
+    article h3 { font-size: 15px; font-weight: 500; color: #fff; margin: 30px 0 10px; }
+    article ul.list { margin: 4px 0 20px 0; padding-left: 0; list-style: none; }
+    article ul.list li { font-size: 14px; color: #b0b0b0; line-height: 1.8; padding-left: 18px; position: relative; margin-bottom: 6px; }
+    article ul.list li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+    article ul.list li strong { color: #f0f0f0; font-weight: 500; }
+
+    /* bar chart (pure HTML, scales on any screen) */
+    .chart { border: 1px solid var(--border); background: #0d0d0d; padding: 22px 22px 16px; margin: 28px 0; }
+    .chart-title { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #cfcfcf; margin-bottom: 4px; }
+    .chart-sub { font-size: 11px; color: #7d7d7d; margin-bottom: 18px; line-height: 1.5; }
+    .bar-row { display: grid; grid-template-columns: minmax(92px, 28%) 1fr; gap: 12px; align-items: center; margin-bottom: 9px; }
+    .bar-lbl { font-size: 12px; color: #c8c8c8; line-height: 1.3; }
+    .bar-track { position: relative; height: 22px; }
+    .bar { height: 100%; background: #3a3a3a; min-width: 2px; }
+    .bar.hi { background: var(--red); }
+    .bar.amber { background: var(--amber); }
+    .bar.teal { background: var(--teal); }
+    .bar.gold { background: var(--gold); }
+    .bar-val { position: absolute; top: 50%; transform: translateY(-50%); font-size: 12px; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 8px; }
+    .chart-src { font-size: 10px; color: #6f6f6f; margin-top: 12px; line-height: 1.5; }
+
+    /* data table → cards on phones */
+    .dtable { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px; }
+    .dtable caption { text-align: left; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #cfcfcf; padding-bottom: 10px; }
+    .dtable th { text-align: left; font-weight: 400; color: #8a8a8a; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid var(--border); padding: 8px 10px; }
+    .dtable td { border-bottom: 1px solid #1c1c1c; padding: 10px; color: #c8c8c8; vertical-align: top; }
+    .dtable td.num, .dtable th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .dtable tr.uk td { color: #fff; background: rgba(240,69,80,.07); }
+    @media (max-width: 600px) {
+      .dtable thead { display: none; }
+      .dtable caption { display: block; width: 100%; }
+      .dtable, .dtable tbody, .dtable tr, .dtable td { display: block; width: 100%; }
+      .dtable tr { border: 1px solid var(--border); margin-bottom: 10px; padding: 6px 0; }
+      .dtable td { border: 0; padding: 5px 12px; display: flex; justify-content: space-between; gap: 12px; text-align: right; }
+      .dtable td::before { content: attr(data-label); color: #8a8a8a; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; text-align: left; }
+      .dtable td.num { text-align: right; }
+      .bar-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    .keypoints { border: 1px solid var(--border); border-left: 3px solid var(--teal); background: #0d0d0d; padding: 20px 24px; margin: 0 0 36px; }
+    .keypoints h2 { font-size: 13px !important; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 12px !important; font-family: 'DM Mono', monospace !important; font-weight: 500 !important; color: var(--teal); }
+    .keypoints ul { list-style: none; }
+    .keypoints li { font-size: 13.5px; color: #c4c4c4; line-height: 1.7; padding-left: 16px; position: relative; margin-bottom: 6px; }
+    .keypoints li::before { content: '·'; position: absolute; left: 2px; color: var(--teal); font-weight: 700; }
+
+    .sources { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 18px; }
+    .sources h2 { font-size: 13px !important; letter-spacing: .16em; text-transform: uppercase; font-family: 'DM Mono', monospace !important; font-weight: 500 !important; margin: 0 0 10px !important; }
+    .sources ol { padding-left: 20px; }
+    .sources li { font-size: 12px; color: #8f8f8f; line-height: 1.7; margin-bottom: 4px; word-break: break-word; }
+    .sources a { color: #9cc; }
+
+    .related { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 40px 0 0; }
+    .related a { background: #0d0d0d; padding: 18px 20px; text-decoration: none; display: block; }
+    .related a:hover { background: #151515; }
+    .related .r-k { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #7f7f7f; }
+    .related .r-t { font-size: 14px; color: #f0f0f0; margin-top: 6px; line-height: 1.4; }
+    .header a.nav-link { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #aaa; text-decoration: none; }
+    .header a.nav-link:hover { color: #fff; }
+    .note { font-size: 12.5px !important; color: #8d8d8d !important; border-left: 2px solid #333; padding-left: 14px; }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <div class="live-dot" aria-hidden="true"></div>
+      <a class="live-label" href="/">UK Debt Watch · Live</a>
+    </div>
+    <a class="nav-link" href="/articles/">Articles</a>
+  </header>
+
+  <main>
+  <section class="hero">
+    <div class="eyebrow">Explainer · Who holds UK debt</div>
+    <h1>Who does the UK owe <em>£3 trillion</em> to?</h1>
+    <p class="lede">Pension funds, overseas investors, banks, the Bank of England and 24 million savers: who actually lends the UK government its money, and how that is changing.</p>
+    <p class="byline">By <b>UK Debt Watch</b> · Published 10 November 2026</p>
+  </section>
+
+  <article>
+
+    <aside class="keypoints" aria-label="Key points">
+      <h2>Key points</h2>
+      <ul>
+        <li>Most of what the UK owes is in <strong>gilts</strong>, government bonds worth about £2.2 trillion at market prices.</li>
+        <li><strong>Overseas investors hold a third</strong> of them, the largest single group.</li>
+        <li>UK pension funds and insurers hold a fifth. The Bank of England's share has halved since 2021.</li>
+        <li>Households own almost no gilts directly, but lend the government <strong>£251.8 billion</strong> through NS&amp;I savings.</li>
+      </ul>
+    </aside>
+
+    <p class="stand">When people hear that the UK owes £3 trillion, the obvious question is: owes it to whom? The answer is less alarming than "foreign creditors" and more interesting than "ourselves". It is mostly pension funds, overseas investors, banks, fund managers and, until recently, the Bank of England.</p>
+
+    <h2>What the government actually borrows with</h2>
+    <p>The UK government borrows mainly by selling <strong>gilts</strong>: bonds that pay a fixed interest rate (a "coupon") twice a year and repay the face value on a set date, sometimes 50 years away. The Debt Management Office, part of the Treasury, runs the sales.</p>
+    <p>At 30 June 2026 the DMO's gross debt portfolio stood at <strong>£2,994.5 billion</strong> in nominal terms, including the inflation uplift on index-linked gilts. Of that, £2,216.0 billion was conventional gilts, £691.9 billion was index-linked gilts, whose payments rise with inflation, and £86.5 billion was Treasury bills, short-term IOUs that mature within a year.</p>
+    <p class="note">That total sitting close to the £3,005.0 billion headline debt figure is a coincidence. The headline measure, public sector net debt, also counts National Savings &amp; Investments and other liabilities, includes the Bank of England, and subtracts the government's liquid assets.</p>
+
+    <h2>Who holds the gilts</h2>
+    <p>The ONS publishes who owns gilts, valued at market prices. Market value is lower than face value at the moment because many gilts were issued when interest rates were near zero and now trade below par. At the end of March 2026 the total was <strong>£2,198.7 billion</strong>.</p>
+
+<figure class="chart" role="img" aria-label="Who owns UK government gilts">
+<div class="chart-title">Who owns UK government gilts</div>
+<div class="chart-sub">Market value, end of March 2026, £ billion and share of total</div>
+<div class="bar-row"><div class="bar-lbl">Overseas investors</div><div class="bar-track"><div class="bar hi" style="width:78.0%"></div><span class="bar-val" style="left:78.0%">£739bn</span></div></div>
+<div class="bar-row"><div class="bar-lbl">Insurers &amp; pension funds</div><div class="bar-track"><div class="bar amber" style="width:46.8%"></div><span class="bar-val" style="left:46.8%">£443bn</span></div></div>
+<div class="bar-row"><div class="bar-lbl">Other financial firms</div><div class="bar-track"><div class="bar gold" style="width:43.1%"></div><span class="bar-val" style="left:43.1%">£408bn</span></div></div>
+<div class="bar-row"><div class="bar-lbl">Bank of England</div><div class="bar-track"><div class="bar teal" style="width:38.6%"></div><span class="bar-val" style="left:38.6%">£366bn</span></div></div>
+<div class="bar-row"><div class="bar-lbl">Banks &amp; building societies</div><div class="bar-track"><div class="bar " style="width:25.1%"></div><span class="bar-val" style="left:25.1%">£238bn</span></div></div>
+<div class="bar-row"><div class="bar-lbl">Households</div><div class="bar-track"><div class="bar " style="width:0.5%"></div><span class="bar-val" style="left:0.5%">£3bn</span></div></div>
+<figcaption class="chart-src">Source: ONS sector holdings, published in DMO Quarterly Review, April–June 2026. Shares: overseas 33.6%, insurers &amp; pension funds 20.2%, other financial firms 18.6%, Bank of England 16.6%, banks 10.8%, households 0.1%.</figcaption></figure>
+
+    <h3>Overseas investors: 33.6%</h3>
+    <p>Foreign central banks, sovereign wealth funds, pension funds and asset managers hold <strong>£739 billion</strong> of gilts, a third of the market and the largest single group. That share has risen from 28.7% in 2010 and 28.0% in 2021. A larger overseas share means the UK depends more on foreign appetite for its debt. Some analysts also see it as a sign of confidence that investors around the world still treat gilts as a safe, liquid asset.</p>
+
+    <h3>Insurers and pension funds: 20.2%</h3>
+    <p>For decades UK pension funds were the natural buyers of long-dated gilts, because they needed safe assets that match pensions due decades away. In 2010 they held 30.4% of the market. That has fallen to 20.2% as old defined-benefit schemes close and transfer their liabilities to insurers.</p>
+    <p>The September 2022 "mini-budget" showed how much these holders matter. Gilt prices fell so fast that pension funds using leveraged "liability-driven investment" strategies were forced to sell, pushing prices down further. The Bank of England stepped in, buying <strong>£19.3 billion</strong> of gilts between 28 September and 14 October 2022, and had sold them all again by 12 January 2023.</p>
+
+    <h3>The Bank of England: 16.6%, and shrinking</h3>
+    <p>Between 2009 and 2021 the Bank of England created money to buy gilts, a policy called quantitative easing. Its gilt holdings peaked at <strong>£875 billion</strong> in December 2021, when it owned about a third of the market. It is now reversing that, letting gilts mature and selling some back. By 16 September 2026 holdings were down to <strong>£488 billion</strong>, measured at the price it paid.</p>
+    <p>In September 2026 the Bank's Monetary Policy Committee voted to unwind a further £368 billion by the end of 2034, about £46 billion a year, while keeping £120 billion of the longest-dated gilts. Any losses on these holdings fall on the taxpayer: the Treasury indemnifies the scheme. It received £123.9 billion of profits from it between 2009 and 2022, but has been paying money back since rates rose, including <strong>£16.7 billion in the year to February 2026</strong>. By February 2026 the net gain to the Treasury since 2009 had shrunk to £21.3 billion.</p>
+
+    <h3>Banks and other financial firms: 29.4%</h3>
+    <p>UK banks and building societies hold 10.8% of gilts, up from 6.3% in 2010; banks use gilts as safe assets they can sell quickly. "Other financial firms", including hedge funds, asset managers and trading houses, hold another 18.6%, nearly double their 2010 share.</p>
+
+    <h3>Households: 0.1%, directly</h3>
+    <p>Very few people own gilts directly: about £3 billion in total. But millions lend to the government another way. <strong>National Savings &amp; Investments</strong>, the Treasury-backed savings bank behind Premium Bonds, held <strong>£251.8 billion</strong> from more than 24 million customers at the end of March 2026. Every pound in a Premium Bond is a pound lent to the government.</p>
+
+    <h2>How the ownership has shifted</h2>
+    <table class="dtable">
+      <caption>Share of gilts held, by owner</caption>
+      <thead><tr><th>Holder</th><th class="num">Mar 2010</th><th class="num">Jun 2021</th><th class="num">Mar 2026</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Holder">Overseas</td><td class="num" data-label="2010">28.7%</td><td class="num" data-label="2021">28.0%</td><td class="num" data-label="2026">33.6%</td></tr>
+        <tr><td data-label="Holder">Insurers &amp; pension funds</td><td class="num" data-label="2010">30.4%</td><td class="num" data-label="2021">27.2%</td><td class="num" data-label="2026">20.2%</td></tr>
+        <tr><td data-label="Holder">Bank of England</td><td class="num" data-label="2010">23.4%</td><td class="num" data-label="2021">33.0%</td><td class="num" data-label="2026">16.6%</td></tr>
+        <tr><td data-label="Holder">Banks &amp; building societies</td><td class="num" data-label="2010">6.3%</td><td class="num" data-label="2021">4.7%</td><td class="num" data-label="2026">10.8%</td></tr>
+        <tr><td data-label="Holder">Other financial firms</td><td class="num" data-label="2010">9.9%</td><td class="num" data-label="2021">6.9%</td><td class="num" data-label="2026">18.6%</td></tr>
+        <tr><td data-label="Holder">Households</td><td class="num" data-label="2010">1.1%</td><td class="num" data-label="2021">0.2%</td><td class="num" data-label="2026">0.1%</td></tr>
+      </tbody>
+    </table>
+    <p>The big change since 2021 is the Bank of England stepping back. Every gilt it lets mature or sells has to be bought by someone else, and so far overseas investors, banks and other financial firms have filled the gap. That matters for the interest bill. Gilts the Bank no longer holds have to be sold to private buyers at market prices.</p>
+
+    <h2>Why the structure matters</h2>
+    <p>Two features of UK debt are unusual. First, it is <strong>long</strong>: the average gilt matures in 13.4 years (DMO, June 2026), longer than the G7 average according to the DMO, so higher interest rates feed through to the bill slowly as old gilts are refinanced. Second, a large slice is <strong>linked to inflation</strong>: index-linked gilts make up about a quarter of the portfolio (£691.9 billion of £2,994.5 billion in June 2026), which is why the interest bill jumped when RPI inflation spiked in 2022. Both are covered in our article on <a href="/uk-debt-interest/">the UK's interest bill</a>.</p>
+    <p>The simple answer to "who do we owe it to?" is: a broad mix of investors, about a third of them abroad, plus 24 million savers with NS&amp;I. The government has to keep those lenders willing to buy, and the price of their willingness is the interest rate.</p>
+
+<h2>Questions people ask</h2><div class="qa"><h3>Does China own a lot of UK debt?</h3><p>Official statistics don't break overseas holdings down by country in the ONS sector data used here. Overseas investors as a whole hold 33.6% of gilts by market value, including foreign central banks, sovereign wealth funds and private investors.</p></div><div class="qa"><h3>Does the UK owe the money to itself?</h3><p>Partly. About 16.6% of gilts are held by the Bank of England, which is publicly owned, and much of the rest is held by UK pension funds, insurers and banks on behalf of UK savers. A third is held overseas.</p></div><div class="qa"><h3>Are Premium Bonds government debt?</h3><p>Yes. NS&amp;I, which runs Premium Bonds, is backed by the Treasury and the money it raises is government borrowing. NS&amp;I held £251.8 billion at the end of March 2026.</p></div><div class="qa"><h3>What is quantitative tightening?</h3><p>It is the Bank of England reversing quantitative easing: letting the gilts it bought mature without replacing them, and selling some back to investors. In September 2026 it planned to unwind £368 billion more by the end of 2034.</p></div>
+<section class="sources"><h2>Sources</h2><ol><li>DMO Quarterly Review, April–June 2026 (portfolio, sector holdings, maturity, index-linked share) — <a href="https://www.dmo.gov.uk/media/r2ejghpr/apr-jun-2026a.pdf" target="_blank" rel="noopener">www.dmo.gov.uk/media/r2ejghpr/apr-jun-2026a.pdf</a></li><li>DMO Quarterly Review, April–June 2010 (2010 holdings) — <a href="https://www.dmo.gov.uk/media/cfdhz4ke/apr-jun10.pdf" target="_blank" rel="noopener">www.dmo.gov.uk/media/cfdhz4ke/apr-jun10.pdf</a></li><li>DMO Quarterly Review, July–September 2021 (2021 holdings) — <a href="https://www.dmo.gov.uk/media/cdgosyfh/jul-sep-2021.pdf" target="_blank" rel="noopener">www.dmo.gov.uk/media/cdgosyfh/jul-sep-2021.pdf</a></li><li>DMO Debt Management Report 2026-27 (APF peak) — <a href="https://www.dmo.gov.uk/media/0uuiqi10/drmr2627.pdf" target="_blank" rel="noopener">www.dmo.gov.uk/media/0uuiqi10/drmr2627.pdf</a></li><li>Bank of England, Monetary Policy Summary and minutes, September 2026 — <a href="https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026" target="_blank" rel="noopener">www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/septe</a></li><li>Bank of England, APF Annual Report 2025-26 — <a href="https://www.bankofengland.co.uk/-/media/boe/files/asset-purchase-facility/2026/apf-annual-report-2025-26.pdf" target="_blank" rel="noopener">www.bankofengland.co.uk/-/media/boe/files/asset-purchase-facility/2026</a></li><li>Bank of England, completion of 2022 financial stability gilt purchases unwind — <a href="https://www.bankofengland.co.uk/news/2023/january/boe-completes-unwind-of-recent-financial-stability-gilt-purchases" target="_blank" rel="noopener">www.bankofengland.co.uk/news/2023/january/boe-completes-unwind-of-rece</a></li><li>NS&amp;I provisional Q4 2025-26 results — <a href="https://www.nsandi.com/about-us/press-releases/2026/nsi-provisional-q4-2025-26-results" target="_blank" rel="noopener">www.nsandi.com/about-us/press-releases/2026/nsi-provisional-q4-2025-26</a></li><li>ONS Public sector finances, UK: September 2026 — <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance/bulletins/publicsectorfinances/september2026" target="_blank" rel="noopener">www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfina</a></li></ol></section>
+<nav class="related" aria-label="More articles"><a href="/uk-debt-interest/"><div class="r-k">Cost</div><div class="r-t">The interest bill: what the UK pays just to service its debt</div></a><a href="/uk-debt-vs-other-countries/"><div class="r-k">Comparison</div><div class="r-t">Is UK debt high? How Britain compares with other countries</div></a><a href="/billionaires-leaving-uk/"><div class="r-k">League table</div><div class="r-t">Billionaires who have left the UK since 2021</div></a></nav>
+  </article>
+
+  <div class="backlink" style="display:flex;gap:12px;flex-wrap:wrap;">
+    <a href="/">← Watch the live UK debt counter</a>
+    <a href="/articles/">All articles →</a>
+    <a href="/your-share/">Work out your share →</a>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <span>INDEPENDENT ANALYSIS OF OFFICIAL DATA · <a href="/articles/">ARTICLES</a> · <a href="/">UKDEBTWATCH.CO.UK</a></span>
+    <span>GENERAL INFORMATION · NOT FINANCIAL ADVICE</span>
+  </footer>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "@id": "https://ukdebtwatch.co.uk/who-owns-uk-debt/#article",
+   "headline": "Who does the UK owe £3 trillion to?",
+   "description": "Overseas investors hold a third of UK gilts, pension funds a fifth, and the Bank of England's share has halved since 2021. Who the UK owes its £3 trillion debt to, with official DMO, ONS and Bank of England figures.",
+   "url": "https://ukdebtwatch.co.uk/who-owns-uk-debt/",
+   "mainEntityOfPage": "https://ukdebtwatch.co.uk/who-owns-uk-debt/",
+   "datePublished": "2026-11-10",
+   "dateModified": "2026-11-10",
+   "image": "https://ukdebtwatch.co.uk/og-image.jpg",
+   "inLanguage": "en-GB",
+   "author": {
+    "@type": "Organization",
+    "name": "UK Debt Watch",
+    "url": "https://ukdebtwatch.co.uk/"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "UK Debt Watch",
+    "url": "https://ukdebtwatch.co.uk/",
+    "logo": "https://ukdebtwatch.co.uk/og-image.jpg"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "UK Debt Watch",
+     "item": "https://ukdebtwatch.co.uk/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Articles",
+     "item": "https://ukdebtwatch.co.uk/articles/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Who does the UK owe £3 trillion to?",
+     "item": "https://ukdebtwatch.co.uk/who-owns-uk-debt/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Does China own a lot of UK debt?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Official statistics don't break overseas holdings down by country in the ONS sector data used here. Overseas investors as a whole hold 33.6% of gilts by market value, including foreign central banks, sovereign wealth funds and private investors."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the UK owe the money to itself?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Partly. About 16.6% of gilts are held by the Bank of England, which is publicly owned, and much of the rest is held by UK pension funds, insurers and banks on behalf of UK savers. A third is held overseas."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Are Premium Bonds government debt?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. NS&amp;I, which runs Premium Bonds, is backed by the Treasury and the money it raises is government borrowing. NS&amp;I held £251.8 billion at the end of March 2026."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is quantitative tightening?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It is the Bank of England reversing quantitative easing: letting the gilts it bought mature without replacing them, and selling some back to investors. In September 2026 it planned to unwind £368 billion more by the end of 2034."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</body>
+</html>

@@ -287,6 +287,12 @@
     @media (min-width: 600px) { .nav-strip { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1000px) { .nav-strip { grid-template-columns: repeat(4, 1fr); } }
     .nav-strip a:hover { background: #161616; }
+    .header a.nav-link { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #aaa; text-decoration: none; }
+    .header a.nav-link:hover { color: #fff; }
+    .read-head { padding: 34px 26px 14px; max-width: 1080px; }
+    .read-head h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(19px, 3vw, 24px); }
+    .read-head p { font-size: 12.5px; color: #8d8d8d; margin-top: 6px; }
+    .read-head a { color: var(--ice); }
     .nav-strip .n-lbl {
       font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
       color: #999; margin-bottom: 8px;
@@ -487,7 +493,10 @@
       <div class="live-dot" aria-hidden="true"></div>
       <span class="live-label">UK Debt Watch · Live</span>
     </div>
-    <div class="header-right" id="header-right">ONS DATA · SEPTEMBER 2026 · NEXT RELEASE 20 NOV</div>
+    <div style="display:flex;align-items:center;gap:22px;">
+      <div class="header-right" id="header-right">ONS DATA · SEPTEMBER 2026 · NEXT RELEASE 20 NOV</div>
+      <a class="nav-link" href="/articles/">Articles</a>
+    </div>
   </header>
 
   <!-- Ticker -->
@@ -595,6 +604,36 @@
     </a>
   </nav>
 
+  <!-- ── ANALYSIS (articles) ─────────────────────────────────── -->
+  <section aria-labelledby="read-title">
+    <div class="read-head">
+      <h2 id="read-title">Read the analysis</h2>
+      <p>Plain-English articles, every figure from official data. <a href="/articles/">All articles →</a></p>
+    </div>
+    <nav class="nav-strip" aria-label="Articles">
+      <a href="/uk-debt-interest/">
+        <div class="n-lbl">Cost</div>
+        <div class="n-title">The £108.7bn interest bill <span aria-hidden="true">→</span></div>
+        <div class="n-desc">More than the education budget on the OBR's measure. Why the cost of carrying the debt nearly tripled in six years.</div>
+      </a>
+      <a href="/who-owns-uk-debt/">
+        <div class="n-lbl">Ownership</div>
+        <div class="n-title">Who does the UK owe? <span aria-hidden="true">→</span></div>
+        <div class="n-desc">Overseas investors, pension funds, the Bank of England and 24 million NS&amp;I savers.</div>
+      </a>
+      <a href="/uk-debt-vs-other-countries/">
+        <div class="n-lbl">Comparison</div>
+        <div class="n-title">Is UK debt high? <span aria-hidden="true">→</span></div>
+        <div class="n-desc">How Britain compares with the US, Japan, France, Italy, Germany and Canada.</div>
+      </a>
+      <a href="/billionaires-leaving-uk/">
+        <div class="n-lbl">League table</div>
+        <div class="n-title">Billionaires who left <span aria-hidden="true">→</span></div>
+        <div class="n-desc">Who has left the UK since 2021, how they made their money, and where they went.</div>
+      </a>
+    </nav>
+  </section>
+
   <!-- ── FAQ (visible content backing the FAQPage schema) ────── -->
   <section class="prose" id="faq">
     <div class="prose-inner">
@@ -679,7 +718,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <span>SOURCE: <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance" target="_blank" rel="noopener">ONS PUBLIC SECTOR FINANCES</a> · <a href="https://obr.uk" target="_blank" rel="noopener">OBR ECONOMIC &amp; FISCAL OUTLOOK</a> · <a href="https://ukdebtwatch.co.uk/">UKDEBTWATCH.CO.UK</a></span>
+    <span>SOURCE: <a href="https://www.ons.gov.uk/economy/governmentpublicsectorandtaxes/publicsectorfinance" target="_blank" rel="noopener">ONS PUBLIC SECTOR FINANCES</a> · <a href="https://obr.uk" target="_blank" rel="noopener">OBR ECONOMIC &amp; FISCAL OUTLOOK</a> · <a href="/articles/">ARTICLES</a> · <a href="https://ukdebtwatch.co.uk/">UKDEBTWATCH.CO.UK</a></span>
     <span>⚠ ESTIMATED — NOT REAL-TIME GOVERNMENT DATA</span>
   </footer>
 
