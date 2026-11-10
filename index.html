@@ -241,6 +241,8 @@
       font-variant-numeric: tabular-nums;
     }
     .stat-note { font-size: 10px; color: #7d7d7d; margin-top: 5px; line-height: 1.4; }
+    .hook-link { display: inline-block; margin-top: 9px; font-size: 11px; letter-spacing: .04em; color: var(--ice); text-decoration: underline; text-underline-offset: 2px; line-height: 1.4; }
+    .hook-link:hover { color: #fff; }
 
     /* ── CONTEXT BAR ─────────────────────────────────────────── */
     .context-bar {
@@ -551,6 +553,7 @@
       <div class="stat-lbl">Debt Interest, September 2026</div>
       <div class="stat-val">£10.9 billion</div>
       <div class="stat-note">In one month · incl. £4.0bn RPI uplift</div>
+      <a class="hook-link" href="/uk-debt-interest/" onclick="window.gtag&&gtag('event','article_hook_click',{hook:'home_interest_tile'})">Why the interest bill has nearly tripled since 2019 →</a>
     </div>
   </section>
 

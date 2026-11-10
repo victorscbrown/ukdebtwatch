@@ -176,6 +176,8 @@
       font-variant-numeric: tabular-nums; line-height: 1.15;
     }
     .res-note { font-size: 10px; color: #7d7d7d; margin-top: 6px; line-height: 1.5; }
+    .hook-link { display: inline-block; margin-top: 9px; font-size: 11px; letter-spacing: .04em; color: var(--ice); text-decoration: underline; text-underline-offset: 2px; line-height: 1.4; }
+    .hook-link:hover { color: #fff; }
 
     /* verdict line */
     .verdict {
@@ -350,6 +352,7 @@
         <div class="res-lbl">Your share of September's interest</div>
         <div class="res-val" id="r-interest">£—</div>
         <div class="res-note">One month · £10.9bn ÷ population</div>
+        <a class="hook-link" href="/uk-debt-interest/" onclick="window.gtag&&gtag('event','article_hook_click',{hook:'calc_interest'})">Why the interest bill has nearly tripled →</a>
       </div>
       <div class="res">
         <div class="res-lbl">Your share at pension age</div>
