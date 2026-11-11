@@ -22,7 +22,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline-color:#0e6f68
 .hero,.intro{background:transparent;border-bottom:0;text-align:left;max-width:776px;margin:0 auto;padding:56px 24px 8px;width:100%}
 .hero::before,.intro::before{display:none}
 .hero .eyebrow,.intro .eyebrow{font-family:'DM Mono',ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.2em;color:#b3262f;margin:0 0 16px}
-.hero h1,.intro h1,h1{font-family:Syne,'DM Sans',sans-serif;font-weight:800;font-size:44px;line-height:1.1;letter-spacing:0;color:#111;max-width:none;margin:0 0 20px;text-align:left}
+.hero h1,.intro h1,h1{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:44px;line-height:1.12;letter-spacing:-.015em;color:#111;max-width:none;margin:0 0 20px;text-align:left}
 .hero h1 em,.intro h1 em{color:#b3262f}
 .lede,.intro p{font-size:20px;line-height:1.55;color:#3d3d3d;max-width:none;margin:0 0 16px;text-align:left}
 .intro p b{color:#111;font-weight:700}
