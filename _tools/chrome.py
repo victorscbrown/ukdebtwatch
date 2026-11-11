@@ -139,7 +139,7 @@ def footer(note_html=""):
             '    <nav class="udw-f-nav" aria-label="Footer"><a href="/about/">About</a><a href="/contact/">Contact</a>'
             '<a href="/privacy/">Privacy</a><a href="/about/#sources">Sources</a><a href="/articles/">Articles</a>'
             '<a href="/help/">Help</a><button type="button" data-udw-consent-open>Cookie settings</button></nav>\n'
-            '    <p class="udw-f-line">UK Debt Watch · Independent analysis of official data · Not financial advice · Edited by Victor Brown</p>\n'
+            '    <p class="udw-f-line">UK Debt Watch · Independent analysis of official data · Not financial advice</p>\n'
             '  </div>\n</footer>')
 
 GA_OLD = re.compile(r'<!--[^\n]*ANALYTICS[^\n]*-->\s*<script async src="https://www\.googletagmanager\.com/gtag/js\?id=G-[A-Z0-9]+"></script>\s*<script>\s*window\.dataLayer[\s\S]*?</script>')
