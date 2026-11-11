@@ -253,8 +253,6 @@ footer p{margin:6px 0}
       </details>
     </div>
 
-    <!-- Optional partner slot: shown only to visitors whose plan is affordable. Add your own copy/link, or leave hidden. -->
-    <div class="step" id="partnerSlot" hidden></div>
   </section>
 
   <section class="faq" aria-labelledby="faqh">
@@ -515,7 +513,7 @@ footer p{margin:6px 0}
       stop.innerHTML='<div class="callout stop"><strong>A payoff plan won\'t work at this budget.</strong><p>'+gap+'</p>'+
         '<p>This is exactly when free debt advice helps most. An adviser can contact lenders for you, ask them to freeze interest, and explain options such as Breathing Space, a debt management plan or a debt relief order. Get in touch <em>before</em> you miss payments. It\'s free and confidential:</p>'+ADVICE+
         '<p>Avoid companies that charge fees for debt help. Free services offer the same solutions.</p></div>';
-      ['planBox','timelineBox','partnerSlot'].forEach(function(id){$(id).hidden=true;});
+      ['planBox','timelineBox'].forEach(function(id){$(id).hidden=true;});
       lastRuns=null;
       track('calculator_used',{tool:'debt_planner',debts:debts.length,outcome:'unaffordable'});
       stop.scrollIntoView({behavior:'smooth',block:'start'});
@@ -550,8 +548,6 @@ footer p{margin:6px 0}
     setMethod(avBest?'avalanche':'snowball');
     track('calculator_used',{tool:'debt_planner',debts:debts.length,outcome:'plan'});
 
-    // Partner slot: fill #partnerSlot with your own content if you want something here. Stays hidden by default.
-    // $('partnerSlot').hidden=false;
 
     $('planBox').scrollIntoView({behavior:'smooth',block:'start'});
   }

@@ -384,100 +384,11 @@
     .footer a { color: #8a8a8a; text-decoration: none; }
     .footer a:hover { color: #ccc; text-decoration: underline; }
 
-    /* ── AFFILIATE BAR ───────────────────────────────────────── */
-    .aff-bar {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: #0b0b0b;
-      position: relative;
-      overflow: hidden;
-    }
-    .aff-bar::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 2px;
-      background: var(--aff-accent, var(--gold));
-      opacity: .7;
-    }
-    .aff-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      padding: 22px 28px;
-    }
-    .aff-label {
-      font-size: 9px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: #6a6a6a;
-      margin-bottom: 6px;
-    }
-    .aff-headline {
-      font-size: clamp(14px, 2vw, 18px);
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.35;
-      max-width: 560px;
-    }
-    .aff-headline em {
-      font-style: normal;
-      color: var(--aff-accent, var(--gold));
-    }
-    .aff-sub {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 5px;
-      max-width: 520px;
-      line-height: 1.5;
-    }
-    .aff-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      background: var(--aff-accent, var(--gold));
-      color: #080808;
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-decoration: none;
-      border-radius: 2px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: opacity .15s, transform .15s;
-    }
-    .aff-cta:hover { opacity: .85; transform: translateY(-1px); }
-    .aff-cta:active { transform: translateY(0); }
-    .aff-provider {
-      font-size: 9px;
-      color: #6a6a6a;
-      margin-top: 8px;
-      letter-spacing: .1em;
-    }
-    .aff-dots { display: flex; gap: 5px; margin-top: 12px; }
-    .aff-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #333;
-      cursor: pointer;
-      border: none;
-      padding: 0;
-      transition: background .2s;
-    }
-    .aff-dot.active { background: var(--aff-accent, var(--gold)); }
-    .aff-dots:has(.aff-dot:only-child) { display: none; }
-
     /* ── RESPONSIVE ──────────────────────────────────────────── */
     @media (max-width: 600px) {
       .header-right { display: none; }
       .hero { padding: 40px 16px 32px; }
       .stat-cell { padding: 18px 16px; }
-      .aff-inner { padding: 18px 16px; }
-      .aff-cta { width: 100%; justify-content: center; }
       .prose { padding: 36px 18px; }
     }
 
@@ -558,29 +469,6 @@
       <a class="hook-link" href="/uk-debt-interest/" onclick="window.gtag&&gtag('event','article_hook_click',{hook:'home_interest_tile'})">Why the interest bill has nearly tripled since 2019 →</a>
     </div>
   </section>
-
-  <!-- ── AFFILIATE BAR ─────────────────────────────────────────
-       Only live, approved partner links belong in AFF_VARIANTS.
-       Trading 212 and Coinbase are parked below the array until
-       their affiliate approvals land — paste the real ref into the
-       url, then move the object into AFF_VARIANTS.
-       A visitor is assigned ONE variant on first load and keeps it
-       (localStorage), so clicks can be attributed. No rotation.
-  ─────────────────────────────────────────────────────────── -->
-  <aside class="aff-bar" id="aff-bar" aria-label="Partner offer">
-    <div class="aff-inner">
-      <div class="aff-content">
-        <div class="aff-label">Partner</div>
-        <div class="aff-headline" id="aff-headline">Loading…</div>
-        <div class="aff-sub" id="aff-sub"></div>
-        <div class="aff-provider" id="aff-provider"></div>
-        <div class="aff-dots" id="aff-dots"></div>
-      </div>
-      <a class="aff-cta" id="aff-cta" href="#" target="_blank" rel="noopener sponsored">
-        <span id="aff-cta-text">—</span> →
-      </a>
-    </div>
-  </aside>
 
   <!-- Context bar -->
   <div class="context-bar" id="context-bar"></div>
@@ -714,7 +602,7 @@
         </li>
         <li>
           <span class="m-key">Not advice</span>
-          <span class="m-val">This site is an information resource. Nothing here is financial advice. Partner links are affiliate links and may earn this site a commission at no cost to you.</span>
+          <span class="m-val">This site is an information resource. Nothing here is financial advice.</span>
         </li>
       </ul>
     </div>
@@ -956,105 +844,6 @@
     } catch (e) { /* analytics must never break the page */ }
   }
 
-  /* ── AFFILIATE VARIANTS ─────────────────────────────────────
-     LIVE partners only. Anything without a real, approved link
-     stays in AFF_PENDING below and is never rendered.          */
-  const AFF_VARIANTS = [
-    {
-      key      : 'gold',
-      headline : 'Governments can print money. <em>They can\'t print gold.</em> Protect your wealth with physical bullion.',
-      sub      : 'Buy, sell and store gold online. Insured and audited daily.',
-      cta      : 'Buy Gold',
-      provider : 'BullionVault · Capital at risk.',
-      accent   : '#f4a261',
-      url      : 'https://www.bullionvaultaffiliate.com/victorsbrown/en?utm_source=ukdebtwatch&utm_medium=affiliate_bar&utm_campaign=variant_gold',
-    },
-  ];
-
-  /* ── PENDING PARTNERS — DO NOT RENDER ───────────────────────
-     Move an object into AFF_VARIANTS above only once the real
-     affiliate reference has replaced the placeholder.
-
-     Trading 212 (approval pending):
-       key: 'isa',
-       headline: 'Every second the debt grows, <em>your cash savings lose value.</em> A stocks &amp; shares ISA lets your money fight back.',
-       sub: 'Up to £20,000 tax-free each year. Capital at risk.',
-       cta: 'Open an ISA',
-       provider: 'Capital at risk. Not financial advice.',
-       accent: '#f0c040',
-       url: 'https://www.trading212.com/?ref=REPLACE_ME&utm_source=ukdebtwatch&utm_medium=affiliate_bar&utm_campaign=variant_isa'
-
-     Coinbase (approval pending):
-       key: 'crypto',
-       headline: 'Bitcoin\'s supply is capped at <em>21 million.</em> The UK\'s national debt isn\'t.',
-       sub: 'Understand the alternative. Buy crypto on a regulated UK exchange.',
-       cta: 'Get Started',
-       provider: 'Coinbase · Crypto is unregulated &amp; high risk.',
-       accent: '#2ec4b6',
-       url: 'https://coinbase.com/join/REPLACE_ME?utm_source=ukdebtwatch&utm_medium=affiliate_bar&utm_campaign=variant_crypto'
-
-     Also worth applying for via Awin: Hargreaves Lansdown, AJ Bell, The Royal Mint.
-  ─────────────────────────────────────────────────────────── */
-
-  /* ── STICKY VARIANT ASSIGNMENT ──────────────────────────────
-     One variant per visitor, persisted, never rotated — so a
-     click can actually be attributed to the variant that earned
-     it. This is what makes the A/B test real.                  */
-  const STORE_KEY = 'ukdw_aff_variant';
-
-  function assignedIndex() {
-    let stored = null;
-    try { stored = localStorage.getItem(STORE_KEY); } catch (e) { /* private mode */ }
-    const known = AFF_VARIANTS.findIndex(v => v.key === stored);
-    if (known !== -1) return known;
-
-    const idx = Math.floor(Math.random() * AFF_VARIANTS.length);
-    try { localStorage.setItem(STORE_KEY, AFF_VARIANTS[idx].key); } catch (e) { /* ignore */ }
-    return idx;
-  }
-
-  let currentVariant = 0;
-
-  function applyVariant(idx) {
-    const v    = AFF_VARIANTS[idx];
-    const bar  = $('aff-bar');
-    const dots = $('aff-dots');
-
-    $('aff-headline').innerHTML  = v.headline;
-    $('aff-sub').textContent     = v.sub;
-    $('aff-cta-text').textContent = v.cta;
-    $('aff-provider').textContent = v.provider;
-
-    const cta = $('aff-cta');
-    cta.href = v.url;
-    cta.dataset.variant = v.key;
-
-    bar.style.setProperty('--aff-accent', v.accent);
-
-    dots.innerHTML = '';
-    if (AFF_VARIANTS.length > 1) {
-      AFF_VARIANTS.forEach((variant, i) => {
-        const d = document.createElement('button');
-        d.type = 'button';
-        d.className = 'aff-dot' + (i === idx ? ' active' : '');
-        d.setAttribute('aria-label', 'Show partner option ' + (i + 1) + ': ' + variant.cta);
-        d.addEventListener('click', () => applyVariant(i));
-        dots.appendChild(d);
-      });
-    }
-
-    currentVariant = idx;
-  }
-
-  currentVariant = assignedIndex();
-  applyVariant(currentVariant);
-
-  // Impression — needed to compute a click-through rate at all
-  track('affiliate_impression', { variant: AFF_VARIANTS[currentVariant].key });
-
-  $('aff-cta').addEventListener('click', function () {
-    track('affiliate_click', { variant: this.dataset.variant });
-  });
 </script>
 </body>
 </html>
