@@ -22,13 +22,26 @@
   <meta name="twitter:image" content="https://ukdebtwatch.co.uk/og-image.jpg" />
   <meta name="theme-color" content="#0a0a0a" />
 
-  <!-- ── ANALYTICS · Google Analytics 4 ───────────────────────── -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0"></script>
-  <script>
+  <!-- ── ANALYTICS · Google Analytics 4, loaded only after consent (udw-ga) ── -->
+  <script id="udw-ga">
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-0KZHW8KQM0');
+    (function () {
+      var c = null;
+      try { c = localStorage.getItem('udw_consent'); } catch (e) {}
+      window.udwLoadGA = function () {
+        if (window.udwGALoaded) return;
+        window.udwGALoaded = true;
+        window['ga-disable-G-0KZHW8KQM0'] = false;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0';
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', 'G-0KZHW8KQM0');
+      };
+      if (c === 'granted') window.udwLoadGA();
+    })();
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -77,16 +90,16 @@
     }
     @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1) } 50%{ opacity:.4; transform:scale(.85) } }
     .header a.live-label {
-      font-size: 11px; letter-spacing: .22em; color: #aaa;
+      font-size: 12px; letter-spacing: .22em; color: #aaa;
       text-transform: uppercase; text-decoration: none;
     }
     .header a.live-label:hover { color: #fff; }
-    .header-right { font-size: 10px; color: #666; letter-spacing: .1em; }
+    .header-right { font-size: 12px; color: #666; letter-spacing: .1em; }
 
     /* ── STATUS BANNER ───────────────────────────────────────── */
     .status {
       display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-      padding: 11px 28px; font-size: 11px; letter-spacing: .06em;
+      padding: 11px 28px; font-size: 12px; letter-spacing: .06em;
       background: rgba(244,162,97,.08);
       border-bottom: 1px solid rgba(244,162,97,.25);
       color: var(--amber);
@@ -113,7 +126,7 @@
       pointer-events: none;
     }
     .eyebrow {
-      font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+      font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
       color: #888; margin-bottom: 20px;
     }
     h1 {
@@ -150,14 +163,14 @@
     .stat-cell:nth-child(3)::before { background: var(--gold); }
     .stat-cell:nth-child(4)::before { background: var(--teal); }
     .stat-lbl {
-      font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
       color: #999; margin-bottom: 8px;
     }
     .stat-val {
       font-size: clamp(17px, 2.4vw, 22px); font-weight: 500; color: #fff;
       font-variant-numeric: tabular-nums;
     }
-    .stat-note { font-size: 10px; color: #7d7d7d; margin-top: 5px; line-height: 1.4; }
+    .stat-note { font-size: 12px; color: #7d7d7d; margin-top: 5px; line-height: 1.4; }
 
     /* ── ARTICLE ─────────────────────────────────────────────── */
     article { max-width: 760px; margin: 0 auto; padding: 56px 28px 20px; }
@@ -184,7 +197,7 @@
     }
     .timeline li:last-child { border-bottom: 1px solid var(--border); }
     .timeline .t-when {
-      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
       color: var(--amber); padding-top: 3px;
     }
     .timeline .t-what { font-size: 13.5px; color: #b0b0b0; line-height: 1.7; }
@@ -229,7 +242,7 @@
       padding: 14px 28px; border-top: 1px solid var(--border); background: #050505;
       margin-top: 40px;
     }
-    .footer span { font-size: 10px; color: #777; letter-spacing: .08em; }
+    .footer span { font-size: 12px; color: #777; letter-spacing: .08em; }
     .footer a { color: #8a8a8a; text-decoration: none; }
     .footer a:hover { color: #ccc; text-decoration: underline; }
 
@@ -245,7 +258,7 @@
     }
   
     /* ── ARTICLE EXTRAS ─────────────────────────────────────── */
-    .byline { font-size: 11px; color: #8a8a8a; letter-spacing: .08em; margin-top: 4px; }
+    .byline { font-size: 12px; color: #8a8a8a; letter-spacing: .08em; margin-top: 4px; }
     .byline b { color: #c8c8c8; font-weight: 400; }
     .lede { font-size: clamp(14px, 2vw, 16px); color: #bdbdbd; max-width: 56ch; margin: 0 auto; line-height: 1.7; }
     article h3 { font-size: 15px; font-weight: 500; color: #fff; margin: 30px 0 10px; }
@@ -257,7 +270,7 @@
     /* bar chart (pure HTML, scales on any screen) */
     .chart { border: 1px solid var(--border); background: #0d0d0d; padding: 22px 22px 16px; margin: 28px 0; }
     .chart-title { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #cfcfcf; margin-bottom: 4px; }
-    .chart-sub { font-size: 11px; color: #7d7d7d; margin-bottom: 18px; line-height: 1.5; }
+    .chart-sub { font-size: 12px; color: #7d7d7d; margin-bottom: 18px; line-height: 1.5; }
     .bar-row { display: grid; grid-template-columns: minmax(92px, 28%) 1fr; gap: 12px; align-items: center; margin-bottom: 9px; }
     .bar-lbl { font-size: 12px; color: #c8c8c8; line-height: 1.3; }
     .bar-track { position: relative; height: 22px; }
@@ -267,12 +280,12 @@
     .bar.teal { background: var(--teal); }
     .bar.gold { background: var(--gold); }
     .bar-val { position: absolute; top: 50%; transform: translateY(-50%); font-size: 12px; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 8px; }
-    .chart-src { font-size: 10px; color: #6f6f6f; margin-top: 12px; line-height: 1.5; }
+    .chart-src { font-size: 12px; color: #6f6f6f; margin-top: 12px; line-height: 1.5; }
 
     /* data table → cards on phones */
     .dtable { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px; }
     .dtable caption { text-align: left; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #cfcfcf; padding-bottom: 10px; }
-    .dtable th { text-align: left; font-weight: 400; color: #8a8a8a; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid var(--border); padding: 8px 10px; }
+    .dtable th { text-align: left; font-weight: 400; color: #8a8a8a; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid var(--border); padding: 8px 10px; }
     .dtable td { border-bottom: 1px solid #1c1c1c; padding: 10px; color: #c8c8c8; vertical-align: top; }
     .dtable td.num, .dtable th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
     .dtable tr.uk td { color: #fff; background: rgba(240,69,80,.07); }
@@ -282,7 +295,7 @@
       .dtable, .dtable tbody, .dtable tr, .dtable td { display: block; width: 100%; }
       .dtable tr { border: 1px solid var(--border); margin-bottom: 10px; padding: 6px 0; }
       .dtable td { border: 0; padding: 5px 12px; display: flex; justify-content: space-between; gap: 12px; text-align: right; }
-      .dtable td::before { content: attr(data-label); color: #8a8a8a; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; text-align: left; }
+      .dtable td::before { content: attr(data-label); color: #8a8a8a; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; text-align: left; }
       .dtable td.num { text-align: right; }
       .bar-row { grid-template-columns: 1fr; gap: 4px; }
     }
@@ -302,28 +315,75 @@
     .related { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 40px 0 0; }
     .related a { background: #0d0d0d; padding: 18px 20px; text-decoration: none; display: block; }
     .related a:hover { background: #151515; }
-    .related .r-k { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #7f7f7f; }
+    .related .r-k { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #7f7f7f; }
     .related .r-t { font-size: 14px; color: #f0f0f0; margin-top: 6px; line-height: 1.4; }
-    .header a.nav-link { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #aaa; text-decoration: none; }
+    .header a.nav-link { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #aaa; text-decoration: none; }
     .header a.nav-link:hover { color: #fff; }
     .note { font-size: 12.5px !important; color: #8d8d8d !important; border-left: 2px solid #333; padding-left: 14px; }
 
     .hub { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .hub-card { background: #0d0d0d; padding: 24px 26px; text-decoration: none; display: block; }
     .hub-card:hover { background: #151515; }
-    .hub-card .r-k { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #8a8a8a; }
+    .hub-card .r-k { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #8a8a8a; }
     .hub-card h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(17px, 2.6vw, 21px); color: #fff; margin: 8px 0 8px !important; line-height: 1.25; }
     .hub-card p { font-size: 13.5px; color: #a8a8a8; line-height: 1.7; margin: 0; }
 </style>
+<style id="udw-chrome">
+/* UK Debt Watch shared chrome: header, footer, cookie choice. Generated by chrome.py */
+.udw-h{position:sticky;top:0;z-index:50;background:#0a0a0a;border-bottom:1px solid #272727;font-family:'DM Mono',ui-monospace,Menlo,monospace}
+.udw-h-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 24px;height:60px;box-sizing:border-box}
+.udw-brand{display:flex;align-items:center;gap:10px;color:#f5f2ee;text-decoration:none;font-size:13px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+.udw-brand:hover{color:#fff}
+.udw-dot{width:10px;height:10px;border-radius:50%;background:#f04550;flex:none;animation:udw-pulse 1.2s ease-in-out infinite}
+@keyframes udw-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
+@media (prefers-reduced-motion:reduce){.udw-dot{animation:none}}
+.udw-status{font-size:12px;color:#a8a8a8;letter-spacing:.1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.udw-nav{display:flex;gap:24px;margin-left:auto}
+.udw-nav a{color:#c8c8c8;text-decoration:none;font-size:13px;letter-spacing:.06em;padding:8px 0;border-bottom:2px solid transparent;white-space:nowrap}
+.udw-nav a:hover{color:#fff}
+.udw-nav a[aria-current="page"]{color:#fff;border-bottom-color:#f04550}
+.udw-menu{display:none;margin:0 0 0 auto}
+.udw-menu summary{font-family:'DM Mono',ui-monospace,Menlo,monospace;list-style:none;cursor:pointer;color:#f5f2ee;font-size:13px;letter-spacing:.1em;text-transform:uppercase;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.udw-menu summary::-webkit-details-marker{display:none}
+.udw-menu summary::after{content:"";width:14px;height:10px;background:linear-gradient(#f5f2ee,#f5f2ee) 0 0/100% 2px no-repeat,linear-gradient(#f5f2ee,#f5f2ee) 0 50%/100% 2px no-repeat,linear-gradient(#f5f2ee,#f5f2ee) 0 100%/100% 2px no-repeat}
+.udw-menu[open] summary::after{background:none;content:"\00d7";width:auto;height:auto;font-size:20px;line-height:1}
+.udw-drop{position:absolute;left:0;right:0;top:60px;background:#0a0a0a;border-bottom:1px solid #272727;display:flex;flex-direction:column;padding:4px 16px 12px}
+.udw-drop a{color:#f5f2ee;text-decoration:none;font-size:15px;letter-spacing:.04em;padding:12px 0;min-height:44px;box-sizing:border-box;border-bottom:1px solid #1e1e1e}
+.udw-drop a:last-child{border-bottom:0}
+.udw-drop a[aria-current="page"]{color:#f04550}
+.udw-h a:focus-visible,.udw-h summary:focus-visible,.udw-f a:focus-visible,.udw-f button:focus-visible,.udw-consent button:focus-visible,.udw-consent a:focus-visible{outline:2px solid #2ec4b6;outline-offset:2px}
+@media (max-width:900px){.udw-status{display:none}}
+@media (max-width:860px){.udw-nav{display:none}.udw-menu{display:block}.udw-h-in{padding:0 16px}}
+.udw-f{background:#0a0a0a;border-top:1px solid #272727;color:#a8a8a8;font-family:'DM Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.06em;line-height:1.7;margin-top:auto;padding:0}
+.udw-f-in{max-width:1200px;margin:0 auto;padding:28px 24px 32px;display:flex;flex-direction:column;gap:16px;box-sizing:border-box}
+.udw-f-note{color:#a8a8a8}
+.udw-f-note,.udw-f-note *{font-size:12px !important}
+.udw-f-note p{margin:0 0 8px}
+.udw-f-note span{display:block}
+.udw-f-note a,.udw-f-line a{color:#c8c8c8}
+.udw-f-nav{display:flex;flex-wrap:wrap;gap:6px 22px}
+.udw-f-nav a,.udw-f-nav button{color:#2ec4b6;text-decoration:none;font:inherit;letter-spacing:inherit;background:none;border:0;padding:6px 0;cursor:pointer}
+.udw-f-nav a:hover,.udw-f-nav button:hover{color:#fff;text-decoration:underline}
+.udw-f-line{margin:0;color:#8f8f8f}
+@media (max-width:860px){.udw-f-in{padding:24px 16px 28px}}
+.udw-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:100;max-width:720px;margin:0 auto;background:#111;border:1px solid #3a3a3a;color:#f5f2ee;padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;font-family:'DM Mono',ui-monospace,Menlo,monospace;box-sizing:border-box}
+.udw-consent[hidden]{display:none}
+.udw-consent p{margin:0;flex:1 1 320px;font-size:13px;line-height:1.6;color:#e0ddd8}
+.udw-consent a{color:#2ec4b6}
+.udw-consent-btns{display:flex;gap:10px;flex-wrap:wrap}
+.udw-consent button{min-height:44px;padding:0 18px;border-radius:2px;font:500 13px 'DM Mono',ui-monospace,Menlo,monospace;letter-spacing:.04em;cursor:pointer;background:#2ec4b6;color:#0a0a0a;border:1px solid #2ec4b6}
+.udw-consent button:hover{background:#5fd6cb}
+@media print{.udw-h,.udw-f,.udw-consent{display:none !important}}
+</style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-left">
-      <div class="live-dot" aria-hidden="true"></div>
-      <a class="live-label" href="/">UK Debt Watch · Live</a>
-    </div>
-    <a class="nav-link" href="/articles/">Articles</a>
-  </header>
+  <header class="udw-h">
+  <div class="udw-h-in">
+    <a class="udw-brand" href="/"><span class="udw-dot" aria-hidden="true"></span>UK Debt Watch</a>
+    <nav class="udw-nav" aria-label="Main"><a href="/">Live clock</a><a href="/your-share/">Your share</a><a href="/debt-planner/">Debt planner</a><a href="/articles/" aria-current="page">Articles</a><a href="/help/">Help</a></nav>
+    <details class="udw-menu"><summary>Menu</summary><nav class="udw-drop" aria-label="Main"><a href="/">Live clock</a><a href="/your-share/">Your share</a><a href="/debt-planner/">Debt planner</a><a href="/articles/" aria-current="page">Articles</a><a href="/help/">Help</a></nav></details>
+  </div>
+</header>
 
   <main>
   <section class="hero">
@@ -347,10 +407,14 @@
   </div>
   </main>
 
-  <footer class="footer">
-    <span>INDEPENDENT ANALYSIS OF OFFICIAL DATA · <a href="/articles/">ARTICLES</a> · <a href="/">UKDEBTWATCH.CO.UK</a></span>
-    <span>GENERAL INFORMATION · NOT FINANCIAL ADVICE</span>
-  </footer>
+  <footer class="udw-f">
+  <div class="udw-f-in">
+    <div class="udw-f-note"><span>INDEPENDENT ANALYSIS OF OFFICIAL DATA · <a href="/articles/">ARTICLES</a> · <a href="/">UKDEBTWATCH.CO.UK</a></span>
+    <span>GENERAL INFORMATION · NOT FINANCIAL ADVICE</span></div>
+    <nav class="udw-f-nav" aria-label="Footer"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/about/#sources">Sources</a><a href="/articles/">Articles</a><a href="/help/">Help</a><button type="button" data-udw-consent-open>Cookie settings</button></nav>
+    <p class="udw-f-line">UK Debt Watch · Independent analysis of official data · Not financial advice · Edited by Victor Brown</p>
+  </div>
+</footer>
 
 <script type="application/ld+json">
 {
@@ -418,5 +482,44 @@
  ]
 }
 </script>
+<!-- udw-consent -->
+<div class="udw-consent" id="udw-consent" role="region" aria-label="Cookie choice" hidden>
+  <p>Can we use analytics cookies to see which pages are useful? No ads, nothing sold. <a href="/privacy/">Privacy and cookies</a></p>
+  <div class="udw-consent-btns">
+    <button type="button" data-udw-c="denied">Reject</button>
+    <button type="button" data-udw-c="granted">Accept</button>
+  </div>
+</div>
+<script id="udw-consent-js">
+(function () {
+  var box = document.getElementById('udw-consent');
+  var c = null;
+  try { c = localStorage.getItem('udw_consent'); } catch (e) {}
+  if (c !== 'granted' && c !== 'denied') box.hidden = false;
+  function clearGA() {
+    window['ga-disable-G-0KZHW8KQM0'] = true;
+    document.cookie.split(';').forEach(function (k) {
+      var n = k.split('=')[0].trim();
+      if (n.indexOf('_ga') === 0) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
+      }
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-udw-c]') : null;
+    if (t) {
+      var v = t.getAttribute('data-udw-c');
+      try { localStorage.setItem('udw_consent', v); } catch (err) {}
+      box.hidden = true;
+      if (v === 'granted') { window.udwLoadGA && window.udwLoadGA(); } else { clearGA(); }
+      return;
+    }
+    var o = e.target.closest ? e.target.closest('[data-udw-consent-open]') : null;
+    if (o) { box.hidden = false; var b = box.querySelector('button'); b && b.focus(); }
+  });
+})();
+</script>
+<!-- /udw-consent -->
 </body>
 </html>

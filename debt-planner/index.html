@@ -17,17 +17,27 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@ukdebtwatch">
 <!-- Google Analytics 4 (same property as the rest of the site) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0KZHW8KQM0');
-  function track(name, props){
-    try{ if(window.gtag) gtag('event', name, props||{}); }catch(e){}
-    try{ if(window.plausible) plausible(name, {props: props||{}}); }catch(e){}
-  }
-</script>
+<!-- ── ANALYTICS · Google Analytics 4, loaded only after consent (udw-ga) ── -->
+  <script id="udw-ga">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    (function () {
+      var c = null;
+      try { c = localStorage.getItem('udw_consent'); } catch (e) {}
+      window.udwLoadGA = function () {
+        if (window.udwGALoaded) return;
+        window.udwGALoaded = true;
+        window['ga-disable-G-0KZHW8KQM0'] = false;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0KZHW8KQM0';
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', 'G-0KZHW8KQM0');
+      };
+      if (c === 'granted') window.udwLoadGA();
+    })();
+  </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap">
@@ -87,7 +97,7 @@ h2{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
 .callout strong{display:block;margin-bottom:4px}
 .callout p{margin:6px 0 0}
 .callout ul{margin:8px 0 0;padding-left:20px}
-label.f{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+label.f{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 input[type=text],input[type=number]{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:10px;font:15px var(--sans)}
 input[type=number]{font-family:var(--mono)}
 input:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
@@ -108,7 +118,7 @@ input:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:tra
 .card{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:14px}
 .card.best{border-color:var(--good)}
 .card h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:600}
-.card .badge{font-family:var(--mono);font-size:10px;color:var(--good);background:var(--good-soft);border-radius:999px;padding:2px 7px;margin-left:6px;letter-spacing:.06em}
+.card .badge{font-family:var(--mono);font-size:12px;color:var(--good);background:var(--good-soft);border-radius:999px;padding:2px 7px;margin-left:6px;letter-spacing:.06em}
 .big{font-family:var(--mono);font-size:22px;font-weight:700;line-height:1.2}
 .sub{color:var(--muted);font-size:13px;margin-top:4px;font-family:var(--mono)}
 .explain{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
@@ -129,7 +139,7 @@ input:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:tra
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
 .chart svg{display:block;width:100%;height:auto;touch-action:pan-y}
-.chart text{fill:var(--muted);font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums}
+.chart text{fill:var(--muted);font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums}
 .tip{position:absolute;top:0;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--text);min-width:150px;box-shadow:0 4px 16px rgba(0,0,0,.5);z-index:2}
 .tip b{display:block;font-weight:600;margin-bottom:2px}
 .tip .r{display:flex;justify-content:space-between;gap:12px}
@@ -144,7 +154,7 @@ ol.timeline li.done::before{background:var(--good);border-color:var(--good)}
 table.sched{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;margin-top:8px}
 .sched th,.sched td{text-align:right;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
 .sched th:first-child,.sched td:first-child{text-align:left}
-.sched th{color:var(--muted);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.sched th{color:var(--muted);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 details{margin-top:16px}
 summary{cursor:pointer;color:var(--muted);font-family:var(--mono);font-size:13px}
@@ -161,17 +171,61 @@ footer p{margin:6px 0}
   nav.top a{margin-left:12px}
 }
 </style>
+<style id="udw-chrome">
+/* UK Debt Watch shared chrome: header, footer, cookie choice. Generated by chrome.py */
+.udw-h{position:sticky;top:0;z-index:50;background:#0a0a0a;border-bottom:1px solid #272727;font-family:'DM Mono',ui-monospace,Menlo,monospace}
+.udw-h-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 24px;height:60px;box-sizing:border-box}
+.udw-brand{display:flex;align-items:center;gap:10px;color:#f5f2ee;text-decoration:none;font-size:13px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+.udw-brand:hover{color:#fff}
+.udw-dot{width:10px;height:10px;border-radius:50%;background:#f04550;flex:none;animation:udw-pulse 1.2s ease-in-out infinite}
+@keyframes udw-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
+@media (prefers-reduced-motion:reduce){.udw-dot{animation:none}}
+.udw-status{font-size:12px;color:#a8a8a8;letter-spacing:.1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.udw-nav{display:flex;gap:24px;margin-left:auto}
+.udw-nav a{color:#c8c8c8;text-decoration:none;font-size:13px;letter-spacing:.06em;padding:8px 0;border-bottom:2px solid transparent;white-space:nowrap}
+.udw-nav a:hover{color:#fff}
+.udw-nav a[aria-current="page"]{color:#fff;border-bottom-color:#f04550}
+.udw-menu{display:none;margin:0 0 0 auto}
+.udw-menu summary{font-family:'DM Mono',ui-monospace,Menlo,monospace;list-style:none;cursor:pointer;color:#f5f2ee;font-size:13px;letter-spacing:.1em;text-transform:uppercase;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.udw-menu summary::-webkit-details-marker{display:none}
+.udw-menu summary::after{content:"";width:14px;height:10px;background:linear-gradient(#f5f2ee,#f5f2ee) 0 0/100% 2px no-repeat,linear-gradient(#f5f2ee,#f5f2ee) 0 50%/100% 2px no-repeat,linear-gradient(#f5f2ee,#f5f2ee) 0 100%/100% 2px no-repeat}
+.udw-menu[open] summary::after{background:none;content:"\00d7";width:auto;height:auto;font-size:20px;line-height:1}
+.udw-drop{position:absolute;left:0;right:0;top:60px;background:#0a0a0a;border-bottom:1px solid #272727;display:flex;flex-direction:column;padding:4px 16px 12px}
+.udw-drop a{color:#f5f2ee;text-decoration:none;font-size:15px;letter-spacing:.04em;padding:12px 0;min-height:44px;box-sizing:border-box;border-bottom:1px solid #1e1e1e}
+.udw-drop a:last-child{border-bottom:0}
+.udw-drop a[aria-current="page"]{color:#f04550}
+.udw-h a:focus-visible,.udw-h summary:focus-visible,.udw-f a:focus-visible,.udw-f button:focus-visible,.udw-consent button:focus-visible,.udw-consent a:focus-visible{outline:2px solid #2ec4b6;outline-offset:2px}
+@media (max-width:900px){.udw-status{display:none}}
+@media (max-width:860px){.udw-nav{display:none}.udw-menu{display:block}.udw-h-in{padding:0 16px}}
+.udw-f{background:#0a0a0a;border-top:1px solid #272727;color:#a8a8a8;font-family:'DM Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.06em;line-height:1.7;margin-top:auto;padding:0}
+.udw-f-in{max-width:1200px;margin:0 auto;padding:28px 24px 32px;display:flex;flex-direction:column;gap:16px;box-sizing:border-box}
+.udw-f-note{color:#a8a8a8}
+.udw-f-note,.udw-f-note *{font-size:12px !important}
+.udw-f-note p{margin:0 0 8px}
+.udw-f-note span{display:block}
+.udw-f-note a,.udw-f-line a{color:#c8c8c8}
+.udw-f-nav{display:flex;flex-wrap:wrap;gap:6px 22px}
+.udw-f-nav a,.udw-f-nav button{color:#2ec4b6;text-decoration:none;font:inherit;letter-spacing:inherit;background:none;border:0;padding:6px 0;cursor:pointer}
+.udw-f-nav a:hover,.udw-f-nav button:hover{color:#fff;text-decoration:underline}
+.udw-f-line{margin:0;color:#8f8f8f}
+@media (max-width:860px){.udw-f-in{padding:24px 16px 28px}}
+.udw-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:100;max-width:720px;margin:0 auto;background:#111;border:1px solid #3a3a3a;color:#f5f2ee;padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;font-family:'DM Mono',ui-monospace,Menlo,monospace;box-sizing:border-box}
+.udw-consent[hidden]{display:none}
+.udw-consent p{margin:0;flex:1 1 320px;font-size:13px;line-height:1.6;color:#e0ddd8}
+.udw-consent a{color:#2ec4b6}
+.udw-consent-btns{display:flex;gap:10px;flex-wrap:wrap}
+.udw-consent button{min-height:44px;padding:0 18px;border-radius:2px;font:500 13px 'DM Mono',ui-monospace,Menlo,monospace;letter-spacing:.04em;cursor:pointer;background:#2ec4b6;color:#0a0a0a;border:1px solid #2ec4b6}
+.udw-consent button:hover{background:#5fd6cb}
+@media print{.udw-h,.udw-f,.udw-consent{display:none !important}}
+</style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="/">UK<span>Debt</span>Watch</a>
-    <nav class="top" aria-label="Main">
-      <a href="/">Debt clock</a>
-      <a href="/your-share/">Your share</a>
-      <a href="/help/">Help</a>
-    </nav>
+<header class="udw-h">
+  <div class="udw-h-in">
+    <a class="udw-brand" href="/"><span class="udw-dot" aria-hidden="true"></span>UK Debt Watch</a>
+    <nav class="udw-nav" aria-label="Main"><a href="/">Live clock</a><a href="/your-share/">Your share</a><a href="/debt-planner/" aria-current="page">Debt planner</a><a href="/articles/">Articles</a><a href="/help/">Help</a></nav>
+    <details class="udw-menu"><summary>Menu</summary><nav class="udw-drop" aria-label="Main"><a href="/">Live clock</a><a href="/your-share/">Your share</a><a href="/debt-planner/" aria-current="page">Debt planner</a><a href="/articles/">Articles</a><a href="/help/">Help</a></nav></details>
   </div>
 </header>
 
@@ -268,10 +322,12 @@ footer p{margin:6px 0}
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p><strong>Not advice.</strong> This planner is an information tool. It does not recommend any debt solution and is not regulated debt advice. For free, confidential advice, contact <a href="https://www.stepchange.org/" rel="noopener">StepChange</a>, <a href="https://nationaldebtline.org/" rel="noopener">National Debtline</a>, <a href="https://www.citizensadvice.org.uk/debt-and-money/" rel="noopener">Citizens Advice</a> or <a href="https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt" rel="noopener">MoneyHelper</a>.</p>
-    <p>© UK Debt Watch · <a href="/articles/">Articles</a> · <a href="/">ukdebtwatch.co.uk</a></p>
+<footer class="udw-f">
+  <div class="udw-f-in">
+    <div class="udw-f-note"><p><strong>Not advice.</strong> This planner is an information tool. It does not recommend any debt solution and is not regulated debt advice. For free, confidential advice, contact <a href="https://www.stepchange.org/" rel="noopener">StepChange</a>, <a href="https://nationaldebtline.org/" rel="noopener">National Debtline</a>, <a href="https://www.citizensadvice.org.uk/debt-and-money/" rel="noopener">Citizens Advice</a> or <a href="https://www.moneyhelper.org.uk/en/money-troubles/dealing-with-debt" rel="noopener">MoneyHelper</a>.</p>
+    <p>© UK Debt Watch · <a href="/articles/">Articles</a> · <a href="/">ukdebtwatch.co.uk</a></p></div>
+    <nav class="udw-f-nav" aria-label="Footer"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/about/#sources">Sources</a><a href="/articles/">Articles</a><a href="/help/">Help</a><button type="button" data-udw-consent-open>Cookie settings</button></nav>
+    <p class="udw-f-line">UK Debt Watch · Independent analysis of official data · Not financial advice · Edited by Victor Brown</p>
   </div>
 </footer>
 
@@ -559,5 +615,44 @@ footer p{margin:6px 0}
   addRow({name:'Personal loan',balance:1100,apr:8.9,min:95});
 })();
 </script>
+<!-- udw-consent -->
+<div class="udw-consent" id="udw-consent" role="region" aria-label="Cookie choice" hidden>
+  <p>Can we use analytics cookies to see which pages are useful? No ads, nothing sold. <a href="/privacy/">Privacy and cookies</a></p>
+  <div class="udw-consent-btns">
+    <button type="button" data-udw-c="denied">Reject</button>
+    <button type="button" data-udw-c="granted">Accept</button>
+  </div>
+</div>
+<script id="udw-consent-js">
+(function () {
+  var box = document.getElementById('udw-consent');
+  var c = null;
+  try { c = localStorage.getItem('udw_consent'); } catch (e) {}
+  if (c !== 'granted' && c !== 'denied') box.hidden = false;
+  function clearGA() {
+    window['ga-disable-G-0KZHW8KQM0'] = true;
+    document.cookie.split(';').forEach(function (k) {
+      var n = k.split('=')[0].trim();
+      if (n.indexOf('_ga') === 0) {
+        document.cookie = n + '=; Max-Age=0; path=/';
+        document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, '');
+      }
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-udw-c]') : null;
+    if (t) {
+      var v = t.getAttribute('data-udw-c');
+      try { localStorage.setItem('udw_consent', v); } catch (err) {}
+      box.hidden = true;
+      if (v === 'granted') { window.udwLoadGA && window.udwLoadGA(); } else { clearGA(); }
+      return;
+    }
+    var o = e.target.closest ? e.target.closest('[data-udw-consent-open]') : null;
+    if (o) { box.hidden = false; var b = box.querySelector('button'); b && b.focus(); }
+  });
+})();
+</script>
+<!-- /udw-consent -->
 </body>
 </html>
