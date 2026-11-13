@@ -3,7 +3,7 @@ Run from the repo root. Idempotent: re-running replaces the previous chrome."""
 import re, sys, pathlib
 
 GA_ID = "G-0KZHW8KQM0"
-NAV = [("/", "Live clock"), ("/your-share/", "Your share"), ("/debt-planner/", "Debt planner"),
+NAV = [("/", "Live clock"), ("/household-debt/", "Household debt"), ("/your-share/", "Your share"), ("/debt-planner/", "Debt planner"),
        ("/articles/", "Articles"), ("/help/", "Help")]
 ARTICLE_PATHS = {"/articles/", "/uk-debt-interest/", "/who-owns-uk-debt/", "/uk-debt-vs-other-countries/",
                  "/billionaires-leaving-uk/", "/3-trillion/", "/uk-national-debt-by-year/"}
